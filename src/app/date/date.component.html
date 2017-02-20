@@ -1,0 +1,243 @@
+<div class="calendar-header">
+  <div class="calendar-nav" >
+    <img src="./assets/resources/images/calendar/month-white.png" alt="" [hidden]="monthFilter" (click)="monthFilter = !monthFilter; weekFilter = false;">
+    <img src="./assets/resources/images/calendar/month-green.png" alt="" [hidden]="!monthFilter" (click)="monthFilter = !monthFilter">
+  </div>
+  <div class="calendar-nav" (click)="moveBack()" *ngIf="!isMobile">
+    <img src="./assets/resources/images/search/remove.png" alt="" >
+  </div>
+  <div class="calendar-nav" >
+    <img src="./assets/resources/images/calendar/week-white.png" alt="" [hidden]="weekFilter" (click)="weekFilter = !weekFilter; monthFilter = false;">
+    <img src="./assets/resources/images/calendar/week-green.png" alt="" [hidden]="!weekFilter" (click)="weekFilter = !weekFilter">
+  </div>
+</div>
+
+<div class="date-header-block">
+  <div class="date-header-item">
+    <div class="month-week-day">
+      <span [hidden]="weekFilter || monthFilter">Monday</span>
+      <span [hidden]="!weekFilter">Weekly</span>
+      <img src="./assets/resources/images/diary/arr-down-black.png" style="transform: rotate(90deg)" alt="" [hidden]="!monthFilter" (click)="changeTime(-1)">
+      <span [hidden]="!monthFilter" >september</span>
+      <img src="./assets/resources/images/diary/arr-down-black.png" style="transform: rotate(-90deg)" alt="" [hidden]="!monthFilter" (click)="changeTime(1)">
+    </div>
+    <span class="name">John Snow</span>
+  </div>
+  <span class="background-text" [hidden]="weekFilter || monthFilter">19</span>
+  <span class="background-text" [hidden]="!weekFilter">19-25</span>
+  <span class="background-text" [hidden]="!monthFilter" style="font-size: 8vh; height: 70%;">september</span>
+</div>
+
+<div class="slider-wrap" (window:resize)="onResize($event)">
+  <div class="main-slider">
+
+    <div class="time-item-wrap" [hidden]="!selectedElement">
+      <div class="time-item addfood" >
+        <img src="./assets/resources/images/search/add.png" alt="">
+        <span>add food</span>
+      </div>
+      <div class="time-item breakfast" [class.time-selected]="pointsTimeItems.selectedTime === 1" [style.transform]="pointsTimeItems.breakfast.point" >
+        <div class="time-item-wrap" (click)="selectTime(1)">
+          <img src="./assets/resources/images/search/breakfast-green.png" alt="" >
+          <span>breakfast</span>
+        </div>
+        <img class="close-food" src="./assets/resources/images/search/delete.png" alt="" [hidden]="pointsTimeItems.selectedTime !== 1" (click)="selectTime(0)">
+      </div>
+      <div class="time-item dinner" [class.time-selected]="pointsTimeItems.selectedTime === 2" [style.transform]="pointsTimeItems.dinner.point" >
+        <div class="time-item-wrap" (click)="selectTime(2)">
+          <img src="./assets/resources/images/search/dinner-green.png" alt=""  >
+          <span>dinner</span>
+        </div>
+        <img class="close-food" src="./assets/resources/images/search/delete.png" alt="" [hidden]="pointsTimeItems.selectedTime !== 2" (click)="selectTime(0)">
+      </div>
+      <div class="time-item lunch" [class.time-selected]="pointsTimeItems.selectedTime === 3" [style.transform]="pointsTimeItems.lunch.point" >
+        <div class="time-item-wrap" (click)="selectTime(3)">
+          <img src="./assets/resources/images/search/lunch-green.png" alt=""  >
+          <span>lunch</span>
+        </div>
+        <img class="close-food" src="./assets/resources/images/search/delete.png" alt="" [hidden]="pointsTimeItems.selectedTime !== 3" (click)="selectTime(0)">
+      </div>
+      <div class="time-item snack" [class.time-selected]="pointsTimeItems.selectedTime === 4" [style.transform]="pointsTimeItems.snack.point" >
+        <div class="time-item-wrap" (click)="selectTime(4)">
+          <img src="./assets/resources/images/search/snack-green.png" alt=""  >
+          <span>snack</span>
+        </div>
+        <img class="close-food" src="./assets/resources/images/search/delete.png" alt="" [hidden]="pointsTimeItems.selectedTime !== 4" (click)="selectTime(0)">
+      </div>
+    </div>
+
+    <div class="slider-left-btn" *ngIf="!isMobile">
+      <img src="./assets/resources/images/search/go-back-green.png" alt="" (click)="changeTime(-1)">
+    </div>
+    <div class="slider-right-btn" *ngIf="!isMobile">
+      <img src="./assets/resources/images/search/go-back-green.png" alt="" (click)="changeTime(1)">
+    </div>
+
+    <div class="navig" #navig>
+      <div #diary4 class="navitems" [class.selectedEl]="selectedElement === diary4" (click)="moveItems(diary4)">
+        <div class="naw-wrap" >
+          <div class="svg-wrap" [hidden]="selectedElement === diary4">
+            <svg viewBox="0,0,108,108" >
+              <path id="arc1" fill="none" stroke="#33a442" stroke-width="4" [attr.d]="days[0].LineCalories"/>
+            </svg>
+          </div>
+          <div class="calories-border">
+            <div class="svg-wrap" [hidden]="selectedElement !== diary4">
+              <svg viewBox="0,0,106,106" >
+                <path id="arc1" fill="none" stroke="#3a8845" stroke-width="2" [attr.d]="days[0].LineCalories"/>
+              </svg>
+            </div>
+            <div class="macros-border">
+              <div class="svg-wrap" [hidden]="selectedElement !== diary4">
+                <svg viewBox="0,0,106,106" >
+                  <path id="arc1" fill="none" stroke="#33a442" stroke-width="2" [attr.d]="days[0].LineMacro"/>
+                </svg>
+              </div>
+              <div class="micros-border">
+                <div class="svg-wrap" [hidden]="selectedElement !== diary4">
+                  <svg viewBox="0,0,106,106" >
+                    <path id="arc1" fill="none" stroke="#3ec14d" stroke-width="2" [attr.d]="days[0].LineMicro"/>
+                  </svg>
+                </div>
+                <div class="img" [style.background-image]="'url(' + diaryArr[3].img + ')'"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div #diary3 class="navitems" [class.selectedEl]="selectedElement == diary3" (click)="moveItems(diary3)">
+        <div class="naw-wrap" >
+          <div class="svg-wrap" [hidden]="selectedElement === diary3">
+            <svg viewBox="0,0,108,108" >
+              <path id="arc1" fill="none" stroke="#33a442" stroke-width="4" [attr.d]="days[0].LineCalories"/>
+            </svg>
+          </div>
+          <div class="calories-border">
+            <div class="svg-wrap" [hidden]="selectedElement !== diary3">
+              <svg viewBox="0,0,106,106" >
+                <path id="arc1" fill="none" stroke="#3a8845" stroke-width="2" [attr.d]="days[0].LineCalories"/>
+              </svg>
+            </div>
+            <div class="macros-border">
+              <div class="svg-wrap" [hidden]="selectedElement !== diary3">
+                <svg viewBox="0,0,106,106" >
+                  <path id="arc1" fill="none" stroke="#33a442" stroke-width="2" [attr.d]="days[0].LineMacro"/>
+                </svg>
+              </div>
+              <div class="micros-border">
+                <div class="svg-wrap" [hidden]="selectedElement !== diary3">
+                  <svg viewBox="0,0,106,106" >
+                    <path id="arc1" fill="none" stroke="#3ec14d" stroke-width="2" [attr.d]="days[0].LineMicro"/>
+                  </svg>
+                </div>
+                <div class="img" [style.background-image]="'url(' + diaryArr[2].img + ')'"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div #diary1 class="navitems" [class.selectedEl]="selectedElement == diary1" (click)="moveItems(diary1)">
+        <div class="naw-wrap" >
+          <div class="svg-wrap" [hidden]="selectedElement === diary1">
+            <svg viewBox="0,0,108,108" >
+              <path id="arc1" fill="none" stroke="#33a442" stroke-width="4" [attr.d]="days[0].LineCalories"/>
+            </svg>
+          </div>
+          <div class="calories-border">
+            <div class="svg-wrap" [hidden]="selectedElement !== diary1">
+              <svg viewBox="0,0,106,106" >
+                <path id="arc1" fill="none" stroke="#3a8845" stroke-width="2" [attr.d]="days[0].LineCalories"/>
+              </svg>
+            </div>
+            <div class="macros-border">
+              <div class="svg-wrap" [hidden]="selectedElement !== diary1">
+                <svg viewBox="0,0,106,106" >
+                  <path id="arc1" fill="none" stroke="#33a442" stroke-width="2" [attr.d]="days[0].LineMacro"/>
+                </svg>
+              </div>
+              <div class="micros-border">
+                <div class="svg-wrap" [hidden]="selectedElement !== diary1">
+                  <svg viewBox="0,0,106,106" >
+                    <path id="arc1" fill="none" stroke="#3ec14d" stroke-width="2" [attr.d]="days[0].LineMicro"/>
+                  </svg>
+                </div>
+                <div class="img" [style.background-image]="'url(' + diaryArr[0].img + ')'"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div #diary2 class="navitems" [class.selectedEl]="selectedElement == diary2" (click)="moveItems(diary2)">
+        <div class="naw-wrap" >
+          <div class="svg-wrap" [hidden]="selectedElement === diary2">
+            <svg viewBox="0,0,108,108" >
+              <path id="arc1" fill="none" stroke="#33a442" stroke-width="4" [attr.d]="days[0].LineCalories"/>
+            </svg>
+          </div>
+          <div class="calories-border">
+            <div class="svg-wrap" [hidden]="selectedElement !== diary2">
+              <svg viewBox="0,0,106,106" >
+                <path id="arc1" fill="none" stroke="#3a8845" stroke-width="2" [attr.d]="days[0].LineCalories"/>
+              </svg>
+            </div>
+            <div class="macros-border">
+              <div class="svg-wrap" [hidden]="selectedElement !== diary2">
+                <svg viewBox="0,0,106,106" >
+                  <path id="arc1" fill="none" stroke="#33a442" stroke-width="2" [attr.d]="days[0].LineMacro"/>
+                </svg>
+              </div>
+              <div class="micros-border">
+                <div class="svg-wrap" [hidden]="selectedElement !== diary2">
+                  <svg viewBox="0,0,106,106" >
+                    <path id="arc1" fill="none" stroke="#3ec14d" stroke-width="2" [attr.d]="days[0].LineMicro"/>
+                  </svg>
+                </div>
+                <div class="img" [style.background-image]="'url(' + diaryArr[1].img + ')'"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div #diary5 class="navitems" [class.selectedEl]="selectedElement == diary5" (click)="moveItems(diary5)">
+        <div class="naw-wrap" >
+          <div class="svg-wrap" [hidden]="selectedElement === diary5">
+            <svg viewBox="0,0,108,108" >
+              <path id="arc1" fill="none" stroke="#33a442" stroke-width="4" [attr.d]="days[0].LineCalories"/>
+            </svg>
+          </div>
+          <div class="calories-border">
+            <div class="svg-wrap" [hidden]="selectedElement !== diary5">
+              <svg viewBox="0,0,106,106" >
+                <path id="arc1" fill="none" stroke="#3a8845" stroke-width="2" [attr.d]="days[0].LineCalories"/>
+              </svg>
+            </div>
+            <div class="macros-border">
+              <div class="svg-wrap" [hidden]="selectedElement !== diary5">
+                <svg viewBox="0,0,106,106" >
+                  <path id="arc1" fill="none" stroke="#33a442" stroke-width="2" [attr.d]="days[0].LineMacro"/>
+                </svg>
+              </div>
+              <div class="micros-border">
+                <div class="svg-wrap" [hidden]="selectedElement !== diary5">
+                  <svg viewBox="0,0,106,106" >
+                    <path id="arc1" fill="none" stroke="#3ec14d" stroke-width="2" [attr.d]="days[0].LineMicro"/>
+                  </svg>
+                </div>
+                <div class="img" [style.background-image]="'url(' + diaryArr[2].img + ')'"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bottom-inf">
+  <span [hidden]="pointsTimeItems.selectedTime || appData.nutritionalStateOpen.state">Nutritional breakdown</span>
+  <div class="bottom-inf-wrap" [class.open-inf]="appData.nutritionalStateOpen.state">
+    <nutritional [hidden]="pointsTimeItems.selectedTime"></nutritional>
+    <food [hidden]="!pointsTimeItems.selectedTime" *ngIf="!isMobile"></food>
+    <div class="bg-hide-screen" [hidden]="!appData.nutritionalStateOpen.state" (click)="closeNutritional()"></div>
+  </div>
+</div>

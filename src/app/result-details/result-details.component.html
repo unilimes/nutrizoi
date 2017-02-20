@@ -1,0 +1,418 @@
+<div class="res-block" [class.confirmed-save]="appData.saveFoodToDiary.state && !isMobile" [hidden]="isMobile && addIngridient">
+
+  <div class="res-det-nav item">
+    <div class="N-W"><img src="./assets/resources/images/search/recipe-black.png" alt=""></div>
+    <div class="text-res-item"><input type="text" [(ngModel)]="presRecipeName" [readonly]="!diaryActive" (keyup)="checkName()"></div>
+    <div class="N-W">
+      <img src="./assets/resources/images/search/go-back-green.png" alt="" *ngIf="!diaryActive && !confirmedSave">
+      <img src="./assets/resources/images/search/go-back-black.png" alt="" *ngIf="diaryActive || confirmedSave">
+    </div>
+    <div class="N-W" (click)="toggleDiary()">
+      <img src="./assets/resources/images/search/calendar-black.png" alt="" *ngIf="!diaryActive">
+      <img src="./assets/resources/images/search/calendar-green.png" alt="" *ngIf="diaryActive">
+    </div>
+    <div class="N-W">
+      <img src="./assets/resources/images/search/reset.png" alt=""  *ngIf="!changeRecipe" (click)="resetItem()">
+      <img src="./assets/resources/images/search/save.png" alt="" *ngIf="changeRecipe" (click)="saveNewRecipe()">
+    </div>
+  </div>
+
+  <div class="res-det-img-wrap" *ngIf="!diaryActive && (isMobile || !appData.saveFoodToDiary.state)">
+    <div class="res-det-img"  *ngIf="!isMobile" slimScroll  width="100%" height="100%"  size="2px" color="#fff" opacity=1 railVisible=true alwaysVisible=true railColor="#fff" railOpacity=0.2 distance="-1px">
+      <img src="./assets/resources/images/search/instagram1.jpg" alt="">
+      <img class="sec-img" src="./assets/resources/images/search/instagram1.jpg" alt="">
+      <img src="./assets/resources/images/search/instagram1.jpg" alt="">
+      <img class="sec-img" src="./assets/resources/images/search/instagram1.jpg" alt="">
+    </div>
+    <div class="res-det-img"  *ngIf="isMobile">
+      <img src="./assets/resources/images/search/instagram1.jpg" alt="">
+      <img src="./assets/resources/images/search/instagram1.jpg" alt="">
+      <img src="./assets/resources/images/search/instagram1.jpg" alt="">
+      <img src="./assets/resources/images/search/instagram1.jpg" alt="">
+    </div>
+  </div>
+
+  <search-diary *ngIf="diaryActive"></search-diary>
+</div>
+
+
+<div class="res-block" [hidden]="isMobile && diaryActive">
+  <div class="second-block-nav item">
+    <div class="second-block-title" *ngIf="!addIngridient && !isMobile">Recipe / Ingredients</div>
+    <div class="second-block-title" *ngIf="!addIngridient && isMobile">Recipe</div>
+    <div class="N-W" *ngIf="addIngridient"><a href="" ><img src="./assets/resources/images/search/search-black.png" alt=""></a></div>
+    <div class="text-res-item w-60" *ngIf="addIngridient" style="justify-content: flex-start; color: #616469;"><input type="text" value="" ></div>
+
+    <div class="text-res-item" href="" *ngIf="!addIngridient" (click)="addIngridient = true;" style="cursor: pointer;">add ingredient</div>
+    <div class="N-W">
+      <img src="./assets/resources/images/search/add-green.png" alt="" *ngIf="!addIngridient" (click)="addIngridient = true;">
+      <img src="./assets/resources/images/search/go-back-green.png" alt="" *ngIf="addIngridient" (click)="addIngridient = false;">
+    </div>
+    <div class="N-W"><span>N</span></div>
+    <div class="N-W">
+      <span class="units-hover">W</span>
+      <div class="faq-units" *ngIf="!isMobile">
+        <div class="faq-units-content">
+          <div class="units">
+            <span>g</span>
+            <span>kg</span>
+            <span>ts</span>
+          </div>
+          <div class="line"></div>
+          <div class="units">
+            <span>grams</span>
+            <span>kilograms</span>
+            <span>tablespoons</span>
+          </div>
+          <div class="corner"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-wrap-wrap" *ngIf="!addIngridient">
+    <div class="scroll-wrap" *ngIf="!isMobile" slimScroll  width="100%" height="100%"  position="left" size="2px" color="#fff" opacity=1 railVisible=true alwaysVisible=true railColor="#fff" railOpacity=0.2 distance="-1px">
+      <div class="second-block-ingrid item">
+        <div class="N-W"><a href="" ><img src="./assets/resources/images/search/ingridients.png" alt=""></a></div>
+        <div class="text-res-item">Bun</div>
+        <div class="N-W" ><img src="./assets/resources/images/search/delete.png" alt=""></div>
+        <div class="N-W">
+          <div class="ingrid-count">
+            <img src="./assets/resources/images/login/arr-up.png" alt="" (click)="spin($event, 1)">
+            <input type="text" value="1" >
+            <img src="./assets/resources/images/login/arr-down.png" alt="" (click)="spin($event, -1)">
+          </div>
+        </div>
+        <div class="N-W"><span>30g</span></div>
+      </div>
+      <div class="second-block-ingrid item">
+        <div class="N-W"><a href="" ><img src="./assets/resources/images/search/ingridients.png" alt=""></a></div>
+        <div class="text-res-item">Bun</div>
+        <div class="N-W" ><img src="./assets/resources/images/search/delete.png" alt=""></div>
+        <div class="N-W">
+          <div class="ingrid-count">
+            <img src="./assets/resources/images/login/arr-up.png" alt="" (click)="spin($event, 1)">
+            <input type="text" value="1" >
+            <img src="./assets/resources/images/login/arr-down.png" alt="" (click)="spin($event, -1)">
+          </div>
+        </div>
+        <div class="N-W"><span>30g</span></div>
+      </div>
+      <div class="second-block-ingrid item">
+        <div class="N-W"><a href="" ><img src="./assets/resources/images/search/ingridients.png" alt=""></a></div>
+        <div class="text-res-item">Bun</div>
+        <div class="N-W" ><img src="./assets/resources/images/search/delete.png" alt=""></div>
+        <div class="N-W">
+          <div class="ingrid-count">
+            <img src="./assets/resources/images/login/arr-up.png" alt="" (click)="spin($event, 1)">
+            <input type="text" value="1" >
+            <img src="./assets/resources/images/login/arr-down.png" alt="" (click)="spin($event, -1)">
+          </div>
+        </div>
+        <div class="N-W"><span>30g</span></div>
+      </div>
+      <div class="second-block-ingrid item">
+        <div class="N-W"><a href="" ><img src="./assets/resources/images/search/ingridients.png" alt=""></a></div>
+        <div class="text-res-item">Bun</div>
+        <div class="N-W" ><img src="./assets/resources/images/search/delete.png" alt=""></div>
+        <div class="N-W">
+          <div class="ingrid-count">
+            <img src="./assets/resources/images/login/arr-up.png" alt="" (click)="spin($event, 1)">
+            <input type="text" value="1" >
+            <img src="./assets/resources/images/login/arr-down.png" alt="" (click)="spin($event, -1)">
+          </div>
+        </div>
+        <div class="N-W"><span>30g</span></div>
+      </div>
+
+      <div class="second-block-sections-title item" >
+        <div class="bg-green"></div>
+      </div>
+
+      <div class="second-block-ingrid calories item" >
+        <div class="N-W"><a href="" ><img src="./assets/resources/images/search/ingridients.png" alt=""></a></div>
+        <div class="text-res-item">Bun</div>
+        <div class="N-W cal-numb"><span>5120cal</span></div>
+      </div>
+      <div class="second-block-ingrid calories item" >
+        <div class="N-W"><a href="" ><img src="./assets/resources/images/search/ingridients.png" alt=""></a></div>
+        <div class="text-res-item">Bun</div>
+        <div class="N-W cal-numb"><span>5120cal</span></div>
+      </div>
+      <div class="second-block-ingrid calories item" >
+        <div class="N-W"><a href="" ><img src="./assets/resources/images/search/ingridients.png" alt=""></a></div>
+        <div class="text-res-item">Bun</div>
+        <div class="N-W cal-numb"><span>5120cal</span></div>
+      </div>
+
+      <div class="second-block-sections-title item" >
+        <div class="bg-green"></div>
+      </div>
+
+      <div class="second-block-ingrid calories item" >
+        <div class="N-W"><a href="" ><img src="./assets/resources/images/search/ingridients.png" alt=""></a></div>
+        <div class="text-res-item">Protein</div>
+        <div class="N-W cal-numb"><span>30%</span></div>
+      </div>
+      <div class="second-block-ingrid calories item" >
+        <div class="N-W"><a href="" ><img src="./assets/resources/images/search/ingridients.png" alt=""></a></div>
+        <div class="text-res-item">Fats</div>
+        <div class="N-W cal-numb"><span>30%</span></div>
+      </div>
+      <div class="second-block-ingrid calories item" >
+        <div class="N-W"><a href="" ><img src="./assets/resources/images/search/ingridients.png" alt=""></a></div>
+        <div class="text-res-item">Carbs</div>
+        <div class="N-W cal-numb"><span>30%</span></div>
+      </div>
+
+      <div class="second-block-sections-title item" >
+        <div class="bg-green"></div>
+      </div>
+
+      <div class="second-block-ingrid calories item" >
+        <div class="N-W"><a href="" ><img src="./assets/resources/images/search/ingridients.png" alt=""></a></div>
+        <div class="text-res-item">Vitamin A</div>
+        <div class="N-W cal-numb"><span>30%</span></div>
+      </div>
+      <div class="second-block-ingrid calories item" >
+        <div class="N-W"><a href="" ><img src="./assets/resources/images/search/ingridients.png" alt=""></a></div>
+        <div class="text-res-item">Vitamin B</div>
+        <div class="N-W cal-numb"><span>30%</span></div>
+      </div>
+      <div class="second-block-ingrid calories item" >
+        <div class="N-W"><a href="" ><img src="./assets/resources/images/search/ingridients.png" alt=""></a></div>
+        <div class="text-res-item">Vitamin C</div>
+        <div class="N-W cal-numb"><span>30%</span></div>
+      </div>
+
+    </div>
+    <div class="scroll-wrap" *ngIf="isMobile">
+      <div class="second-block-ingrid item">
+        <div class="N-W"><a href="" ><img src="./assets/resources/images/search/ingridients.png" alt=""></a></div>
+        <div class="text-res-item">Bun</div>
+        <div class="N-W" ><img src="./assets/resources/images/search/delete.png" alt=""></div>
+        <div class="N-W">
+          <div class="ingrid-count">
+            <img src="./assets/resources/images/login/arr-up.png" alt="" (click)="spin($event, 1)">
+            <input type="text" value="1" >
+            <img src="./assets/resources/images/login/arr-down.png" alt="" (click)="spin($event, -1)">
+          </div>
+        </div>
+        <div class="N-W"><span>30g</span></div>
+      </div>
+      <div class="second-block-ingrid item">
+        <div class="N-W"><a href="" ><img src="./assets/resources/images/search/ingridients.png" alt=""></a></div>
+        <div class="text-res-item">Bun</div>
+        <div class="N-W" ><img src="./assets/resources/images/search/delete.png" alt=""></div>
+        <div class="N-W">
+          <div class="ingrid-count">
+            <img src="./assets/resources/images/login/arr-up.png" alt="" (click)="spin($event, 1)">
+            <input type="text" value="1" >
+            <img src="./assets/resources/images/login/arr-down.png" alt="" (click)="spin($event, -1)">
+          </div>
+        </div>
+        <div class="N-W"><span>30g</span></div>
+      </div>
+      <div class="second-block-ingrid item">
+        <div class="N-W"><a href="" ><img src="./assets/resources/images/search/ingridients.png" alt=""></a></div>
+        <div class="text-res-item">Bun</div>
+        <div class="N-W" ><img src="./assets/resources/images/search/delete.png" alt=""></div>
+        <div class="N-W">
+          <div class="ingrid-count">
+            <img src="./assets/resources/images/login/arr-up.png" alt="" (click)="spin($event, 1)">
+            <input type="text" value="1" >
+            <img src="./assets/resources/images/login/arr-down.png" alt="" (click)="spin($event, -1)">
+          </div>
+        </div>
+        <div class="N-W"><span>30g</span></div>
+      </div>
+      <div class="second-block-ingrid item">
+        <div class="N-W"><a href="" ><img src="./assets/resources/images/search/ingridients.png" alt=""></a></div>
+        <div class="text-res-item">Bun</div>
+        <div class="N-W" ><img src="./assets/resources/images/search/delete.png" alt=""></div>
+        <div class="N-W">
+          <div class="ingrid-count">
+            <img src="./assets/resources/images/login/arr-up.png" alt="" (click)="spin($event, 1)">
+            <input type="text" value="1" >
+            <img src="./assets/resources/images/login/arr-down.png" alt="" (click)="spin($event, -1)">
+          </div>
+        </div>
+        <div class="N-W"><span>30g</span></div>
+      </div>
+
+      <div class="second-block-sections-title item" >
+        <div class="bg-green"></div>
+      </div>
+
+      <div class="second-block-ingrid calories item" >
+        <div class="N-W"><a href="" ><img src="./assets/resources/images/search/ingridients.png" alt=""></a></div>
+        <div class="text-res-item">Bun</div>
+        <div class="N-W cal-numb"><span>5120cal</span></div>
+      </div>
+      <div class="second-block-ingrid calories item" >
+        <div class="N-W"><a href="" ><img src="./assets/resources/images/search/ingridients.png" alt=""></a></div>
+        <div class="text-res-item">Bun</div>
+        <div class="N-W cal-numb"><span>5120cal</span></div>
+      </div>
+      <div class="second-block-ingrid calories item" >
+        <div class="N-W"><a href="" ><img src="./assets/resources/images/search/ingridients.png" alt=""></a></div>
+        <div class="text-res-item">Bun</div>
+        <div class="N-W cal-numb"><span>5120cal</span></div>
+      </div>
+
+      <div class="second-block-sections-title item" >
+        <div class="bg-green"></div>
+      </div>
+
+      <div class="second-block-ingrid calories item" >
+        <div class="N-W"><a href="" ><img src="./assets/resources/images/search/ingridients.png" alt=""></a></div>
+        <div class="text-res-item">Protein</div>
+        <div class="N-W cal-numb"><span>30%</span></div>
+      </div>
+      <div class="second-block-ingrid calories item" >
+        <div class="N-W"><a href="" ><img src="./assets/resources/images/search/ingridients.png" alt=""></a></div>
+        <div class="text-res-item">Fats</div>
+        <div class="N-W cal-numb"><span>30%</span></div>
+      </div>
+      <div class="second-block-ingrid calories item" >
+        <div class="N-W"><a href="" ><img src="./assets/resources/images/search/ingridients.png" alt=""></a></div>
+        <div class="text-res-item">Carbs</div>
+        <div class="N-W cal-numb"><span>30%</span></div>
+      </div>
+
+      <div class="second-block-sections-title item" >
+        <div class="bg-green"></div>
+      </div>
+
+      <div class="second-block-ingrid calories item" >
+        <div class="N-W"><a href="" ><img src="./assets/resources/images/search/ingridients.png" alt=""></a></div>
+        <div class="text-res-item">Vitamin A</div>
+        <div class="N-W cal-numb"><span>30%</span></div>
+      </div>
+      <div class="second-block-ingrid calories item" >
+        <div class="N-W"><a href="" ><img src="./assets/resources/images/search/ingridients.png" alt=""></a></div>
+        <div class="text-res-item">Vitamin B</div>
+        <div class="N-W cal-numb"><span>30%</span></div>
+      </div>
+      <div class="second-block-ingrid calories item" >
+        <div class="N-W"><a href="" ><img src="./assets/resources/images/search/ingridients.png" alt=""></a></div>
+        <div class="text-res-item">Vitamin C</div>
+        <div class="N-W cal-numb"><span>30%</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="scroll-wrap-wrap" *ngIf="addIngridient">
+    <div class="scroll-wrap" *ngIf="!isMobile" slimScroll  width="100%" height="100%"  position="left" size="2px" color="#fff" opacity=1 railVisible=true alwaysVisible=true railColor="#fff" railOpacity=0.2 distance="-1px">
+      <div class="second-block-ingrid item">
+        <div class="N-W"><a href="" ><img src="./assets/resources/images/search/ingridients.png" alt=""></a></div>
+        <div class="text-res-item">Bun</div>
+        <div class="N-W" ><img src="./assets/resources/images/search/delete.png" alt=""></div>
+        <div class="N-W">
+          <div class="ingrid-count">
+            <img src="./assets/resources/images/login/arr-up.png" alt="" (click)="spin($event, 1)">
+            <input type="text" value="1" >
+            <img src="./assets/resources/images/login/arr-down.png" alt="" (click)="spin($event, -1)">
+          </div>
+        </div>
+        <div class="N-W"><span>30g</span></div>
+      </div>
+      <div class="second-block-ingrid item">
+        <div class="N-W"><a href="" ><img src="./assets/resources/images/search/ingridients.png" alt=""></a></div>
+        <div class="text-res-item">Bun</div>
+        <div class="N-W" ><img src="./assets/resources/images/search/delete.png" alt=""></div>
+        <div class="N-W">
+          <div class="ingrid-count">
+            <img src="./assets/resources/images/login/arr-up.png" alt="" (click)="spin($event, 1)">
+            <input type="text" value="1" >
+            <img src="./assets/resources/images/login/arr-down.png" alt="" (click)="spin($event, -1)">
+          </div>
+        </div>
+        <div class="N-W"><span>30g</span></div>
+      </div>
+      <div class="second-block-ingrid item">
+        <div class="N-W"><a href="" ><img src="./assets/resources/images/search/ingridients.png" alt=""></a></div>
+        <div class="text-res-item">Bun</div>
+        <div class="N-W" ><img src="./assets/resources/images/search/delete.png" alt=""></div>
+        <div class="N-W">
+          <div class="ingrid-count">
+            <img src="./assets/resources/images/login/arr-up.png" alt="" (click)="spin($event, 1)">
+            <input type="text" value="1" >
+            <img src="./assets/resources/images/login/arr-down.png" alt="" (click)="spin($event, -1)">
+          </div>
+        </div>
+        <div class="N-W"><span>30g</span></div>
+      </div>
+      <div class="second-block-ingrid item">
+        <div class="N-W"><a href="" ><img src="./assets/resources/images/search/ingridients.png" alt=""></a></div>
+        <div class="text-res-item">Bun</div>
+        <div class="N-W" ><img src="./assets/resources/images/search/delete.png" alt=""></div>
+        <div class="N-W">
+          <div class="ingrid-count">
+            <img src="./assets/resources/images/login/arr-up.png" alt="" (click)="spin($event, 1)">
+            <input type="text" value="1" >
+            <img src="./assets/resources/images/login/arr-down.png" alt="" (click)="spin($event, -1)">
+          </div>
+        </div>
+        <div class="N-W"><span>30g</span></div>
+      </div>
+
+    </div>
+    <div class="scroll-wrap" *ngIf="isMobile">
+      <div class="second-block-ingrid item">
+        <div class="N-W"><a href="" ><img src="./assets/resources/images/search/ingridients.png" alt=""></a></div>
+        <div class="text-res-item">Bun</div>
+        <div class="N-W" ><img src="./assets/resources/images/search/delete.png" alt=""></div>
+        <div class="N-W">
+          <div class="ingrid-count">
+            <img src="./assets/resources/images/login/arr-up.png" alt="" (click)="spin($event, 1)">
+            <input type="text" value="1" >
+            <img src="./assets/resources/images/login/arr-down.png" alt="" (click)="spin($event, -1)">
+          </div>
+        </div>
+        <div class="N-W"><span>30g</span></div>
+      </div>
+      <div class="second-block-ingrid item">
+        <div class="N-W"><a href="" ><img src="./assets/resources/images/search/ingridients.png" alt=""></a></div>
+        <div class="text-res-item">Bun</div>
+        <div class="N-W" ><img src="./assets/resources/images/search/delete.png" alt=""></div>
+        <div class="N-W">
+          <div class="ingrid-count">
+            <img src="./assets/resources/images/login/arr-up.png" alt="" (click)="spin($event, 1)">
+            <input type="text" value="1" >
+            <img src="./assets/resources/images/login/arr-down.png" alt="" (click)="spin($event, -1)">
+          </div>
+        </div>
+        <div class="N-W"><span>30g</span></div>
+      </div>
+      <div class="second-block-ingrid item">
+        <div class="N-W"><a href="" ><img src="./assets/resources/images/search/ingridients.png" alt=""></a></div>
+        <div class="text-res-item">Bun</div>
+        <div class="N-W" ><img src="./assets/resources/images/search/delete.png" alt=""></div>
+        <div class="N-W">
+          <div class="ingrid-count">
+            <img src="./assets/resources/images/login/arr-up.png" alt="" (click)="spin($event, 1)">
+            <input type="text" value="1" >
+            <img src="./assets/resources/images/login/arr-down.png" alt="" (click)="spin($event, -1)">
+          </div>
+        </div>
+        <div class="N-W"><span>30g</span></div>
+      </div>
+      <div class="second-block-ingrid item">
+        <div class="N-W"><a href="" ><img src="./assets/resources/images/search/ingridients.png" alt=""></a></div>
+        <div class="text-res-item">Bun</div>
+        <div class="N-W" ><img src="./assets/resources/images/search/delete.png" alt=""></div>
+        <div class="N-W">
+          <div class="ingrid-count">
+            <img src="./assets/resources/images/login/arr-up.png" alt="" (click)="spin($event, 1)">
+            <input type="text" value="1" >
+            <img src="./assets/resources/images/login/arr-down.png" alt="" (click)="spin($event, -1)">
+          </div>
+        </div>
+        <div class="N-W"><span>30g</span></div>
+      </div>
+
+    </div>
+  </div>
+</div>

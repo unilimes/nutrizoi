@@ -1,0 +1,172 @@
+@import "../../mixines"
+
+result-details
+  width: 100%
+  height: 54%
+  display: flex
+  justify-content: center
+  align-items: center
+  color: $grey
+  .res-block
+    .res-det-img-wrap
+      height: 48vh
+      width: 100%
+      .res-det-img
+        @extend .w-h-100
+        .sec-img
+          margin-right: 3%
+        img
+          margin-left: 3%
+          margin-top: 3%
+          width: 45%
+          float: left
+
+    .scroll-wrap-wrap, .scroll-wrap
+      width: 100%
+      height: 48vh
+
+    .res-det-nav, .second-block-nav, .second-block-sections-title
+      overflow: hidden
+      background-color: $white
+      .text-res-item
+        width: 60%
+
+    .res-det-nav
+      border-right: 1px solid red
+    .second-block-nav
+      overflow: visible
+      .N-W
+        font-weight: bold
+        .faq-units
+          position: absolute
+          width: 37%
+          height: 9vh
+          left: 108%
+          display: flex
+          cursor: default
+          opacity: 0
+          justify-content: center
+          align-items: center
+          background-color: $white
+          transition: opacity 0.4s
+          color: $grey
+          font-size: 1.3vh
+          .faq-units-content
+            width: 75%
+            height: 65%
+            display: flex
+            justify-content: flex-start
+            align-items: center
+            .units
+              position: relative
+              z-index: 5
+              height: 100%
+              display: flex
+              flex-direction: column
+              justify-content: space-between
+            .line
+              width: 1px
+              height: 100%
+              margin: 0 10%
+              background-color: $grey
+            .corner
+              +sizeH(2vh)
+              background-color: $white
+              position: absolute
+              left: -0.3vw
+              top: 40%
+              transform: rotate(45deg)
+        .units-hover
+          cursor: pointer
+          &:hover ~ .faq-units
+            opacity: 1
+      .second-block-title
+        width: 45%
+        font-size: 1.5vh
+      .text-res-item
+        width: 25%
+        display: flex
+        justify-content: flex-end
+        text-decoration: none
+        color: $green
+
+
+    .second-block-ingrid
+      color: $white
+      .text-res-item
+        width: 60%
+      .N-W, .text-res-item
+        position: relative
+        z-index: 2
+      .ingrid-count
+        @extend .w-h-100
+        display: flex
+        align-items: center
+        justify-content: center
+        flex-direction: column
+        img
+          margin: 0
+          max-width: 30%
+        input
+          width: 90%
+          height: 45%
+          text-align: center
+
+    .calories
+      .text-res-item
+        width: 70%
+      .cal-numb
+        width: 20%
+        display: flex
+        justify-content: flex-end
+
+  .confirmed-save
+    background: url("/assets/resources/images/search/save-to-diary-conf.png") 50% 50% no-repeat
+    -webkit-background-size: auto 50%
+    background-size:  auto 50%
+
+
+
+html.tablet, html.mobile
+  result-details
+    display: block
+    height: 100%
+    flex-direction: column
+    justify-content: flex-start
+    overflow-y: scroll
+    .res-block
+      margin-top: 5%
+      position: inherit
+      height: auto
+      .res-det-nav
+        border-right: none
+      .res-det-img-wrap
+        height: auto
+        .res-det-img
+          height: auto
+          img
+            margin: 5% 0 0 0
+            width: 100%
+            float: none
+      .second-block-nav
+        margin-bottom: 5%
+        .text-res-item
+          width: 40%
+        .second-block-title
+          width: 30%
+        .second-block-title, .N-W
+          font-size: 4rem
+          @media screen and (max-width: 1000px)
+            font-size: 3rem
+          @media screen and (max-width: 800px)
+            font-size: 2.5rem
+          @media screen and (max-width: 600px)
+            font-size: 2rem
+          @media screen and (max-width: 400px)
+            font-size: 1.7rem
+      .second-block-sections-title
+        margin: 5% 0
+      .scroll-wrap-wrap
+        margin-bottom: 5%
+      .scroll-wrap-wrap, .scroll-wrap
+        height: auto

@@ -1,0 +1,66 @@
+$white: #ffffff
+$black: #000000
+$grey: #666666
+$light-grey: #9c9a9a
+$green: #3ec14d
+$mid-green: #327038
+$dark-green: #31311b
+$side-menu-bg: rgba(13, 26, 14, 1)
+
+=size($width, $height: $width)
+  width: $width
+  height: $height
+
+=sizeH($height, $width: $height)
+  width: $width
+  height: $height
+
+=max-min-wh($maxw, $minw)
+  max-width: $maxw
+  max-height: $maxw
+  min-width: $minw
+  min-height: $minw
+
+=max-wh-img($maxwh)
+  max-height: $maxwh
+  max-width: $maxwh
+
+=keyframes($name)
+  @-webkit-keyframes #{$name}
+    @content
+  @-moz-keyframes #{$name}
+    @content
+  @-ms-keyframes #{$name}
+    @content
+  @keyframes #{$name}
+    @content
+
++keyframes(opac-down)
+  0%
+    opacity: 1
+  100%
+    opacity: 0
+    z-index: -100
+
++keyframes(opac-up)
+  0%
+    opacity: 0
+    z-index: 100
+  100%
+    opacity: 1
+
+
+.position-center
+  left: 50%
+  top: 50%
+  transform: translate(-50%, -50%)
+
+.w-h-100
+  width: 100%
+  height: 100%
+
+.posa-w-100
+  width: 100%
+  position: absolute
+
+

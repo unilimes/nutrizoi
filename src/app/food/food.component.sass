@@ -1,0 +1,64 @@
+@import "../../mixines"
+
+food
+  width: 100%
+  height: 12vh
+  display: flex
+  justify-content: center
+  align-items: flex-start
+  overflow: hidden
+  position: relative
+  .time-food
+    width: 100%
+    height: 12vh
+    .wrapper-food
+      width: 100%
+      height: 100%
+      .item
+        padding: 0
+        img
+          filter: invert(100%)
+          +max-wh-img(40%)
+        a> img
+          +max-wh-img(100%)
+  .item
+    width: 50%
+    float: left
+    background-color: $white
+    color: $grey
+  .title-item
+    background-color: $white
+    color: $grey
+    .text-res-item
+      justify-content: flex-end
+    .second-block-title, .text-res-item
+      font-size: 2vh
+      width: 50%
+    .addfood
+      color: $green
+      cursor: pointer
+
+html.tablet, html.mobile
+  food
+    height: 100vh
+    padding: 5%
+    flex-direction: column
+    justify-content: flex-start
+    overflow: scroll
+    .time-food
+      height: auto
+      margin-bottom: 5%
+    .item
+      width: 100%
+    .title-item
+      margin-bottom: 5%
+      .addfood
+        font-size: 1.5vh!important
+    .wrapper-food>.item
+      background-color: transparent
+      color: $white
+      width: 100%
+      img
+        filter: invert(0)
+
+

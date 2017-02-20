@@ -1,0 +1,39 @@
+@import "../../mixines"
+
+main-header
+  @extend .posa-w-100
+  top: 2%
+  z-index: 10
+  .main-header
+    width: 100%
+    display: flex
+    justify-content: center
+    .header-wrap
+      width: 100%
+      padding: 0 2%
+      display: flex
+      justify-content: space-between
+      a, .link
+        cursor: pointer
+        width: 5%
+        +max-min-wh(30px, 15px)
+        display: inline-block
+      .header-logo, .header-auth
+        width: 50%
+        display: flex
+        justify-content: flex-start
+      .header-auth
+        justify-content: flex-end
+        a,  .link
+          margin-left: 3%
+
+html.tablet, html.mobile
+  main-header
+    .main-header>.header-wrap
+      padding: 0 4%
+      a,  .link
+        +max-min-wh(50px, 15px)
+        width: 12%!important
+      .header-auth
+        a,  .link
+          margin-left: 8%

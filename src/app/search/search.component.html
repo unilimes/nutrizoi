@@ -1,0 +1,32 @@
+<div class="slider-wrap" [ngStyle]="{'margin-top': appData.sliderPosition.state }" (window:resize)="onResize($event)" [hidden]="isMobile">
+  <div class="main-slider">
+    <div class="navig" #navig>
+      <div #home class="navitems" >
+        <div class="naw-wrap" [routerLink]="['/']">
+          <img src="./assets/resources/images/search/home.png" alt="" >
+        </div>
+      </div>
+      <div #search  class="navitems" >
+        <div class="naw-wrap" >
+          <div class="img-wrap"  style="background-color: #ffffff; width: 80%;height: 80%;border-radius: 50%; display: flex; justify-content: center;align-items: center; ">
+            <img src="./assets/resources/images/home/search.png" alt="" >
+          </div>
+        </div>
+      </div>
+      <div #calendar class="navitems" [routerLink]="['/calendar']">
+        <div class="naw-wrap" >
+          <img src="./assets/resources/images/search/calendar.png" alt="" >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="search-label-wrap item" [hidden]="isMobile && !appData.searchInputVisible.state">
+  <input type="text"  [(ngModel)]="appData.searchValue.state" (keyup.enter)="changeSearch()">
+  <img src="./assets/resources/images/search/remove.png" alt="" *ngIf="!isMobile" (click)="moveBack()">
+  <img src="./assets/resources/images/search/delete.png" alt="" *ngIf="isMobile">
+</div>
+
+
+<router-outlet></router-outlet>

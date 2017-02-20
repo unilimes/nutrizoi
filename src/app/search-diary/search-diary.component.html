@@ -1,0 +1,69 @@
+<div class="choose-task" >
+
+  <div class="diary choosen-content-item" >
+    <div class="item-text" style="background-image: url('/assets/resources/images/search/diary-green.png');">Choose a diary</div>
+    <div class="items-wrap">
+      <div class="diary-item time-item" [class.selected]="selectedDiary === diary" *ngFor="let diary of diaryArr" (mouseover)="selectDiary(diary)">
+        <div class="img" [style.background-image]="'url(' + diary.img + ')'"></div>
+      </div>
+      <div class="diary-item time-item" style="filter: opacity(50%);" *ngIf="diaryArr.length < 5" [routerLink]="['/profile']">
+        <img src="./assets/resources/images/search/add.png" alt="" >
+      </div>
+    </div>
+  </div>
+
+  <div class="time choosen-content-item" >
+    <div class="item-text" style="background-image: url('/assets/resources/images/search/clock-green.png');">Choose a time</div>
+    <div class="items-wrap">
+      <div class="time-item" [class.time-selected]="selectedTime === 'breakfast'" (mouseover)="selectTime('breakfast')">
+        <img src="./assets/resources/images/search/breakfast-green.png" alt="">
+        <span>breakfast</span>
+      </div>
+      <div class="time-item" [class.time-selected]="selectedTime === 'lunch'" (mouseover)="selectTime('lunch')">
+        <img src="./assets/resources/images/search/lunch-green.png" alt="">
+        <span>lunch</span>
+      </div>
+      <div class="time-item" [class.time-selected]="selectedTime === 'dinner'" (mouseover)="selectTime('dinner')">
+        <img src="./assets/resources/images/search/dinner-green.png" alt="">
+        <span>dinner</span>
+      </div>
+      <div class="time-item" [class.time-selected]="selectedTime === 'snack'" (mouseover)="selectTime('snack')">
+        <img src="./assets/resources/images/search/snack-green.png" alt="">
+        <span>snack</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="date choosen-content-item" >
+    <div class="item-text" style="background-image: url('/assets/resources/images/search/calendar-green-full.png');">Choose a date</div>
+    <div class="items-wrap">
+      <div class="date-item">
+        <img src="./assets/resources/images/login/arr-up.png" (click)="spin(1, selectedDate.day, daysInMonth)" alt="">
+        <span>{{selectedDate.day.number + 1}}</span>
+        <img src="./assets/resources/images/login/arr-down.png"  (click)="spin(-1, selectedDate.day, daysInMonth)" alt="">
+      </div>
+      <div class="date-item">
+        <img src="./assets/resources/images/login/arr-up.png" (click)="spin(1, selectedDate.month, monthes.length)" alt="">
+        <span>{{monthes[selectedDate.month.number]}}</span>
+        <img src="./assets/resources/images/login/arr-down.png"  (click)="spin(-1, selectedDate.month, monthes.length)" alt="">
+      </div>
+      <div class="date-item">
+        <img src="./assets/resources/images/login/arr-up.png" (click)="spin(1, selectedDate.year)" alt="">
+        <span>{{selectedDate.year.number}}</span>
+        <img src="./assets/resources/images/login/arr-down.png"  (click)="spin(-1, selectedDate.year)" alt="">
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="last-confirm">
+  <div class="btn-blocks" (click)="confirm()">
+    <span *ngIf="!isMobile">Confirm</span>
+    <span *ngIf="isMobile">Add to calendar</span>
+  </div>
+  <div class="btn-blocks" (click)="cancel()">
+    <span>Cancel</span>
+  </div>
+</div>

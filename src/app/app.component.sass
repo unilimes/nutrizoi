@@ -1,0 +1,463 @@
+@import "../mixines"
+
+app-root
+  color: $white
+  .app-wrap
+    position: relative
+    @extend .w-h-100
+  #cvs-slider
+    position: absolute
+    @extend .position-center
+    top: 55%
+    width: 92%
+    transition: margin-top 0.5s
+  .btn-side-mnu
+    display: none
+    background: url("/assets/resources/images/search/delete.png") no-repeat
+    background-position: 50% 50%
+    background-size: 30% 30%
+    transform: rotate(45deg)
+    position: fixed
+    opacity: 1
+    transition: all 0.5s
+    +size(12vw)
+    right: 4%
+    bottom: 10%
+    border-radius: 50%
+    background-color: $green
+
+
+  .slider-wrap
+    @extend .posa-w-100
+    @extend .position-center
+    top: 55%
+    height: 50%
+    display: flex
+    align-items: center
+    overflow: visible
+    transition: margin-top 0.5s
+    .main-slider
+      @extend .w-h-100
+      position: relative
+      .navig
+        position: absolute
+        top: 50%
+        left: 0
+        transform: translate(0,-50%)
+        display: flex
+        justify-content: center
+        .navitems
+          +size(9rem)
+          position: absolute
+          top: 0
+          left: 0
+          transform: translate(-50%,-50%)
+          border-radius: 50%
+          background-color: transparent
+          transition: width 0.2s, height 0.2s, transform 0.2s
+          display: flex
+          justify-content: center
+          align-items: center
+          @media screen and (max-width: 1500px)
+            +size(8rem)
+          @media screen and (max-width: 1200px)
+            +size(7rem)
+          @media screen and (max-width: 1000px)
+            +size(6rem)
+          @media screen and (max-width: 800px)
+            +size(5rem)
+          .naw-wrap
+            width: 80%
+            height: 80%
+            text-transform: uppercase
+            border-radius: 50%
+            display: flex
+            justify-content: center
+            align-items: center
+            cursor: pointer
+            background: 50% 50% no-repeat
+            -webkit-background-size: 50% 50%
+            background-size:  50% 50%
+            position: relative
+            img
+              height: 100%
+              width: auto
+              border-radius: 50%
+            .img-wrap
+              display: flex
+              justify-content: center
+              align-items: center
+              width: 100%
+              height: 100%
+              border-radius: 50%
+              img
+                height: 50%
+        .scale-x-2
+          +size(10vw)
+
+
+  .res-block
+    width: 32%
+    height: 100%
+    display: flex
+    justify-content: center
+    flex-direction: column
+    align-items: center
+
+
+  .item
+    height: 6vh
+    width: 100%
+    padding: 0 3%
+    position: relative
+    display: flex
+    align-items: center
+    justify-content: space-around
+    .text-res-item
+      font-size: 1.5vh
+      height: 100%
+      display: flex
+      align-items: center
+    .N-W
+      display: flex
+      justify-content: center
+      align-items: center
+      height: 100%
+      width: 10%
+      font-size: 1.7vh
+      a
+        display: flex
+        height: 40%
+        img
+          +max-wh-img(100%)
+      img
+        cursor: pointer
+        +max-wh-img(60%)
+
+
+  .reg-navig
+    list-style-type: none
+    @extend .w-h-100
+    margin: 0
+    padding: 0
+    li
+      height: 100%
+      width: 16%
+      display: block
+      float: left
+      margin-left: 0.5%
+      border-bottom: 2px solid $white
+      cursor: pointer
+      h5
+        margin: 0
+        padding: 0
+        display: block
+        color: $white
+        text-align: center
+        font-size: 1.2vh
+        opacity: 0.7
+    .element-active
+      border-bottom: 2px solid $green
+
+
+  .last-confirm
+    height: 12.5%
+    width: 100%
+    display: flex
+    justify-content: space-between
+    .btn-blocks
+      height: 100%
+      width: 47%
+      background-color: $light-grey
+      color: $dark-green
+      display: flex
+      justify-content: center
+      align-items: center
+      cursor: pointer
+      span
+        text-transform: capitalize
+        font-size: 2vh
+      &:hover
+        background-color: $white
+        color: $green
+
+
+  .bg-red
+    background: url("/assets/resources/images/search/bg-red.png") no-repeat
+  .bg-green
+    background: url("/assets/resources/images/search/bg-green.png") no-repeat
+  .bg-green, .bg-red
+    position: absolute
+    top: 0
+    left: -45%
+    @extend .w-h-100
+    z-index: 1
+    opacity: 0.8
+    background-size: 100% 100%
+
+
+  input
+    background-color: transparent
+    border: none
+    &:focus
+      outline: none
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button
+    -webkit-appearance: none
+    -moz-appearance: none
+    appearance: none
+
+  .img
+    width: 90%
+    height: 90%
+    border-radius: 50%
+    background: 50% 50% no-repeat
+    background-position: center
+    -webkit-background-size: 100% 100%
+    background-size:  auto 100%
+
+  .calendar-header, .calendar-footer
+    width: 50%
+    position: absolute
+    left: 50%
+    transform: translateX(-50%)
+    z-index: 100
+    display: flex
+    justify-content: center
+    align-items: center
+    .calendar-nav, .img-wrap
+      cursor: pointer
+      width: 8%
+      +max-min-wh(50px, 25px)
+      display: inline-flex
+      align-items: center
+      justify-content: center
+      img
+        +max-wh-img(80%)
+    .calendar-nav
+      margin: 0 2%
+  .calendar-header
+    top: 2%
+  .calendar-footer
+    bottom: 2%
+
+  .slider-left-btn,.slider-right-btn
+    cursor: pointer
+    position: absolute
+    +size(2vw)
+    top: 50%
+  .slider-left-btn
+    left: 2vw
+    transform: translateY(-15%)
+  .slider-right-btn
+    right: 2vw
+    transform: translateY(-15%) rotate(180deg)
+
+
+  .time-item
+    +sizeH(6vh)
+    border-radius: 50%
+    display: flex
+    align-items: center
+    justify-content: center
+    cursor: pointer
+    border: 1px solid $white
+    position: relative
+    img
+      +max-wh-img(60%)
+    span
+      width: 100%
+      text-align: center
+      text-transform: uppercase
+      position: absolute
+      opacity: 0.9
+      @extend .position-center
+      font-size: 0.8vh
+  .time-selected
+    background-color: $white
+    img
+      -webkit-filter: grayscale(100%)
+      filter: grayscale(100%)
+    span
+      color: $grey
+
+  .tag-log-in
+    position: absolute
+    width: 70%
+    font-size: 3.5vh
+    color: $white
+    top: 10%
+    left: 50%
+    transform: translateX(-50%)
+    text-align: center
+
+  .sliderInvisible
+    opacity: 0
+    z-index: -100
+
+img
+  +max-wh-img(100%)
+.svg-wrap
+  width: 105%
+  height: 105%
+  @extend .position-center
+  position: absolute
+svg
+  @extend .w-h-100
+
+html.tablet, html.mobile
+  .slider-wrap>.main-slider >.navig
+    .navitems
+      +size(10rem)
+      @media screen and (max-width: 1000px)
+        +size(9rem)
+      @media screen and (max-width: 800px)
+        +size(8rem)
+      @media screen and (max-width: 600px)
+        +size(7rem)
+      @media screen and (max-width: 400px)
+        +size(5rem)
+    .scale-x-2
+      +size(16rem)
+      @media screen and (max-width: 1000px)
+        +size(14rem)
+      @media screen and (max-width: 800px)
+        +size(13rem)
+      @media screen and (max-width: 600px)
+        +size(10rem)
+      @media screen and (max-width: 400px)
+        +size(8rem)
+
+  .btn-side-mnu
+    display: block
+    z-index: 650
+  .hide-btn
+    z-index: -1
+    opacity: 0
+
+  .res-block
+    @extend .w-h-100
+    position: relative
+    padding: 0 5%
+
+
+  .item
+    padding: 0 2%
+    height: 7.5rem
+    .text-res-item
+      font-size: 3rem
+    .N-W
+      font-size: 1.7vh
+      a
+        height: 50%
+        img
+          max-height: 100%
+      img
+        max-height: 50%
+    @media screen and (max-width: 1000px)
+      height: 6.7rem
+      .text-res-item
+        font-size: 2.5rem
+    @media screen and (max-width: 800px)
+      height: 5.7rem
+      .text-res-item
+        font-size: 2rem
+    @media screen and (max-width: 600px)
+      height: 4.4rem
+      .text-res-item
+        font-size: 1.7rem
+    @media screen and (max-width: 400px)
+      height: 3.8rem
+      .text-res-item
+        font-size: 1.5rem
+
+
+  .reg-navig
+    li
+      border-bottom: 4px solid $white
+      h5
+        font-size: 2rem
+        @media screen and (max-width: 1000px)
+          font-size: 2rem
+        @media screen and (max-width: 800px)
+          font-size: 1.5rem
+        @media screen and (max-width: 600px)
+          font-size: 1.2rem
+        @media screen and (max-width: 400px)
+          font-size: 1rem
+    .element-active
+      border-bottom: 4px solid $green
+
+
+  .last-confirm
+    height: 7.5rem
+    span
+      font-size: 3rem
+    @media screen and (max-width: 1000px)
+      height: 6.7rem
+      span
+        font-size: 2.5rem
+    @media screen and (max-width: 800px)
+      height: 5.7rem
+      span
+        font-size: 2rem
+    @media screen and (max-width: 600px)
+      height: 4.4rem
+      span
+        font-size: 1.7rem
+    @media screen and (max-width: 400px)
+      height: 3.8rem
+      span
+        font-size: 1.5rem
+
+
+  .calendar-header, .calendar-footer
+    width: 60%
+  .calendar-nav
+    width: 12%
+    margin: 0 5%
+
+  .time-item
+    +sizeH(9rem)
+    span
+      font-size: 1.4rem
+    @media screen and (max-width: 1000px)
+      +sizeH(7.5rem)
+      span
+        font-size: 1.2rem
+    @media screen and (max-width: 800px)
+      +sizeH(6.5rem)
+      span
+        font-size: 1rem
+    @media screen and (max-width: 600px)
+      +sizeH(5.5rem)
+      span
+        font-size: 0.8rem
+    @media screen and (max-width: 400px)
+      +sizeH(4.5rem)
+      span
+        font-size: 0.6rem
+
+
+  .tag-log-in
+    font-size: 3vh
+
+
+  .side-menu-open
+    z-index: 600
+    width: 12vw
+    right: 0
+    bottom: 1%
+    .main-footer>.footer-wrap
+      padding: 0 25%
+      flex-direction: column
+      align-items: flex-end
+      .social-footer-wrap, .email-footer-wrap
+        width: 100%
+        flex-direction: column
+        align-items: flex-end
+        a
+          width: 90%!important
+          margin-right: 0!important
+          margin-bottom: 70%
+

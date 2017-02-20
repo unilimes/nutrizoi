@@ -1,0 +1,45 @@
+<div class="slider-wrap" [ngStyle]="{'margin-top': appData.sliderPosition.state}" (window:resize)="onResize($event)">
+  <div class="main-slider">
+    <div class="navig" #navig>
+      <div #infos class="navitems form-type">
+        <div class="log-in-form">
+          <div class="facebook-log-in">
+            <div class="log-in-img-wrap">
+              <img src="./assets/resources/images/login/fb.png" alt="">
+            </div>
+            <div class="fb-log-in-line">
+              <div class="half-line"></div>
+              <h5>or</h5>
+              <div class="half-line"></div>
+            </div>
+          </div>
+
+          <form action="" >
+            <input [(ngModel)]="userData.email" [ngModelOptions]="{standalone: true}" type="text" placeholder="Enter your Name or Email" >
+            <input [(ngModel)]="userData.password" [ngModelOptions]="{standalone: true}" type="password" placeholder="Enter your Password">
+          </form>
+
+          <div class="time-item" (click)="logIn()" style="top: 100%">
+            <img src="./assets/resources/images/login/btn-next.png" alt="">
+            <span>log in</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="calendar-header" *ngIf="!isMobile">
+  <div class="calendar-nav" (click)="moveBack()">
+    <img src="./assets/resources/images/search/remove.png" alt="" >
+  </div>
+</div>
+
+<div class="tag-log-in">Log in and start exploring your life</div>
+
+<div class="go-to-register">
+  Login became easier! Log in and start enjoying our service!
+  If you don’t have an account, please <a [routerLink]="['/sign-up']">register</a> first.
+</div>
+

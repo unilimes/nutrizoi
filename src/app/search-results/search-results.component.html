@@ -1,0 +1,136 @@
+<div class="res-block first-block"  [hidden]="(isMobile && searchEmpty)">
+
+  <div class="results-block" *ngIf="searchEmpty">
+    <div class="res-numb">
+      <h1>0</h1>
+      <span>results found</span>
+    </div>
+    <div class="span-text">
+      Sorry, we didn’t find any recipe and ingredient in our database by name “hamburger”.
+    </div>
+  </div>
+
+  <div slimScroll  width="100%" distance="0px" height="100%"  size="2px" color="#fff" opacity=1 railVisible=true alwaysVisible=true railColor="#fff" railOpacity=0.2 class="search-result-list" *ngIf="!searchEmpty">
+    <div class="item" [routerLink]="['/search/result-details', 1]">
+      <div class="N-W"><img src="./assets/resources/images/search/recipe.png" alt=""></div>
+      <div class="text-res-item">Hamburger</div>
+      <div class="N-W"><img src="./assets/resources/images/search/res-calendar.png" alt=""></div>
+      <div class="N-W"><img src="./assets/resources/images/search/edit.png" alt=""></div>
+    </div>
+    <div class="item" [routerLink]="['/search/result-details', 1]">
+      <div class="N-W"><img src="./assets/resources/images/search/recipe.png" alt=""></div>
+      <div class="text-res-item">Hamburger</div>
+      <div class="N-W"><img src="./assets/resources/images/search/res-calendar.png" alt=""></div>
+      <div class="N-W"><img src="./assets/resources/images/search/edit.png" alt=""></div>
+    </div>
+    <div class="item" [routerLink]="['/search/result-details', 1]">
+      <div class="N-W"><img src="./assets/resources/images/search/recipe.png" alt=""></div>
+      <div class="text-res-item">Hamburger</div>
+      <div class="N-W"><img src="./assets/resources/images/search/res-calendar.png" alt=""></div>
+      <div class="N-W"><img src="./assets/resources/images/search/edit.png" alt=""></div>
+    </div>
+    <div class="item" [routerLink]="['/search/result-details', 1]">
+      <div class="N-W"><img src="./assets/resources/images/search/recipe.png" alt=""></div>
+      <div class="text-res-item">Hamburger</div>
+      <div class="N-W"><img src="./assets/resources/images/search/res-calendar.png" alt=""></div>
+      <div class="N-W"><img src="./assets/resources/images/search/edit.png" alt=""></div>
+    </div>
+    <div class="item" [routerLink]="['/search/result-details', 1]">
+      <div class="N-W"><img src="./assets/resources/images/search/recipe.png" alt=""></div>
+      <div class="text-res-item">Hamburger</div>
+      <div class="N-W"><img src="./assets/resources/images/search/res-calendar.png" alt=""></div>
+      <div class="N-W"><img src="./assets/resources/images/search/edit.png" alt=""></div>
+    </div>
+    <div class="item" [routerLink]="['/search/result-details', 1]">
+      <div class="N-W"><img src="./assets/resources/images/search/recipe.png" alt=""></div>
+      <div class="text-res-item">Hamburger</div>
+      <div class="N-W"><img src="./assets/resources/images/search/res-calendar.png" alt=""></div>
+      <div class="N-W"><img src="./assets/resources/images/search/edit.png" alt=""></div>
+    </div>
+    <div class="item" [routerLink]="['/search/result-details', 1]">
+      <div class="N-W"><img src="./assets/resources/images/search/recipe.png" alt=""></div>
+      <div class="text-res-item">Hamburger</div>
+      <div class="N-W"><img src="./assets/resources/images/search/res-calendar.png" alt=""></div>
+      <div class="N-W"><img src="./assets/resources/images/search/edit.png" alt=""></div>
+    </div>
+    <div class="item" [routerLink]="['/search/result-details', 1]">
+      <div class="N-W"><img src="./assets/resources/images/search/recipe.png" alt=""></div>
+      <div class="text-res-item">Hamburger</div>
+      <div class="N-W"><img src="./assets/resources/images/search/res-calendar.png" alt=""></div>
+      <div class="N-W"><img src="./assets/resources/images/search/edit.png" alt=""></div>
+    </div>
+    <div class="item" [routerLink]="['/search/result-details', 1]">
+      <div class="N-W"><img src="./assets/resources/images/search/recipe.png" alt=""></div>
+      <div class="text-res-item">Hamburger</div>
+      <div class="N-W"><img src="./assets/resources/images/search/res-calendar.png" alt=""></div>
+      <div class="N-W"><img src="./assets/resources/images/search/edit.png" alt=""></div>
+    </div>
+    <div class="item" [routerLink]="['/search/result-details', 1]">
+      <div class="N-W"><img src="./assets/resources/images/search/recipe.png" alt=""></div>
+      <div class="text-res-item">Hamburger</div>
+      <div class="N-W"><img src="./assets/resources/images/search/res-calendar.png" alt=""></div>
+      <div class="N-W"><img src="./assets/resources/images/search/edit.png" alt=""></div>
+    </div>
+  </div>
+
+  <div class="faq-line item" *ngIf="isMobile">
+    <div class="N-W">
+      <img src="./assets/resources/images/search/ingridients-black.png" alt="">
+      <div class="faq-text">ingridients</div>
+    </div>
+    <div class="N-W">
+      <img src="./assets/resources/images/search/recipe-black.png" alt="">
+      <div class="faq-text">recipe</div>
+    </div>
+    <div class="N-W">
+      <img src="./assets/resources/images/search/calendar-black.png" alt="">
+      <div class="faq-text">calendar</div>
+    </div>
+    <div class="text-res-item">FAQ</div>
+  </div>
+</div>
+
+<span class="but" [hidden]="!searchEmpty" *ngIf="!isMobile">but</span>
+
+<div class="res-block" [hidden]="(isMobile && !searchEmpty)">
+
+  <div class="results-block" *ngIf="searchEmpty">
+    <div class="img-wrap-search">
+      <img src="./assets/resources/images/search/add.png" alt="" (click)="moveSearchView()">
+    </div>
+    <div class="span-text" >
+      You can add your favorite recipe right now and make the world a happier!
+    </div>
+  </div>
+
+  <div class="results-block results-not-empty" *ngIf="!searchEmpty">
+    <div class="res-numb res-numb-top">
+      <h1>66</h1>
+      <span>results found</span>
+    </div>
+    <div class="faq-line item">
+      <div class="N-W">
+        <img src="./assets/resources/images/search/ingridients-black.png" alt="">
+        <div class="faq-text">ingridients</div>
+      </div>
+      <div class="N-W">
+        <img src="./assets/resources/images/search/recipe-black.png" alt="">
+        <div class="faq-text">recipe</div>
+      </div>
+      <div class="N-W">
+        <img src="./assets/resources/images/search/calendar-black.png" alt="">
+        <div class="faq-text">calendar</div>
+      </div>
+      <div class="text-res-item">FAQ</div>
+    </div>
+    <div class="search-tips">
+      <h1>
+        Search tips
+      </h1>
+      <div class="span-text">
+        There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form
+      </div>
+    </div>
+  </div>
+
+</div>

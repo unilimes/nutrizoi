@@ -1,0 +1,132 @@
+<div class="select-title" (window:resize)="onResize($event)">
+  <span [hidden]="presentElement != elements[0]">Enter an info</span>
+  <span [hidden]="presentElement != elements[1]">Choose a gender</span>
+  <span [hidden]="presentElement != elements[2]">Choose a height</span>
+  <span [hidden]="presentElement != elements[3]">Choose a weight</span>
+  <span [hidden]="presentElement != elements[4]">Choose a date of birth</span>
+  <span [hidden]="presentElement != elements[5]" >Choose activity</span>
+  <span [hidden]="presentElement != elements[6]">Recommended daily calories</span>
+</div>
+
+<div class="select-value" [class.h-40]="presentElement == elements[6] && !isMobile">
+  <div class="info sel-diar-item" [hidden]="presentElement != elements[0]">
+    <div class="photo">
+      <img src="{{ diaryInf.img}}" alt="">
+      <span [hidden]="id !== 'create'">add photo</span>
+    </div>
+    <form action="" >
+      <input type="text" placeholder="Enter a First Name"  value="{{ diaryInf.firstName }}" (focusout)="diaryInf.firstName = changeInfoService.changeFirstName($event.target.value)">
+      <input type="text" placeholder="Enter a Last Name"  value="{{ diaryInf.lastName }}" (focusout)="diaryInf.lastName = changeInfoService.changeLastName($event.target.value)">
+    </form>
+  </div>
+
+  <div class="gender sel-diar-item" [hidden]="presentElement != elements[1]">
+    <div class="input-wrap" >
+      <img src="./assets/resources/images/login/arr-up.png" (click)="diaryInf.gender = changeInfoService.changeGender(diaryInf.gender)" alt="">
+      <span >{{diaryInf.gender}}</span>
+      <img src="./assets/resources/images/login/arr-down.png"  (click)="diaryInf.gender = changeInfoService.changeGender(diaryInf.gender)" alt="">
+    </div>
+  </div>
+
+  <div class="height sel-diar-item" [hidden]="presentElement != elements[2]">
+    <div class="input-wrap" *ngIf="heightInput">
+      <div class="change-height">
+        <div class="units-wrap">
+          <input type="radio" name='koefH' value="30.48" style="width: 10%;"checked><span>ft</span>
+          <input type="radio" name='koefH' value="1" style="width: 10%;"><span>cm</span>
+        </div>
+        <input #newHeight type="number" value="" [focus]="heightInput">
+        <img src="./assets/resources/images/search/save-white.png"  (click)="changeInputHeight(newHeight.value)" alt="">
+      </div>
+    </div>
+    <div class="input-wrap" [hidden]="heightInput">
+      <img src="./assets/resources/images/login/arr-up.png" (click)="diaryInf.height = changeInfoService.spinHeight(1)" alt="">
+      <input type="text" value="{{diaryInf.height}}" (click)="heightInput = true" readonly style="cursor: pointer;">
+      <img src="./assets/resources/images/login/arr-down.png"  (click)="diaryInf.height = changeInfoService.spinHeight(-1)" alt="">
+    </div>
+  </div>
+
+  <div class="weight sel-diar-item" [hidden]="presentElement != elements[3]">
+    <div class="input-wrap" >
+      <img src="./assets/resources/images/login/arr-up.png" (click)="diaryInf.weight = changeInfoService.spinWeight(1)" alt="">
+      <input type="text" value="{{diaryInf.weight}}" (focusout)="diaryInf.weight = changeInfoService.changeWeight($event.target.value)" (focus)="diaryInf.weight = ''" placeholder="kg">
+      <img src="./assets/resources/images/login/arr-down.png"  (click)="diaryInf.weight = changeInfoService.spinWeight(-1)" alt="">
+    </div>
+  </div>
+
+  <div class="age sel-diar-item" [hidden]="presentElement != elements[4]">
+    <div class="input-wrap">
+      <img src="./assets/resources/images/login/arr-up.png" (click)="diaryInf.date.day = changeInfoService.spinDate(1, 'day')" alt="">
+      <input type="number" value="{{diaryInf.date.day}}" (focusout)="diaryInf.date.day = changeInfoService.changeDay($event.target.value)" (focus)="diaryInf.date.day = ''" placeholder="day">
+      <img src="./assets/resources/images/login/arr-down.png"  (click)="diaryInf.date.day = changeInfoService.spinDate(-1, 'day')" alt="">
+    </div>
+    <div class="input-wrap">
+      <img src="./assets/resources/images/login/arr-up.png" (click)="diaryInf.date.month = changeInfoService.spinDate(1, 'month')" alt="">
+      <input type="number" value="{{diaryInf.date.month}}" (focusout)="diaryInf.date.month = changeInfoService.changeMonth($event.target.value)" (focus)="diaryInf.date.month = ''" placeholder="month">
+      <img src="./assets/resources/images/login/arr-down.png"  (click)="diaryInf.date.month = changeInfoService.spinDate(-1, 'month')" alt="">
+    </div>
+    <div class="input-wrap">
+      <img src="./assets/resources/images/login/arr-up.png" (click)="diaryInf.date.year = changeInfoService.spinDate(1, 'year')" alt="">
+      <input type="number"  value="{{diaryInf.date.year}}" (focusout)="diaryInf.date.year = changeInfoService.changeYear($event.target.value)" (focus)="diaryInf.date.year = ''" placeholder="year">
+      <img src="./assets/resources/images/login/arr-down.png"  (click)="diaryInf.date.year = changeInfoService.spinDate(-1, 'year')" alt="">
+    </div>
+  </div>
+
+  <div class="activity sel-diar-item" [hidden]="presentElement != elements[5]">
+    <div class="input-wrap">
+      <img src="./assets/resources/images/login/arr-up.png" (click)="diaryInf.activity = changeInfoService.changeActivity(1, diaryInf.activity)" alt="">
+      <span >{{diaryInf.activity}}</span>
+      <img src="./assets/resources/images/login/arr-down.png"  (click)="diaryInf.activity = changeInfoService.changeActivity(-1, diaryInf.activity)" alt="">
+    </div>
+  </div>
+
+  <div class="calories sel-diar-item" [hidden]="presentElement != elements[6]">
+    <div class="input-wrap">
+      <img src="./assets/resources/images/login/arr-up.png" (click)="diaryInf.calories = changeInfoService.spinCalories(1)" alt="">
+      <input type="number"  value="{{diaryInf.calories}}"  (focusout)="diaryInf.calories = changeInfoService.changeCalories($event.target.value)" (focus)="diaryInf.calories = ''" placeholder="calories">
+      <img src="./assets/resources/images/login/arr-down.png"  (click)="diaryInf.calories = changeInfoService.spinCalories(-1)" alt="">
+    </div>
+  </div>
+</div>
+
+<div class="item" [hidden]="presentElement == elements[6]">
+  <img src="./assets/resources/images/search/save-white.png"  (click)="goToElement( elements[presentElement.id+1], presentElement )" alt="">
+</div>
+
+<div class="item">
+  <ul class="reg-navig" >
+    <li class="reg-navig-item"  [class.element-active]="elements[0].confirmed" (click)="goToElement(elements[0], null)">
+      <div class="done" [hidden]="presentElement != elements[6]"></div>
+      <h5>Infos</h5>
+    </li>
+    <li class="reg-navig-item"  [class.element-active]="elements[1].confirmed" (click)="goToElement(elements[1], elements[0])">
+      <div class="done" [hidden]="presentElement != elements[6]"></div>
+      <h5>Gender</h5>
+    </li>
+    <li class="reg-navig-item"  [class.element-active]="elements[2].confirmed" (click)="goToElement(elements[2], elements[1])">
+      <div class="done" [hidden]="presentElement != elements[6]"></div>
+      <h5>Height</h5>
+    </li>
+    <li class="reg-navig-item"  [class.element-active]="elements[3].confirmed" (click)="goToElement(elements[3], elements[2])">
+      <div class="done" [hidden]="presentElement != elements[6]"></div>
+      <h5>Weight</h5>
+    </li>
+    <li class="reg-navig-item"  [class.element-active]="elements[4].confirmed" (click)="goToElement(elements[4], elements[3])">
+      <div class="done" [hidden]="presentElement != elements[6]"></div>
+      <h5>Age</h5>
+    </li>
+    <li class="reg-navig-item"  [class.element-active]="elements[5].confirmed" (click)="goToElement(elements[5], elements[4])">
+      <div class="done" [hidden]="presentElement != elements[6]"></div>
+      <h5>Activity</h5>
+    </li>
+  </ul>
+</div>
+
+<div class="last-confirm" [hidden]="presentElement != elements[6]">
+  <div class="btn-blocks" (click)="saveDiary(true)">
+    <span>Confirm</span>
+  </div>
+  <div class="btn-blocks" (click)="saveDiary(false)">
+    <span>Cancel</span>
+  </div>
+</div>

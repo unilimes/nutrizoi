@@ -1,0 +1,113 @@
+@import "../../mixines"
+
+login, signup
+  @extend .w-h-100
+  display: flex
+  justify-content: center
+  flex-direction: column
+  align-items: center
+
+  .go-to-register
+    position: absolute
+    width: 25%
+    bottom: 15%
+    left: 50%
+    transform: translate(-50%)
+    text-align: center
+    color: #ffffff
+    font-size: 1.3vh
+    opacity: 0.7
+    a
+      color: $mid-green
+      text-decoration: underline
+
+
+  .slider-wrap>.main-slider>.navig>.form-type
+    border-radius: 0
+    width: 35vh
+    height: 25vh
+    .log-in-form
+      display: flex
+      justify-content: center
+      align-items: center
+      cursor: pointer
+      height: 100%
+      width: 90%
+      flex-direction: column
+      .facebook-log-in
+        width: 100%
+        display: flex
+        flex-direction: column
+        align-items: center
+        .fb-log-in-line
+          display: flex
+          justify-content: center
+          align-items: center
+          width: 100%
+          h5
+            opacity: 0.8
+            margin: 0 5%
+          .half-line
+            width: 45%
+            height: 1px
+            background-color: $white
+            opacity: 0.1
+        .log-in-img-wrap
+          display: flex
+          justify-content: center
+          align-items: center
+          margin-bottom: 3vh
+          +sizeH(6vh)
+          border-radius: 50%
+          border: 1px dotted $mid-green
+      form
+        width: 100%
+        input
+          width: 100%
+          height: 3.5vh
+          margin-top: 1vh
+          border-bottom: 1px solid $white
+          font-size: 1.2rem
+          color: $white
+          opacity: 0.8
+      img
+        +max-wh-img(70%)
+        border-radius: 50%
+  .time-item
+    position: absolute
+    top: 110%
+    left: 50%
+    transform: translateX(-50%)
+    background-color: $white
+    color: $black
+    span
+      font-size: 1vh
+
+
+
+html.tablet, html.mobile
+  login, signup
+    .go-to-register
+      width: 70%
+    .slider-wrap>.main-slider>.navig>.form-type
+      +sizeH(40rem)
+      @media screen and (max-width: 1000px)
+        +size(30rem)
+      @media screen and (max-width: 800px)
+        +size(27rem)
+      @media screen and (max-width: 600px)
+        +size(25rem)
+      @media screen and (max-width: 400px)
+        +size(20rem)
+      .log-in-form>.facebook-log-in>.log-in-img-wrap
+        +sizeH(9rem)
+        @media screen and (max-width: 1000px)
+          +sizeH(7.5rem)
+        @media screen and (max-width: 800px)
+          +sizeH(6.5rem)
+        @media screen and (max-width: 600px)
+          +sizeH(5.5rem)
+        @media screen and (max-width: 400px)
+          +sizeH(4.5rem)
+    .reg-navig
+      height: 3%

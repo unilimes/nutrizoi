@@ -1,0 +1,20 @@
+<div class="diaries-select-item">
+  <div class="title">Edit or add new diary</div>
+</div>
+<div class="diaries-select-item">
+  <div class="diary-item" [class.selected]="selectedDiary === diary" *ngFor="let diary of diaryArr" (mouseover)="selectDiary(diary)">
+    <a [routerLink]="['/diary/selected-diary', diary._id]">
+      <div class="img" [style.background-image]="'url(' + diary.img + ')'"></div>
+    </a>
+  </div>
+  <div class="diary-item" *ngIf="diaryArr.length<5">
+    <a [routerLink]="['/diary/selected-diary', 'create']">
+      <img src="./assets/resources/images/search/add.png" alt="" style="-webkit-filter: opacity(25%); filter: opacity(25%);">
+    </a>
+  </div>
+</div>
+<div class="diaries-select-item">
+  <div class="diary-name">
+    {{selectedDiary.firstName}} {{selectedDiary.secondName}}
+  </div>
+</div>

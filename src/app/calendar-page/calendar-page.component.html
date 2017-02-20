@@ -1,0 +1,116 @@
+<div class="calendar-header" *ngIf="!isMobile">
+  <div class="calendar-nav" (click)="moveBack()">
+    <img src="./assets/resources/images/search/remove.png" alt="" >
+  </div>
+</div>
+
+<span class="pr" (click)="changeMonth(-1)" *ngIf="!isMobile">previous</span>
+<span class="nx" (click)="changeMonth(1)" *ngIf="!isMobile">next</span>
+
+<div class="calendar" *ngIf="!isMobile">
+  <div class="day" [class.cols-week-6]="monthArr.length > 35" *ngFor="let day of monthArr"  [routerLink]="['/date', day.timeStamp]">
+    <div class="week-month">
+      <img  src="./assets/resources/images/calendar/week-white.png" alt="" *ngIf="day.day == 0">
+      <img  src="./assets/resources/images/calendar/month-white.png" alt="" *ngIf="day.date == lastDateOfMonth">
+    </div>
+    <div class="day-number">
+      <div class="week-day">
+        {{daysOfWeek[day.day]}}
+      </div>
+      <span>{{day.date}}</span>
+    </div>
+    <div class="day-diaries">
+      <div class="diary-item" *ngFor="let diary of diaryArr">
+        <div class="svg-wrap">
+          <svg viewBox="0,0,108,108">
+            <path id="arc1" fill="none" stroke="#33a442" stroke-width="4" [attr.d]="day[diary._id]"/>
+          </svg>
+        </div>
+        <div class="img" [style.background-image]="'url(' + diary.img + ')'"></div>
+      </div>
+      <div class="diary-item diary-add" style="filter: opacity(50%);" *ngIf="diaryArr.length < 5" [routerLink]="['/profile']">
+        <img src="./assets/resources/images/search/add.png" alt="" >
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="mob-calendar-wrap" *ngIf="isMobile">
+  <div class="calendar-mob" >
+    <ul>
+      <li class="days">Mo</li>
+      <li class="days">Tu</li>
+      <li class="days">We</li>
+      <li class="days">Th</li>
+      <li class="days">Fr</li>
+      <li class="days">Sa</li>
+      <li class="days">Su</li>
+    </ul>
+    <div class="weeks">
+      <div class="day" [class.cols-week-6]="monthArr.length > 35" [class.active]="selectedDay === day" *ngFor="let day of monthArr"  (click)="selectDay(day)">
+        <div class="day-number">
+          <span>{{day.date}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="calendar-mob" >
+
+    <div class="date-wrap">
+      <div class="date-numb">
+        {{selectedDay.date}}
+      </div>
+      <span>Diaries</span>
+    </div>
+
+    <div class="day-diaries">
+      <div class="diary-item" *ngFor="let diary of diaryArr"  [routerLink]="['/date', selectedDay.timeStamp]">
+        <div class="svg-wrap">
+          <svg viewBox="0,0,108,108">
+            <path id="arc1" fill="none" stroke="#33a442" stroke-width="4" [attr.d]="selectedDay[diary._id]"/>
+          </svg>
+        </div>
+        <div class="img" [style.background-image]="'url(' + diary.img + ')'"></div>
+      </div>
+      <div class="diary-item diary-add" *ngIf="diaryArr.length < 5" [routerLink]="['/profile']">
+        <img src="./assets/resources/images/search/add.png" alt="" >
+      </div>
+    </div>
+
+    <div class="filters-wrap">
+      <div class="filter" >
+        <img src="./assets/resources/images/calendar/month-white.png" alt="" [hidden]="monthFilter" (click)="monthFilter = !monthFilter; weekFilter = false;">
+        <img src="./assets/resources/images/calendar/month-green.png" alt="" [hidden]="!monthFilter" (click)="monthFilter = !monthFilter">
+      </div>
+      <div class="filter" >
+        <img src="./assets/resources/images/calendar/week-white.png" alt="" [hidden]="weekFilter" (click)="weekFilter = !weekFilter; monthFilter = false;">
+        <img src="./assets/resources/images/calendar/week-green.png" alt="" [hidden]="!weekFilter" (click)="weekFilter = !weekFilter">
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="calendar-footer" [class.footer-to-top]="isMobile">
+  <div class="changable-month">
+    <div class="img-wrap" (click)="changeMonth(-1)">
+      <img src="./assets/resources/images/login/arr-down.png" alt="" >
+    </div>
+    <span>{{months[month]}}</span>
+    <div class="img-wrap" (click)="changeMonth(1)">
+      <img src="./assets/resources/images/login/arr-up.png" alt="" >
+    </div>
+  </div>
+  <div class="changable-year" >
+    <div class="img-wrap" (click)="changeYear(-1)">
+      <img src="./assets/resources/images/login/arr-down.png" alt="" >
+    </div>
+    <span>{{year}}</span>
+    <div class="img-wrap" (click)="changeYear(1)">
+      <img src="./assets/resources/images/login/arr-up.png" alt="" >
+    </div>
+  </div>
+</div>

@@ -1,0 +1,177 @@
+@import "../../mixines"
+
+date
+  @extend .w-h-100
+  position: relative
+  display: flex
+  align-items: center
+  flex-direction: column
+  .date-header-block
+    margin-top: 5%
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    position: relative
+    span
+      font-size: 10vh
+      opacity: 0.1
+      font-weight: bold
+    .date-header-item
+      @extend .position-center
+      z-index: 100
+      position: absolute
+      display: flex
+      justify-content: center
+      align-items: center
+      flex-direction: column
+      span
+        font-weight: normal
+        text-align: center
+        font-size: 2vh
+        opacity: 0.9
+      .month-week-day
+        text-align: center
+        display: flex
+        justify-content: center
+        align-items: center
+        span
+          text-transform: capitalize
+          font-size: 1.5vh
+        img
+          margin: 0 0.5vh
+          opacity: 0.5
+          cursor: pointer
+          +max-wh-img(1.7vh)
+          filter: invert(75%)
+    @extend .posa-w-100
+    height: 18%
+  .slider-wrap>.main-slider
+    .addfood
+      border: none
+      transform: translate(-50%, -375%)
+      img
+        opacity: 0.3
+        +max-wh-img(100%)
+    .breakfast
+      transform: translate(-250%, 50%)
+    .lunch
+      transform: translate(-125%, 125%)
+    .dinner
+      transform: translate(25%, 125%)
+    .snack
+      transform: translate(150%, 50%)
+    .time-item
+      position: absolute
+      left: 50%
+      top: 50%
+      transition: transform 0.5s
+      .time-item-wrap
+        @extend .w-h-100
+        display: flex
+        align-items: center
+        justify-content: center
+        position: relative
+      .close-food
+        position: absolute
+        +max-wh-img(30%)
+        right: -50%
+
+    .navig
+      .navitems>.naw-wrap
+        border: 1px dotted $white
+        img
+          +max-wh-img(85%)
+        .calories-border, .macros-border, .micros-border
+          @extend .w-h-100
+          position: relative
+          display: flex
+          justify-content: center
+          align-items: center
+      .selectedEl
+        +sizeH(25vh)
+        .naw-wrap
+          border: none
+          img
+            +max-wh-img(95%)
+          .macros-border, .micros-border
+            width: 90%!important
+            height: 90%!important
+
+
+  .bottom-inf
+    width: 65%
+    bottom: 13vh
+    position: absolute
+    z-index: 100
+    span
+      position: absolute
+      width: 100%
+      top: -60%
+      font-size: 3vh
+      text-transform: capitalize
+      text-align: center
+    .bottom-inf-wrap
+      width: 100%
+      height: 12vh
+      overflow: hidden
+      transition: height 0.5s
+    .open-inf
+      height: 60vh
+    .bg-hide-screen
+      position: fixed
+      top: 0
+      bottom: 0
+      left: 0
+      right: 0
+      z-index: 300
+
+html.tablet, html.mobile
+  date
+    .date-header-block
+      margin-top: 10%
+      span
+        font-size: 10vh
+      .date-header-item
+        span
+          font-size: 2.8vh
+        .month-week-day
+          span
+            font-size: 2.3vh
+          img
+            margin: 0 0.5vh
+            +max-wh-img(1.7vh)
+
+
+    .slider-wrap>.main-slider
+      .addfood
+        transform: translate(-50%, -300%)
+      .lunch
+        transform: translate(-125%, 145%)
+      .dinner
+        transform: translate(25%, 145%)
+      .navig
+        .navitems
+          .naw-wrap>img
+            +max-wh-img(70%)
+        .selectedEl
+          +size(32rem)
+          @media screen and (max-width: 1000px)
+            +size(28rem)
+          @media screen and (max-width: 800px)
+            +size(25rem)
+          @media screen and (max-width: 600px)
+            +size(20rem)
+          @media screen and (max-width: 400px)
+            +size(17rem)
+
+    .bottom-inf
+      width: 100%
+      bottom: 8vh
+      span
+        top: -12%
+        font-size: 2.5vh
+      .bottom-inf-wrap
+        width: 100%
+        height: 18vh
+        overflow: hidden

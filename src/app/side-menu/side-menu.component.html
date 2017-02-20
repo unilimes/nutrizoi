@@ -1,0 +1,56 @@
+<div class="main-menu">
+  <div class="side-header" [class.loggedin]="loggedin" >
+    <div class="side-header-content">
+      <div class="side-header-top">
+        <div class="img-wrap-left">
+          <img src="./assets/resources/images/header/logo.png" alt="" [routerLink]="['/']" (click)="sideMenuClose()">
+          <img src="./assets/resources/images/sidemenu/logo.png" alt="" style="max-height: 28%; cursor: none;">
+        </div>
+        <div class="img-wrap-right">
+          <img src="./assets/resources/images/search/search.png" alt="" [routerLink]="['/search']" (click)="sideMenuClose()">
+        </div>
+      </div>
+      <div class="side-header-body" *ngIf="loggedin">
+        <img src="{{avatarImg}}" alt="" [routerLink]="['/profile']" (click)="sideMenuClose()">
+        <span [routerLink]="['/profile']" (click)="sideMenuClose()">{{avatarName}}</span>
+      </div>
+      <div class="side-header-bottom">
+        <div class="img-wrap-left">
+          <img src="./assets/resources/images/sidemenu/logout-green.png" alt="">
+          <span>log out</span>
+        </div>
+      </div>
+    </div>
+    <div class="side-header-avatar" *ngIf="loggedin" [ngStyle]="{'background': 'linear-gradient( rgba(13, 26, 14, 0.9), rgba(13, 26, 14, 0.9) ), url(' + avatarImg + ') 50% 50% no-repeat'}"></div>
+  </div>
+  <div class="side-body" [class.loggedin]="loggedin">
+    <div class="side-body-item">
+      <img src="./assets/resources/images/sidemenu/diary-green.png" alt="" [routerLink]="['/diary']" (click)="sideMenuClose()">
+      <span [routerLink]="['/diary']" (click)="sideMenuClose()">diary</span>
+    </div>
+    <div class="side-body-item">
+      <img src="./assets/resources/images/sidemenu/calendar-green.png" alt="" [routerLink]="['/calendar']" (click)="sideMenuClose()">
+      <span   [routerLink]="['/calendar']" (click)="sideMenuClose()">calendar</span>
+    </div>
+    <div class="side-body-item">
+      <img src="./assets/resources/images/sidemenu/defiency-green.png" alt=""    [routerLink]="['/diary']" (click)="sideMenuClose()">
+      <span   [routerLink]="['/diary']" (click)="sideMenuClose()">nutritional breakdown</span>
+    </div>
+    <div class="side-body-item">
+      <img src="./assets/resources/images/sidemenu/history-green.png" alt="" [routerLink]="['/history']" (click)="sideMenuClose()">
+      <span   [routerLink]="['/history']" (click)="sideMenuClose()">history</span>
+    </div>
+  </div>
+
+  <div class="side-footer" [hidden]="loggedin">
+    <div class="loggin" [routerLink]="['/login']" (click)="sideMenuClose()">
+      <img src="./assets/resources/images/sidemenu/login-green.png" alt="">
+      <span>log in</span>
+    </div>
+    <div class="signup" [routerLink]="['/sign-up']" (click)="sideMenuClose()">
+      <span>sign up</span>
+      <img src="./assets/resources/images/sidemenu/signup-green.png" alt="">
+    </div>
+  </div>
+</div>
+<div class="close-btn" (click)="sideMenuClose()"></div>

@@ -1,1 +1,66 @@
-/* You can add global styles to this file, and also import other style files */
+html,
+body,
+app-root
+  width: 100%
+  height: 100%
+  margin: 0
+  padding: 0
+  top: 0
+  left: 0
+  color: #ffffff
+  background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url("./assets/resources/images/main-bg.jpg") 50% 50% no-repeat
+  -webkit-background-size: cover
+  background-size: cover
+  overflow: hidden
+
+[hidden]
+  display: none!important
+  opacity: 0
+
+.d-n
+  display: none!important
+.op-0
+  opacity: 0!important
+.z-i--100
+  z-index: -100
+.w-80
+  width: 80%!important
+.w-70
+  width: 70%!important
+.w-60
+  width: 60%!important
+.w-30
+  width: 30%!important
+.w-20
+  width: 20%!important
+.w-15
+  width: 15%!important
+.h-40
+  height: 40%!important
+.b-rad-50
+  border-radius: 50%!important
+.f-e
+  justify-content: flex-end!important
+.m-t-n
+  margin-top: 0px!important
+
+@import "mixines"
+@import "app/app.component"
+@import "app/home/home.component"
+@import "app/footer/footer.component"
+@import "app/header/header.component"
+@import "app/search/search.component"
+@import "app/search-results/search-results.component"
+@import "app/result-details/result-details.component"
+@import "app/login/login.component"
+@import "app/signup/signup.component"
+@import "app/search-diary/search-diary.component"
+@import "app/diary/diary.component"
+@import "app/diaries-select/diaries-select.component"
+@import "app/selected-diary/selected-diary.component"
+@import "app/calendar-page/calendar-page.component"
+@import "app/date/date.component"
+@import "app/history/history.component"
+@import "app/side-menu/side-menu.component"
+@import "app/nutritional/nutritional.component"
+@import "app/food/food.component"

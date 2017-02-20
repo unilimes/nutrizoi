@@ -1,0 +1,132 @@
+@import "../../mixines"
+
+side-menu
+  @extend .w-h-100
+  position: absolute
+  top: 0
+  left: 0
+  z-index: 550
+  display: flex
+  background-color: rgba(0,0,0, 0.4)
+  .main-menu
+    width: 88vw
+    height: 100%
+    position: relative
+    display: flex
+    flex-direction: column
+    justify-content: flex-start
+    background-color: $side-menu-bg
+    .side-body, .side-footer, .side-header
+      width: 100%
+      display: flex
+      padding: 0 5%
+      img
+        +max-wh-img(38%)
+        margin-right: 5%
+        cursor: pointer
+      span
+        text-transform: capitalize
+        font-size: 2.3vh
+
+    .side-header
+      padding: 0
+      width: 100%
+      height: 12vw
+      position: relative
+      background-color: rgba(15, 33, 16, 1)
+      overflow: hidden
+      .side-header-content
+        position: absolute
+        @extend .w-h-100
+        padding: 0 5%
+        left: 0
+        top: 0
+        z-index: 2
+        .side-header-top, .side-header-bottom
+          width: 100%
+          height: 12vw
+          display: flex
+          .img-wrap-left, .img-wrap-right
+            height: 100%
+            width: 50%
+            display: flex
+            align-items: center
+            img
+              max-width: 100%
+              max-height: 40%
+          .img-wrap-left
+            justify-content: flex-start
+            img
+              margin-right: 10%
+          .img-wrap-right
+            justify-content: flex-end
+            img
+              margin-right: 0
+        .side-header-body
+          width: 100%
+          height: calc(100% - 24vw)
+          display: flex
+          flex-direction: column
+          align-items: center
+          justify-content: center
+          img
+            max-height: 50%
+            border-radius: 50%
+          span
+            font-size: 3vh
+            margin-top: 10%
+      .side-header-avatar
+        position: absolute
+        height: 110%
+        width: 110%
+        left: -5%
+        top: -5%
+        z-index: 1
+        filter: blur(5px)
+        -webkit-background-size: cover!important
+        background-size: cover!important
+
+
+    .side-body
+      height: calc(100% - 12vw)
+      flex-direction: column
+      align-items: flex-start
+      justify-content: flex-start
+      padding-top: 5%
+      .side-body-item
+        display: flex
+        justify-content: flex-start
+        align-items: center
+        width: 100%
+        height: 7vh
+
+    .loggedin
+      height: 50%
+    .side-footer
+      height: 9vh
+      position: absolute
+      display: flex
+      bottom: 0
+      left: 0
+      .loggin, .signup
+        width: 50%
+        height: 100%
+        display: flex
+        align-items: center
+        span
+          font-size: 1.8vh
+      .signup
+        justify-content: flex-end
+        img
+          margin-left: 10%
+          margin-right: 0
+      .loggin
+        justify-content: flex-start
+        img
+          margin-right: 10%
+
+
+  .close-btn
+    +size(12vw)
+    background: $green url("/assets/resources/images/search/delete.png") 50% 50% no-repeat
+    background-size: 50%

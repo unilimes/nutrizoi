@@ -1,0 +1,273 @@
+@import "../../mixines"
+
+calendar-page
+  @extend .w-h-100
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-direction: column
+  overflow: hidden
+  position: relative
+  .calendar-footer
+    span
+      font-size: 1.7vh
+      opacity: 0.8
+    .changable-month, .changable-year
+      height: 100%
+      display: flex
+      align-items: center
+      span
+        margin: 0 5%
+      .img-wrap
+        height: 100%
+        img
+          transform: rotate(90deg)
+          max-height: 80%
+  .footer-to-top
+    bottom: auto
+    top: 2%
+
+  .calendar
+    width: 90%
+    height: 85%
+    border-top: 1px solid rgba(255,255,255,0.2)
+    border-left: 1px solid rgba(255,255,255,0.2)
+    .day
+      float: left
+      display: inline-flex
+      height: 20%
+      width: calc(100%/7)
+      position: relative
+      cursor: pointer
+      flex-direction: column
+      justify-content: center
+      align-items: center
+      border-right: 1px solid rgba(255,255,255,0.2)
+      border-bottom: 1px solid rgba(255,255,255,0.2)
+      &:hover
+        background-color: $white
+        .day-number
+          .week-day
+            color: $black
+          span
+            opacity: 0.3
+            color: $green
+        .diary-add, .week-month
+          img
+            filter: invert(60%)
+      .week-month
+        position: absolute
+        display: flex
+        flex-direction: column
+        align-items: center
+        height: 70%
+        top: 0
+        right: 5%
+        img
+          max-height: 30%
+          margin-top: 35%
+      .day-number
+        width: 100%
+        height: 70%
+        display: flex
+        justify-content: center
+        position: relative
+        align-items: center
+        .week-day
+          position: absolute
+          opacity: 0.9
+          font-size: 1.3vw
+          @extend .position-center
+        span
+          font-size: 6vw
+          font-weight: bold
+          opacity: 0.1
+      .day-diaries
+        width: 100%
+        height: 24%
+        margin: 3% 0
+        display: flex
+        align-items: center
+        justify-content: flex-start
+        .diary-item
+          +size(2.1vw)
+          margin: 0 2%
+          display: flex
+          justify-content: center
+          align-items: center
+          position: relative
+          border-radius: 50%
+          img
+            +max-wh-img(80%)
+            border-radius: 50%
+
+
+  .pr,.nx
+    position: absolute
+    font-size: 4vw
+    font-weight: bold
+    cursor: pointer
+    top: 50%
+    text-transform: uppercase
+  .pr
+    left: 0
+    transform: translate(-81%, -50%)
+  .nx
+    right: 0
+    transform: translate(65%, -50%)
+  .cols-week-6
+    height: calc(100%/6)!important
+
+html.tablet, html.mobile
+  calendar-page
+    padding: 0 5%
+    .calendar-footer
+      .changable-month>span, .changable-year>span
+        font-size: 4rem
+        @media screen and (max-width: 1000px)
+          font-size: 3.5rem
+        @media screen and (max-width: 800px)
+          font-size: 3rem
+        @media screen and (max-width: 600px)
+          font-size: 2rem
+        @media screen and (max-width: 400px)
+          font-size: 1.7rem
+
+    .mob-calendar-wrap
+      width: 100%
+      height: 85%
+      .calendar-mob
+        width: 100%
+        height: 50%
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        ul
+          list-style-type: none
+          margin: 0
+          padding: 0
+          width: 100%
+          height: 16%
+          li
+            display: flex
+            justify-content: center
+            align-items: flex-end
+            float: left
+            font-size: 6rem
+            font-weight: bold
+            height: 100%
+            width: calc(100%/7)
+        .weeks
+          width: 100%
+          height: 75%
+          .day
+            height: 20%
+            width: calc(100%/7)
+            float: left
+            display: inline-block
+            border: 1px solid rgba(255,255,255,0.2)
+            .day-number
+              width: 100%
+              height: 100%
+              display: flex
+              justify-content: center
+              align-items: flex-end
+              span
+                font-size: 3rem
+                font-weight: bold
+                opacity: 0.7
+          .active
+            background-color: $white
+            span
+              color: $grey
+        .date-wrap, .day-diaries, .filters-wrap
+          position: relative
+          display: flex
+          justify-content: center
+          align-items: center
+          width: 100%
+          height: 20%
+        .date-wrap
+          span
+            font-size: 4rem
+          .date-numb
+            position: absolute
+            @extend .position-center
+            font-size: 13rem
+            font-weight: bold
+            opacity: 0.2
+        .day-diaries
+          margin: 10% 0
+          .diary-item
+            +size(11rem)
+            margin-left: 3.5%
+            display: flex
+            justify-content: center
+            align-items: center
+            position: relative
+            border-radius: 50%
+            img
+              +max-wh-img(80%)
+              border-radius: 50%
+        .filters-wrap>.filter
+          display: flex
+          justify-content: center
+          align-items: center
+          height: 55%
+          width: 15%
+
+        @media screen and (max-width: 1000px)
+          ul>li
+            font-size: 5rem
+          .weeks>.week>.day>.day-number>span
+            font-size: 2.5rem
+          .date-wrap
+            span
+              font-size: 3.5rem
+            .date-numb
+              font-size: 12rem
+          .day-diaries
+            .diary-item
+              +size(8rem)
+        @media screen and (max-width: 800px)
+          ul>li
+            font-size: 4rem
+          .weeks>.week>.day>.day-number>span
+            font-size: 2.1rem
+          .date-wrap
+            span
+              font-size: 2.7rem
+            .date-numb
+              font-size: 10rem
+          .day-diaries
+            .diary-item
+              +size(7rem)
+        @media screen and (max-width: 600px)
+          ul>li
+            font-size: 3rem
+          .weeks>.week>.day>.day-number>span
+            font-size: 1.8rem
+          .date-wrap
+            span
+              font-size: 2rem
+            .date-numb
+              font-size: 7rem
+          .day-diaries
+            .diary-item
+              +size(6rem)
+        @media screen and (max-width: 400px)
+          ul>li
+            font-size: 2rem
+          .weeks>.week>.day>.day-number>span
+            font-size: 1.5rem
+          .date-wrap
+            span
+              font-size: 1.7rem
+            .date-numb
+              font-size: 6rem
+          .day-diaries
+            .diary-item
+              +size(5rem)
+
+

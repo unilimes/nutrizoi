@@ -1,0 +1,40 @@
+<div class="slider-wrap" [ngStyle]="{'margin-top': appData.sliderPosition.state}" (window:resize)="onResize($event)" [hidden]="isMobile">
+  <div class="main-slider">
+    <div class="navig" #navig>
+      <div #search class="navitems" >
+        <div class="naw-wrap" [routerLink]="['/search']">
+          <img src="./assets/resources/images/search/search.png" alt="" >
+        </div>
+      </div>
+      <div #diary  class="navitems" >
+        <div class="naw-wrap" >
+          <div class="img-wrap"  style="background-color: #ffffff; width: 80%;height: 80%;border-radius: 50%; display: flex; justify-content: center;align-items: center; ">
+            <img src="./assets/resources/images/search/diary-black.png" alt="" >
+          </div>
+        </div>
+      </div>
+      <div #calendar class="navitems" >
+        <div class="naw-wrap" [routerLink]="['/calendar']">
+          <img src="./assets/resources/images/search/calendar.png" alt="" >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="search-label-wrap" *ngIf="!isMobile">
+  <span>Diary</span>
+</div>
+
+<div class="diary-wrap">
+  <div class="res-block" *ngIf="!isMobile">
+    <history></history>
+  </div>
+
+  <div class="res-block">
+    <div class="item  diary-title-item">
+      <div class="text-res-item">Diaries</div>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+</div>
