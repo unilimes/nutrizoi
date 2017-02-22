@@ -32,6 +32,8 @@ export class AppComponent {
   private appListener: Subscription;
   private appData: any ;
   private isMobile: boolean = false;
+  private footHeadVis: boolean = true;
+  private sliderVis: boolean = true;
 
   constructor(
       private appService: AppService,
@@ -61,6 +63,11 @@ export class AppComponent {
 
     this.appListener = this.listenerService.appListener.subscribe((appListener: any) => {
       this.appData = appListener;
+      this.footHeadVis = (!this.isMobile || (this.isMobile && (this.appData.presentState.state === 'home'
+                                    ||  this.appData.presentState.state === 'calendar'
+                                    || this.appData.presentState.state === 'date'))) ?  true : false;
+      this.sliderVis = ((!this.isMobile && (this.appData.presentState.state !== 'calendar'))
+                              || (this.isMobile && (this.appData.presentState.state == 'home' || this.appData.presentState.state == 'date'))) ?  true : false;
     });
 
     this.isMobileService.setGlobalHeight();

@@ -36,17 +36,12 @@ export class DiaryComponent {
     this.isMobile = this.isMobileService.isMobile();
 
     this.appData = this.listenerService.getAppListenerObject();
-
-    if(this.isMobile){
-      this.appData.sliderVisible.state = false;
-      this.appData.footerHeaderVisible.state = false;
-      this.listenerService.changeAppListenerSubject(this.appData);
-    } else {
-      this.appData.sliderVisible.state = true;
+    this.appData.presentState.state = 'diary';
+    if(!this.isMobile){
       this.appData.sliderPosition.state = '-35vh';
-      this.listenerService.changeAppListenerSubject(this.appData);
       this.getItemsArr();
     }
+    this.listenerService.changeAppListenerSubject(this.appData);
   }
 
   getItemsArr(): void{

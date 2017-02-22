@@ -9,19 +9,19 @@
       </div>
     </div>
     <div class="header-auth" >
-      <a class="sign-up" [routerLink]="['/sign-up']" *ngIf="!auth && !appData.signupState">
+      <a class="sign-up" [routerLink]="['/sign-up']" *ngIf="!auth && appData.presentState.state === 'signup'">
         <img src="./assets/resources/images/header/sign-up.png" alt="">
       </a>
-      <a class="sign-up" [routerLink]="['/sign-up']" *ngIf="!auth && appData.signupState">
+      <a class="sign-up" [routerLink]="['/sign-up']" *ngIf="!auth && appData.presentState.state !== 'signup'">
         <img src="./assets/resources/images/header/sign-up.png" alt="">
       </a>
       <a class="sign-up" [routerLink]="['/diary']" *ngIf="auth && !isMobile">
         <img src="./assets/resources/images/search/calendar.png" alt="">
       </a>
-      <a class="log-in" [routerLink]="['/login']" *ngIf="!auth && !appData.loginState">
+      <a class="log-in" [routerLink]="['/login']" *ngIf="!auth && appData.presentState.state === 'login'">
         <img src="./assets/resources/images/header/log-in.png" alt="">
       </a>
-      <a class="log-in" [routerLink]="['/login']" *ngIf="!auth && appData.loginState">
+      <a class="log-in" [routerLink]="['/login']" *ngIf="!auth && appData.presentState.state !== 'login'">
         <img src="./assets/resources/images/header/log-in.png" alt="">
       </a>
       <a class="log-in" [routerLink]="['/profile']" *ngIf="auth" >

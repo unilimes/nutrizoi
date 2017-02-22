@@ -50,9 +50,7 @@ export class LoginComponent{
     this.appData = this.listenerService.getAppListenerObject();
 
     this.appData.sliderPosition.state = this.isMobile ? '-5%' : '0%';
-    this.appData.sliderVisible.state = true;
-    this.appData.footerHeaderVisible.state = true;
-    this.appData.loginState.state = true;
+    this.appData.presentState.state = 'login';
     this.listenerService.changeAppListenerSubject(this.appData);
 
     this.getItemsArr();

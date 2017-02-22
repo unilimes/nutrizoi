@@ -21,11 +21,9 @@ export class HistoryComponent {
   ngOnInit() {
     this.isMobile = this.isMobileService.isMobile();
     this.appData = this.listenerService.getAppListenerObject();
-    if(this.isMobile){
-      this.appData.sliderVisible.state = false;
-      this.appData.footerHeaderVisible.state = false;
-      this.listenerService.changeAppListenerSubject(this.appData);
-    }
+    this.appData.presentState.state = 'history';
+
+    this.listenerService.changeAppListenerSubject(this.appData);
   }
 
 }

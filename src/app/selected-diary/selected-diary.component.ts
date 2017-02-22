@@ -134,6 +134,12 @@ export class SelectedDiaryComponent {
     }
   }
 
+  loadPhoto($event){
+    this.changeInfoService.loadPhoto($event.target.files[0],  (res)=>{
+      this.diaryInf.img = res;
+    });
+
+  }
 
   changeInputHeight(string: string){
     let koefH = parseFloat((<HTMLInputElement>document.querySelector('input[name="koefH"]:checked')).value);

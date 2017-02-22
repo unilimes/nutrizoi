@@ -45,9 +45,10 @@ selected-diary
       flex-direction: column
       .photo, form
         position: relative
-        height: 40%
+        height: 10vh
         margin-top: 5%
       .photo
+        width: 10vh
         cursor: pointer
         span
           position: absolute
@@ -144,16 +145,23 @@ html.tablet, html.mobile
 
 
     .select-value
-      .info>.photo>span
-        font-size: 2.5rem
-        @media screen and (max-width: 1000px)
-          font-size: 2rem
-        @media screen and (max-width: 800px)
-          font-size: 1.7rem
-        @media screen and (max-width: 600px)
-          font-size: 1.5rem
-        @media screen and (max-width: 400px)
-          font-size: 1.3rem
+      .info
+        form
+          height: 20vh
+        .photo
+          margin-top: 0
+          height: 20vh
+          width: 20vh
+          span
+            font-size: 2.5rem
+            @media screen and (max-width: 1000px)
+              font-size: 2rem
+            @media screen and (max-width: 800px)
+              font-size: 1.7rem
+            @media screen and (max-width: 600px)
+              font-size: 1.5rem
+            @media screen and (max-width: 400px)
+              font-size: 1.3rem
 
       .sel-diar-item
         width: 100%

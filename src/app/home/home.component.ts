@@ -46,8 +46,7 @@ export class HomeComponent{
   ngOnInit() {
     this.isMobile = this.isMobileService.isMobile();
     this.appData = this.listenerService.getAppListenerObject();
-    this.appData.sliderVisible.state = true;
-    this.appData.footerHeaderVisible.state = true;
+    this.appData.presentState.state = 'home';
     this.isMobile ? this.appData.sliderPosition.state = '30%' : this.appData.sliderPosition.state = '10%';
     this.listenerService.changeAppListenerSubject(this.appData);
     this.getItemsArr();

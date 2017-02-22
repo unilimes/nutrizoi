@@ -32,7 +32,7 @@
   <div class="main-slider">
 
     <div class="time-item-wrap" [hidden]="!selectedElement">
-      <div class="time-item addfood" >
+      <div class="time-item addfood" (click)="moveSearchView()">
         <img src="./assets/resources/images/search/add.png" alt="">
         <span>add food</span>
       </div>
@@ -99,7 +99,7 @@
                     <path id="arc1" fill="none" stroke="#3ec14d" stroke-width="2" [attr.d]="days[0].LineMicro"/>
                   </svg>
                 </div>
-                <div class="img" [style.background-image]="'url(' + diaryArr[3].img + ')'"></div>
+                <div class="img" [style.background-image]="'url(' + (diaryArr[3] ? diaryArr[3].img : nullDiary.img) + ')'"></div>
               </div>
             </div>
           </div>
@@ -130,7 +130,7 @@
                     <path id="arc1" fill="none" stroke="#3ec14d" stroke-width="2" [attr.d]="days[0].LineMicro"/>
                   </svg>
                 </div>
-                <div class="img" [style.background-image]="'url(' + diaryArr[2].img + ')'"></div>
+                <div class="img" [style.background-image]="'url(' + (diaryArr[2] ? diaryArr[2].img : nullDiary.img) + ')'"></div>
               </div>
             </div>
           </div>
@@ -161,7 +161,7 @@
                     <path id="arc1" fill="none" stroke="#3ec14d" stroke-width="2" [attr.d]="days[0].LineMicro"/>
                   </svg>
                 </div>
-                <div class="img" [style.background-image]="'url(' + diaryArr[0].img + ')'"></div>
+                <div class="img" [style.background-image]="'url(' + (diaryArr[0] ? diaryArr[0].img : nullDiary.img) + ')'"></div>
               </div>
             </div>
           </div>
@@ -192,7 +192,7 @@
                     <path id="arc1" fill="none" stroke="#3ec14d" stroke-width="2" [attr.d]="days[0].LineMicro"/>
                   </svg>
                 </div>
-                <div class="img" [style.background-image]="'url(' + diaryArr[1].img + ')'"></div>
+                <div class="img" [style.background-image]="'url(' + (diaryArr[1] ? diaryArr[1].img : nullDiary.img) + ')'"></div>
               </div>
             </div>
           </div>
@@ -223,7 +223,7 @@
                     <path id="arc1" fill="none" stroke="#3ec14d" stroke-width="2" [attr.d]="days[0].LineMicro"/>
                   </svg>
                 </div>
-                <div class="img" [style.background-image]="'url(' + diaryArr[2].img + ')'"></div>
+                <div class="img" [style.background-image]="'url(' + (diaryArr[4] ? diaryArr[4].img : nullDiary.img) + ')'"></div>
               </div>
             </div>
           </div>

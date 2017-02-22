@@ -11,8 +11,10 @@
 <div class="select-value" [class.h-40]="presentElement == elements[6] && !isMobile">
   <div class="info sel-diar-item" [hidden]="presentElement != elements[0]">
     <div class="photo">
-      <img src="{{ diaryInf.img}}" alt="">
-      <span [hidden]="id !== 'create'">add photo</span>
+      <label class="custom-file-upload" [ngStyle]="{'background-image': 'url(' + diaryInf.img + ')'}">
+        <span [hidden]="id !== 'create'">Add photo</span>
+        <input type="file" (change)="loadPhoto($event)"/>
+      </label>
     </div>
     <form action="" >
       <input type="text" placeholder="Enter a First Name"  value="{{ diaryInf.firstName }}" (focusout)="diaryInf.firstName = changeInfoService.changeFirstName($event.target.value)">

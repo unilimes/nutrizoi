@@ -8,6 +8,8 @@ app-root>.app-wrap>signup
     bottom: 13%
     width: 30.5%
     height: 3%
+    li
+      width: 13.7%
 
   .slider-wrap
     height: 60%
@@ -85,7 +87,7 @@ app-root>.app-wrap>signup
             width: 300%
             text-align: center
       .form-type
-        height: 33vh
+        height: 23vh
       .calories
         width: 0
         height: 0
@@ -105,6 +107,8 @@ app-root>.app-wrap>signup
         font-size: 3vh
         opacity: 0.8
         text-transform: initial
+
+
 
 html.tablet, html.mobile
   signup
@@ -136,15 +140,15 @@ html.tablet, html.mobile
         @media screen and (max-width: 400px)
           +size(17rem)
       .form-type
-        height: 45rem
+        height: 35rem
         @media screen and (max-width: 1000px)
-          height: 35rem
-        @media screen and (max-width: 800px)
-          height: 32rem
-        @media screen and (max-width: 600px)
-          height: 28rem
-        @media screen and (max-width: 400px)
           height: 25rem
+        @media screen and (max-width: 800px)
+          height: 22rem
+        @media screen and (max-width: 600px)
+          height: 18rem
+        @media screen and (max-width: 400px)
+          height: 15rem
       .navitems>.naw-wrap
         .item-label, .item-value, .change-height>.units-wrap>span
           font-size: 1.5rem

@@ -10,16 +10,6 @@
           <div class="item-label" style="bottom: auto;">infos</div>
         </div>
         <div class="log-in-form" [hidden]="selectedElement !== infos">
-          <div class="facebook-log-in">
-            <div class="log-in-img-wrap">
-              <img src="./assets/resources/images/login/fb.png" alt="">
-            </div>
-            <div class="fb-log-in-line">
-              <div class="half-line"></div>
-              <h5>or</h5>
-              <div class="half-line"></div>
-            </div>
-          </div>
 
           <form action=""  >
             <input type="text" placeholder="Enter your First Name"  (focusout)="diaryInf.firstName = changeInfoService.changeFirstName($event.target.value)">
@@ -35,10 +25,30 @@
         </div>
       </div>
 
-      <div #gender class="navitems" data-num="1" [class.scale-x-2]="selectedElement === gender">
-        <div class="naw-wrap " (click)="goToElement(params.elementsArr[1], params.elementsArr[0])" [hidden]="selectedElement == gender" style="background-image: url('resources/images/login/gender.png');" [class.element-active]="params.elementsArr[1].confirmed">
+      <div #photo class="navitems" data-num="1" [class.scale-x-2]="selectedElement === photo">
+        <div class="naw-wrap " (click)="goToElement(params.elementsArr[1], params.elementsArr[0])" [hidden]="selectedElement == photo" [class.element-active]="params.elementsArr[1].confirmed">
+          <div class="item-label">photo</div>
+        </div>
+        <div class="naw-wrap" [hidden]="selectedElement !== photo">
+          <div class="nav-item-label">
+            Choose a photo
+          </div>
+          <div class="input-wrap">
+              <label class="custom-file-upload" [ngStyle]="{'background-image': 'url(' + diaryInf.img + ')'}">
+                <span>Add photo</span>
+                <input type="file" (change)="loadPhoto($event)"/>
+              </label>
+          </div>
+          <div class="time-item" (click)="goToElement(params.elementsArr[2], params.elementsArr[1])">
+            <img src="./assets/resources/images/login/btn-next.png" alt="">
+          </div>
+        </div>
+      </div>
+
+      <div #gender class="navitems" data-num="2" [class.scale-x-2]="selectedElement === gender">
+        <div class="naw-wrap " (click)="goToElement(params.elementsArr[2], params.elementsArr[1])" [hidden]="selectedElement == gender" style="background-image: url('assets/resources/images/login/gender.png');" [class.element-active]="params.elementsArr[2].confirmed">
           <div class="item-label">gender</div>
-          <div class="item-value" [hidden]="!params.elementsArr[1].confirmed">{{diaryInf.gender}}</div>
+          <div class="item-value" [hidden]="!params.elementsArr[2].confirmed">{{diaryInf.gender}}</div>
         </div>
         <div class="naw-wrap" [hidden]="selectedElement !== gender">
           <div class="nav-item-label">
@@ -49,16 +59,16 @@
             <span >{{diaryInf.gender}}</span>
             <img src="./assets/resources/images/login/arr-down.png"  (click)="diaryInf.gender = changeInfoService.changeGender(diaryInf.gender)" alt="">
           </div>
-          <div class="time-item" (click)="goToElement(params.elementsArr[2], params.elementsArr[1])">
+          <div class="time-item" (click)="goToElement(params.elementsArr[3], params.elementsArr[2])">
             <img src="./assets/resources/images/login/btn-next.png" alt="">
           </div>
         </div>
       </div>
 
-      <div #height class="navitems" data-num="2" [class.scale-x-2]="selectedElement === height">
-        <div class="naw-wrap" (click)="goToElement(params.elementsArr[2], params.elementsArr[1])" [hidden]="selectedElement === height" style="background-image: url('resources/images/login/weight.png');" [class.element-active]="params.elementsArr[2].confirmed">
+      <div #height class="navitems" data-num="3" [class.scale-x-2]="selectedElement === height">
+        <div class="naw-wrap" (click)="goToElement(params.elementsArr[3], params.elementsArr[2])" [hidden]="selectedElement === height" style="background-image: url('assets/resources/images/login/weight.png');" [class.element-active]="params.elementsArr[3].confirmed">
           <div class="item-label">height</div>
-          <div class="item-value" [hidden]="!params.elementsArr[2].confirmed">{{diaryInf.height}}</div>
+          <div class="item-value" [hidden]="!params.elementsArr[3].confirmed">{{diaryInf.height}}</div>
         </div>
         <div class="naw-wrap" [hidden]="selectedElement !== height" >
           <div class="nav-item-label">
@@ -79,16 +89,16 @@
             <input value="{{diaryInf.height}}" (click)="heightInput = true" readonly style="cursor: pointer;">
             <img src="./assets/resources/images/login/arr-down.png"  (click)="diaryInf.height = changeInfoService.spinHeight(-1)" alt="">
           </div>
-          <div class="time-item" (click)="goToElement(params.elementsArr[3], params.elementsArr[2])">
+          <div class="time-item" (click)="goToElement(params.elementsArr[4], params.elementsArr[3])">
             <img src="./assets/resources/images/login/btn-next.png" alt="">
           </div>
         </div>
       </div>
 
-      <div #weight class="navitems" data-num="3" [class.scale-x-2]="selectedElement === weight">
-        <div class="naw-wrap" (click)="goToElement(params.elementsArr[3], params.elementsArr[2])" [hidden]="selectedElement == weight" style="background-image: url('assets/resources/images/login/weight.png');" [class.element-active]="params.elementsArr[3].confirmed">
+      <div #weight class="navitems" data-num="4" [class.scale-x-2]="selectedElement === weight">
+        <div class="naw-wrap" (click)="goToElement(params.elementsArr[4], params.elementsArr[3])" [hidden]="selectedElement == weight" style="background-image: url('assets/resources/images/login/weight.png');" [class.element-active]="params.elementsArr[4].confirmed">
           <div class="item-label">weight</div>
-          <div class="item-value" [hidden]="!params.elementsArr[3].confirmed">{{diaryInf.weight}}</div>
+          <div class="item-value" [hidden]="!params.elementsArr[4].confirmed">{{diaryInf.weight}}</div>
         </div>
         <div class="naw-wrap" [hidden]="selectedElement !== weight">
           <div class="nav-item-label">
@@ -99,16 +109,16 @@
             <input type="text" value="{{diaryInf.weight}}" (focusout)="diaryInf.weight = changeInfoService.changeWeight($event.target.value)" (focus)="diaryInf.weight = ''" placeholder="kg">
             <img src="./assets/resources/images/login/arr-down.png"  (click)="diaryInf.weight = changeInfoService.spinWeight(-1)" alt="">
           </div>
-          <div class="time-item" (click)="goToElement(params.elementsArr[4], params.elementsArr[3])">
+          <div class="time-item" (click)="goToElement(params.elementsArr[5], params.elementsArr[4])">
             <img src="./assets/resources/images/login/btn-next.png" alt="">
           </div>
         </div>
       </div>
 
-      <div #age class="navitems" data-num="4" [class.scale-x-2]="selectedElement === age">
-        <div class="naw-wrap" (click)="goToElement(params.elementsArr[4], params.elementsArr[3])" [hidden]="selectedElement == age" style="background-image: url('assets/resources/images/login/age.png');" [class.element-active]="params.elementsArr[4].confirmed">
+      <div #age class="navitems" data-num="5" [class.scale-x-2]="selectedElement === age">
+        <div class="naw-wrap" (click)="goToElement(params.elementsArr[5], params.elementsArr[4])" [hidden]="selectedElement == age" style="background-image: url('assets/resources/images/login/age.png');" [class.element-active]="params.elementsArr[5].confirmed">
           <div class="item-label">age</div>
-          <div class="item-value" [hidden]="!params.elementsArr[4].confirmed">{{diaryInf.date.day}}.{{diaryInf.date.month}}.{{diaryInf.date.year}}</div>
+          <div class="item-value" [hidden]="!params.elementsArr[5].confirmed">{{diaryInf.date.day}}.{{diaryInf.date.month}}.{{diaryInf.date.year}}</div>
         </div>
         <div class="naw-wrap"  [hidden]="selectedElement !== age" >
           <div class="nav-item-label">
@@ -133,16 +143,16 @@
               </div>
             </div>
           </div>
-          <div class="time-item" (click)="goToElement(params.elementsArr[5], params.elementsArr[4])">
+          <div class="time-item" (click)="goToElement(params.elementsArr[6], params.elementsArr[5])">
             <img src="./assets/resources/images/login/btn-next.png" alt="">
           </div>
         </div>
       </div>
 
-      <div #activity class="navitems" data-num="5" [class.scale-x-2]="selectedElement === activity">
-        <div class="naw-wrap" (click)="goToElement(params.elementsArr[5], params.elementsArr[4])" [hidden]="selectedElement == activity" style="background-image: url('assets/resources/images/login/activity.png');" [class.element-active]="params.elementsArr[5].confirmed">
+      <div #activity class="navitems" data-num="6" [class.scale-x-2]="selectedElement === activity">
+        <div class="naw-wrap" (click)="goToElement(params.elementsArr[6], params.elementsArr[5])" [hidden]="selectedElement == activity" style="background-image: url('assets/resources/images/login/activity.png');" [class.element-active]="params.elementsArr[6].confirmed">
           <div class="item-label">activity</div>
-          <div class="item-value" [hidden]="!params.elementsArr[5].confirmed">{{diaryInf.activity}}</div>
+          <div class="item-value" [hidden]="!params.elementsArr[6].confirmed">{{diaryInf.activity}}</div>
         </div>
         <div class="naw-wrap" [hidden]="selectedElement !== activity" >
           <div class="nav-item-label">
@@ -153,17 +163,17 @@
             <span >{{diaryInf.activity}}</span>
             <img src="./assets/resources/images/login/arr-down.png"  (click)="diaryInf.activity = changeInfoService.changeActivity(-1, diaryInf.activity)" alt="">
           </div>
-          <div class="time-item" (click)="goToElement(params.elementsArr[6], params.elementsArr[5])">
+          <div class="time-item" (click)="goToElement(params.elementsArr[7], params.elementsArr[6])">
             <img src="./assets/resources/images/login/btn-next.png" alt="">
           </div>
         </div>
       </div>
 
-      <div #calories class="navitems"  data-num="6" [class.scale-x-2]="selectedElement === calories">
+      <div #calories class="navitems"  data-num="7" [class.scale-x-2]="selectedElement === calories">
 
-        <div class="naw-wrap" (click)="goToElement(params.elementsArr[6], params.elementsArr[5])" [hidden]="selectedElement == calories" [class.element-active]="params.elementsArr[6].confirmed">
+        <div class="naw-wrap" (click)="goToElement(params.elementsArr[7], params.elementsArr[6])" [hidden]="selectedElement == calories" [class.element-active]="params.elementsArr[7].confirmed">
           <div class="item-label">calories</div>
-          <div class="item-value" [hidden]="!params.elementsArr[6].confirmed">{{diaryInf.calories}}</div>
+          <div class="item-value" [hidden]="!params.elementsArr[7].confirmed">{{diaryInf.calories}}</div>
         </div>
 
         <div class="naw-wrap" [hidden]="selectedElement !== calories">
@@ -185,19 +195,15 @@
   </div>
 </div>
 
-<div class="calendar-header" *ngIf="!isMobile">
-  <div class="calendar-nav" (click)="moveBack()">
-    <img src="./assets/resources/images/search/remove.png" alt="" >
-  </div>
-</div>
 
 <div class="tag-log-in">Register a new account</div>
 
 <ul class="reg-navig" >
   <li class="reg-navig-item"  [class.element-active]="params.elementsArr[0].confirmed" (click)="goToElement(params.elementsArr[0], null)"><h5>Infos</h5></li>
-  <li class="reg-navig-item"  [class.element-active]="params.elementsArr[1].confirmed" (click)="goToElement(params.elementsArr[1], params.elementsArr[0])"><h5>Gender</h5></li>
-  <li class="reg-navig-item"  [class.element-active]="params.elementsArr[2].confirmed" (click)="goToElement(params.elementsArr[2], params.elementsArr[1])"><h5>Height</h5></li>
-  <li class="reg-navig-item"  [class.element-active]="params.elementsArr[3].confirmed" (click)="goToElement(params.elementsArr[3], params.elementsArr[2])"><h5>Weight</h5></li>
-  <li class="reg-navig-item"  [class.element-active]="params.elementsArr[4].confirmed" (click)="goToElement(params.elementsArr[4], params.elementsArr[3])"><h5>Age</h5></li>
-  <li class="reg-navig-item"  [class.element-active]="params.elementsArr[5].confirmed" (click)="goToElement(params.elementsArr[5], params.elementsArr[4])"><h5>Activity</h5></li>
+  <li class="reg-navig-item"  [class.element-active]="params.elementsArr[1].confirmed" (click)="goToElement(params.elementsArr[1], params.elementsArr[0])"><h5>Photos</h5></li>
+  <li class="reg-navig-item"  [class.element-active]="params.elementsArr[2].confirmed" (click)="goToElement(params.elementsArr[2], params.elementsArr[1])"><h5>Gender</h5></li>
+  <li class="reg-navig-item"  [class.element-active]="params.elementsArr[3].confirmed" (click)="goToElement(params.elementsArr[3], params.elementsArr[2])"><h5>Height</h5></li>
+  <li class="reg-navig-item"  [class.element-active]="params.elementsArr[4].confirmed" (click)="goToElement(params.elementsArr[4], params.elementsArr[3])"><h5>Weight</h5></li>
+  <li class="reg-navig-item"  [class.element-active]="params.elementsArr[5].confirmed" (click)="goToElement(params.elementsArr[5], params.elementsArr[4])"><h5>Age</h5></li>
+  <li class="reg-navig-item"  [class.element-active]="params.elementsArr[6].confirmed" (click)="goToElement(params.elementsArr[6], params.elementsArr[5])"><h5>Activity</h5></li>
 </ul>

@@ -1,10 +1,10 @@
 <!--slider-->
 
 <div class="app-wrap">
-  <canvas id="cvs-slider" [ngStyle]="{'margin-top': appData.sliderPosition.state}" #slider [class.sliderInvisible]="!appData.sliderVisible.state" (window:resize)="onResize($event)"></canvas>
-  <main-header [hidden]="!appData.footerHeaderVisible.state"></main-header>
+  <canvas id="cvs-slider" [ngStyle]="{'margin-top': appData.sliderPosition.state}" #slider [class.sliderInvisible]="!sliderVis" (window:resize)="onResize($event)"></canvas>
+  <main-header [hidden]="!footHeadVis"></main-header>
   <router-outlet></router-outlet>
-  <main-footer [hidden]="!appData.footerHeaderVisible.state" [class.side-menu-open]="appData.sideMenuVisible.state === 'in'"></main-footer>
+  <main-footer [hidden]="!footHeadVis" [class.side-menu-open]="appData.sideMenuVisible.state === 'in'"></main-footer>
   <side-menu [@slideInOut]="appData.sideMenuVisible.state"></side-menu>
   <div class="btn-side-mnu" (click)="sideMenuOpen()" [class.hide-btn]="appData.sideMenuVisible.state === 'in'"></div>
 </div>

@@ -20,6 +20,7 @@ export class SignupComponent{
   @ViewChild('navig') navig: ElementRef;
 
   @ViewChild('infos') infos: ElementRef;
+  @ViewChild('photo') photo: ElementRef;
   @ViewChild('gender') gender: ElementRef;
   @ViewChild('height') height: ElementRef;
   @ViewChild('weight') weight: ElementRef;
@@ -41,6 +42,7 @@ export class SignupComponent{
   private newDiary: any;
 
   private diaryInf: any = {
+    img: './assets/resources/images/diary/add-photo.png',
     firstName: '',
     lastName: '',
     gender: 'male',
@@ -84,9 +86,7 @@ export class SignupComponent{
     this.isMobile = this.isMobileService.isMobile();
     this.appData = this.listenerService.getAppListenerObject();
     this.appData.sliderPosition.state = this.isMobile ? '-5%' : '0%';
-    this.appData.sliderVisible.state = true;
-    this.appData.footerHeaderVisible.state = true;
-    this.appData.signupState.state = true;
+    this.appData.presentState.state = 'signup';
     this.listenerService.changeAppListenerSubject(this.appData);
 
     this.changeInfoService.resetDiary();
@@ -106,6 +106,7 @@ export class SignupComponent{
   getItemsArr(): void{
     this.params.elementsArr = [];
     this.params.elementsArr.push(this.infos.nativeElement);
+    this.params.elementsArr.push(this.photo.nativeElement);
     this.params.elementsArr.push(this.gender.nativeElement);
     this.params.elementsArr.push(this.height.nativeElement);
     this.params.elementsArr.push(this.weight.nativeElement);
@@ -130,6 +131,13 @@ export class SignupComponent{
       this.selectedElement = null;
       this.sliderService.slideElements(element.children[0]);
     }
+  }
+
+  loadPhoto($event){
+    this.changeInfoService.loadPhoto($event.target.files[0],  (res)=>{
+      this.diaryInf.img = res;
+    });
+
   }
 
   finishReg(){
@@ -166,10 +174,6 @@ export class SignupComponent{
       this.diaryInf.height = this.changeInfoService.recountHeight(parseFloat(string), koefH);
       this.heightInput = false;
     }
-  }
-
-  moveBack() {
-    this.location.back();
   }
 
   ngOnDestroy(){

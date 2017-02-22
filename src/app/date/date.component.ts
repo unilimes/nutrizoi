@@ -121,11 +121,10 @@ export class DateComponent {
 
     this.sanitizePoints();
     this.getItemsArr();
-    this.getDiaries(this.diaryArr);
+    // this.getDiaries(this.diaryArr);
 
     this.appData.sliderPosition.state = '';
-    this.appData.sliderVisible.state = true;
-    this.appData.footerHeaderVisible.state = true;
+    this.appData.presentState.state = 'date';
     this.listenerService.changeAppListenerSubject(this.appData);
 
     this.appListener = this.listenerService.appListener.subscribe((appListener: any) => {
@@ -139,7 +138,7 @@ export class DateComponent {
     this.userListener = this.userDataService.authListener.subscribe((auth: boolean) => {
       this.isAuth = auth;
       if(auth){
-        this.diaryArr = this.getDiaries(this.userDataService.getDiaries());
+        this.diaryArr = this.userDataService.getDiaries();
         this.getDataForDiaries();
       }
     });
@@ -170,12 +169,6 @@ export class DateComponent {
     }
   }
 
-  getDiaries(diaries){
-    for(let i = 0; i < 5 ; i++){
-      diaries[i] = diaries[i] ? diaries[i] : this.nullDiary;
-    }
-    return diaries;
-  }
 
   getDataForDiaries(){
     if(!this.isAuth)return;
@@ -257,6 +250,12 @@ export class DateComponent {
 
     this.appData.selectedFoodTime.state = id;
     this.listenerService.changeAppListenerSubject(this.appData);
+  }
+
+  moveSearchView(){
+    this.appData.searchValue.state = '';
+    this.listenerService.changeAppListenerSubject(this.appData);
+    this.router.navigate(['/search']);
   }
 
   moveBack() {

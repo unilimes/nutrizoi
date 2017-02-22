@@ -102,8 +102,7 @@ export class CalendarPageComponent{
     this.isMobile = this.isMobileService.isMobile();
     this.appData = this.listenerService.getAppListenerObject();
 
-    this.appData.sliderVisible.state = false;
-    this.appData.footerHeaderVisible.state = true;
+    this.appData.presentState.state = 'calendar';
     this.listenerService.changeAppListenerSubject(this.appData);
 
     this.calendarGenerating();

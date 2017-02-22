@@ -93,13 +93,10 @@ export class ListenerService {
   ];
 
   public appListenerObject: any = {
-    loginState: {state: false},
-    signupState: {state: false},
+    presentState: {state: ''},
     selectedFoodTime: {state: 0},
     nutritionalStateOpen: {state: false},
-    sliderVisible: {state: true},
     sliderPosition: {state: '0px'},
-    footerHeaderVisible: {state: true},
     searchInputVisible: {state: true},
     sideMenuVisible: {state: 'out'},
     searchValue: {state: ''},

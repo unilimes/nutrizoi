@@ -32,8 +32,7 @@ export class NutritionalComponent {
 
   toggleState(){
     if( this.isMobile ){
-      this.appData.sliderVisible.state = false;
-      this.appData.footerHeaderVisible.state = false;
+      this.appData.presentState.state = 'nutritional';
       this.listenerService.changeAppListenerSubject(this.appData);
       this.router.navigate(['/nutritional']);
       return;

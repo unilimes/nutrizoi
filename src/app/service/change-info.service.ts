@@ -55,6 +55,19 @@ export class ChangeInfoService {
     return this.newDiary.lastName;
   }
 
+  loadPhoto(file, callback){
+    let fr = new FileReader();
+    try{
+      fr[ 'readAsDataURL' ]( file );
+      fr.onload = ()=>{
+        this.newDiary.img = fr.result;
+        if( callback ) callback( this.newDiary.img );
+      };
+    } catch( err ){
+      console.log('load photo err: ',err);
+    }
+  }
+
   changeGender(value){
     if(value == 'male'){
       this.newDiary.gender = 'female';
