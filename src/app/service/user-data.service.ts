@@ -1,14 +1,13 @@
 import {Injectable} from "@angular/core";
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
-import {Observable} from 'rxjs/Observable';
 
-declare var device;
 @Injectable()
 
 export class UserDataService {
 
   public user: any;
   public auth: boolean = false;
+
 
   public authSubject = new BehaviorSubject<boolean>(this.auth);
   authListener = this.authSubject.asObservable();

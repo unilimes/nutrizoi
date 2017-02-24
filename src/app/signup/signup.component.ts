@@ -177,8 +177,6 @@ export class SignupComponent{
   }
 
   ngOnDestroy(){
-    this.appData.signupState.state = false;
-    this.listenerService.changeAppListenerSubject(this.appData);
     this.moveFinishListener.unsubscribe();
   }
 

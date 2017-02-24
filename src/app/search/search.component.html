@@ -23,9 +23,9 @@
 </div>
 
 <div class="search-label-wrap item" [hidden]="isMobile && !appData.searchInputVisible.state">
-  <input type="text"  [(ngModel)]="appData.searchValue.state" (keyup.enter)="changeSearch()">
-  <img src="./assets/resources/images/search/remove.png" alt="" *ngIf="!isMobile" (click)="moveBack()">
-  <img src="./assets/resources/images/search/delete.png" alt="" *ngIf="isMobile">
+  <input type="text"  [(ngModel)]="appData.searchValue.state" placeholder="tap to find your recipe" (keyup.enter)="changeSearch()">
+  <img src="./assets/resources/images/search/remove.png" alt="" *ngIf="!isMobile" (click)="clearInput()">
+  <img src="./assets/resources/images/search/delete.png" alt="" *ngIf="isMobile" (click)="clearInput()">
 </div>
 
 

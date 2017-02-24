@@ -21,7 +21,6 @@ export class HomeComponent{
   private moveFinishListener: Subscription;
   private selectedElement: any;
   public sliderDown: boolean = true;
-  public searchValue: string;
 
   public isMobile: boolean = false;
   private appData: any ;
@@ -116,6 +115,6 @@ export class HomeComponent{
 
   moveSearchView(){
     this.listenerService.changeAppListenerSubject(this.appData);
-    this.router.navigate(['/search']);
+    this.router.navigate(['/search/search-results', this.appData.searchValue.state]);
   }
 }

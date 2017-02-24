@@ -13,11 +13,9 @@ result-details
       width: 100%
       .res-det-img
         @extend .w-h-100
-        .sec-img
-          margin-right: 3%
         img
-          margin-left: 3%
-          margin-top: 3%
+          margin-left: 3.3%
+          margin-top: 3.3%
           width: 45%
           float: left
 
@@ -33,6 +31,19 @@ result-details
 
     .res-det-nav
       border-right: 1px solid red
+      input
+        width: 100%
+      .text-res-item
+        position: relative
+        span
+          left: 0
+          top: 70%
+          position: absolute
+          font-size: 70%
+          color: red
+          opacity: 0
+          transition: opacity 0.5s
+
     .second-block-nav
       overflow: visible
       .N-W
@@ -89,6 +100,8 @@ result-details
         justify-content: flex-end
         text-decoration: none
         color: $green
+        input
+          width: 100%
 
 
     .second-block-ingrid
@@ -124,6 +137,19 @@ result-details
     background: url("/assets/resources/images/search/save-to-diary-conf.png") 50% 50% no-repeat
     -webkit-background-size: auto 50%
     background-size:  auto 50%
+
+  .go-back-black, .save-black
+    filter: grayscale(1)
+    transition: filter 0.5s
+    &:hover
+      filter: grayscale(0)
+
+  .grayscale-1
+    filter: grayscale(1)
+  .grayscale-0
+    filter: grayscale(0)
+
+
 
 
 

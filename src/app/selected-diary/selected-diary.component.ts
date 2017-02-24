@@ -1,6 +1,7 @@
 import {Component} from "@angular/core";
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {Subscription} from "rxjs/Rx";
+import {Location} from '@angular/common';
 import {ChangeInfoService} from "../service/change-info.service";
 import {IsMobileService} from "../service/is-mobile.service";
 import {UserDataService} from "../service/user-data.service";
@@ -79,7 +80,7 @@ export class SelectedDiaryComponent {
   constructor(
       private route: ActivatedRoute,
       private changeInfoService: ChangeInfoService,
-      private router: Router,
+      private location: Location,
       private isMobileService: IsMobileService,
       private userDataService: UserDataService,
       private authService: AuthService
@@ -161,12 +162,12 @@ export class SelectedDiaryComponent {
         let res = JSON.parse(response._body);
         if(res.status) {
           this.userDataService.saveDiary(res.res);
-          this.router.navigate(['/diary/diaries-select']);
+          this.location.back();
         }
       }, (error) => {});
 
     } else {
-      this.router.navigate(['/diary/diaries-select']);
+      this.location.back();
     }
   }
 

@@ -1,6 +1,6 @@
 import {Component, ViewChild, ElementRef} from "@angular/core";
 import {Subscription} from "rxjs/Rx";
-import {Location} from '@angular/common';
+import {Router} from "@angular/router";
 import {SliderService} from "../service/slider.service";
 import {ListenerService} from "../service/listener.service";
 import {IsMobileService} from "../service/is-mobile.service";
@@ -21,8 +21,6 @@ export class SearchComponent{
   private appListener: Subscription;
   private appData: any ;
 
-  private value: any;
-
   public params = {
     navEl: {},
     elementsArr: [],
@@ -37,7 +35,7 @@ export class SearchComponent{
       private sliderService: SliderService,
       private listenerService: ListenerService,
       private isMobileService: IsMobileService,
-      private location: Location
+      private router: Router
   ){ }
 
   ngOnInit() {
@@ -68,10 +66,12 @@ export class SearchComponent{
 
   changeSearch(){
     this.listenerService.changeAppListenerSubject(this.appData);
+    this.router.navigate(['/search/search-results', this.appData.searchValue.state]);
   }
 
-  moveBack() {
-    this.location.back();
+  clearInput() {
+    this.appData.searchValue.state = '';
+    this.listenerService.changeAppListenerSubject(this.appData);
   }
 
   onResize(event) {

@@ -2,7 +2,7 @@
   <div class="main-slider">
     <div class="navig" #navig>
       <div #search class="navitems" >
-        <div class="naw-wrap" [routerLink]="['/search']">
+        <div class="naw-wrap" [routerLink]="['/search/search-results/' + appData.searchValue.state]">
           <img src="./assets/resources/images/search/search.png" alt="" >
         </div>
       </div>

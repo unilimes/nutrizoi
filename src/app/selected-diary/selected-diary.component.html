@@ -13,7 +13,7 @@
     <div class="photo">
       <label class="custom-file-upload" [ngStyle]="{'background-image': 'url(' + diaryInf.img + ')'}">
         <span [hidden]="id !== 'create'">Add photo</span>
-        <input type="file" (change)="loadPhoto($event)"/>
+        <input type="file" capture="camera" accept="image/*" (change)="loadPhoto($event)">
       </label>
     </div>
     <form action="" >

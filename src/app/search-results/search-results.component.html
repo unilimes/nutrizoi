@@ -1,6 +1,6 @@
-<div class="res-block first-block"  [hidden]="(isMobile && searchEmpty)">
+<div class="res-block first-block"  [hidden]="(isMobile && searchData.length == 0)">
 
-  <div class="results-block" *ngIf="searchEmpty">
+  <div class="results-block" *ngIf="searchData.length == 0">
     <div class="res-numb">
       <h1>0</h1>
       <span>results found</span>
@@ -10,67 +10,16 @@
     </div>
   </div>
 
-  <div slimScroll  width="100%" distance="0px" height="100%"  size="2px" color="#fff" opacity=1 railVisible=true alwaysVisible=true railColor="#fff" railOpacity=0.2 class="search-result-list" *ngIf="!searchEmpty">
-    <div class="item" [routerLink]="['/search/result-details', 1]">
+  <div slimScroll  width="100%" distance="0px" height="100%"  size="2px" color="#fff" opacity=1 railVisible=true alwaysVisible=true railColor="#fff" railOpacity=0.2 class="search-result-list" *ngIf="searchData.length > 0">
+
+    <div class="item" *ngFor="let recipe of searchData" [routerLink]="['/search/result-details', recipe._id]">
       <div class="N-W"><img src="./assets/resources/images/search/recipe.png" alt=""></div>
-      <div class="text-res-item">Hamburger</div>
+      <div class="text-res-item item-name">{{recipe.title}}</div>
+      <div class="text-res-item">{{recipe.source}}</div>
       <div class="N-W"><img src="./assets/resources/images/search/res-calendar.png" alt=""></div>
       <div class="N-W"><img src="./assets/resources/images/search/edit.png" alt=""></div>
     </div>
-    <div class="item" [routerLink]="['/search/result-details', 1]">
-      <div class="N-W"><img src="./assets/resources/images/search/recipe.png" alt=""></div>
-      <div class="text-res-item">Hamburger</div>
-      <div class="N-W"><img src="./assets/resources/images/search/res-calendar.png" alt=""></div>
-      <div class="N-W"><img src="./assets/resources/images/search/edit.png" alt=""></div>
-    </div>
-    <div class="item" [routerLink]="['/search/result-details', 1]">
-      <div class="N-W"><img src="./assets/resources/images/search/recipe.png" alt=""></div>
-      <div class="text-res-item">Hamburger</div>
-      <div class="N-W"><img src="./assets/resources/images/search/res-calendar.png" alt=""></div>
-      <div class="N-W"><img src="./assets/resources/images/search/edit.png" alt=""></div>
-    </div>
-    <div class="item" [routerLink]="['/search/result-details', 1]">
-      <div class="N-W"><img src="./assets/resources/images/search/recipe.png" alt=""></div>
-      <div class="text-res-item">Hamburger</div>
-      <div class="N-W"><img src="./assets/resources/images/search/res-calendar.png" alt=""></div>
-      <div class="N-W"><img src="./assets/resources/images/search/edit.png" alt=""></div>
-    </div>
-    <div class="item" [routerLink]="['/search/result-details', 1]">
-      <div class="N-W"><img src="./assets/resources/images/search/recipe.png" alt=""></div>
-      <div class="text-res-item">Hamburger</div>
-      <div class="N-W"><img src="./assets/resources/images/search/res-calendar.png" alt=""></div>
-      <div class="N-W"><img src="./assets/resources/images/search/edit.png" alt=""></div>
-    </div>
-    <div class="item" [routerLink]="['/search/result-details', 1]">
-      <div class="N-W"><img src="./assets/resources/images/search/recipe.png" alt=""></div>
-      <div class="text-res-item">Hamburger</div>
-      <div class="N-W"><img src="./assets/resources/images/search/res-calendar.png" alt=""></div>
-      <div class="N-W"><img src="./assets/resources/images/search/edit.png" alt=""></div>
-    </div>
-    <div class="item" [routerLink]="['/search/result-details', 1]">
-      <div class="N-W"><img src="./assets/resources/images/search/recipe.png" alt=""></div>
-      <div class="text-res-item">Hamburger</div>
-      <div class="N-W"><img src="./assets/resources/images/search/res-calendar.png" alt=""></div>
-      <div class="N-W"><img src="./assets/resources/images/search/edit.png" alt=""></div>
-    </div>
-    <div class="item" [routerLink]="['/search/result-details', 1]">
-      <div class="N-W"><img src="./assets/resources/images/search/recipe.png" alt=""></div>
-      <div class="text-res-item">Hamburger</div>
-      <div class="N-W"><img src="./assets/resources/images/search/res-calendar.png" alt=""></div>
-      <div class="N-W"><img src="./assets/resources/images/search/edit.png" alt=""></div>
-    </div>
-    <div class="item" [routerLink]="['/search/result-details', 1]">
-      <div class="N-W"><img src="./assets/resources/images/search/recipe.png" alt=""></div>
-      <div class="text-res-item">Hamburger</div>
-      <div class="N-W"><img src="./assets/resources/images/search/res-calendar.png" alt=""></div>
-      <div class="N-W"><img src="./assets/resources/images/search/edit.png" alt=""></div>
-    </div>
-    <div class="item" [routerLink]="['/search/result-details', 1]">
-      <div class="N-W"><img src="./assets/resources/images/search/recipe.png" alt=""></div>
-      <div class="text-res-item">Hamburger</div>
-      <div class="N-W"><img src="./assets/resources/images/search/res-calendar.png" alt=""></div>
-      <div class="N-W"><img src="./assets/resources/images/search/edit.png" alt=""></div>
-    </div>
+
   </div>
 
   <div class="faq-line item" *ngIf="isMobile">
@@ -92,9 +41,9 @@
 
 <span class="but" [hidden]="!searchEmpty" *ngIf="!isMobile">but</span>
 
-<div class="res-block" [hidden]="(isMobile && !searchEmpty)">
+<div class="res-block" [hidden]="(isMobile && searchData.length > 0)">
 
-  <div class="results-block" *ngIf="searchEmpty">
+  <div class="results-block" *ngIf="searchData.length == 0">
     <div class="img-wrap-search">
       <img src="./assets/resources/images/search/add.png" alt="" (click)="moveSearchView()">
     </div>
@@ -103,10 +52,10 @@
     </div>
   </div>
 
-  <div class="results-block results-not-empty" *ngIf="!searchEmpty">
+  <div class="results-block results-not-empty" *ngIf="searchData.length > 0">
     <div class="res-numb res-numb-top">
-      <h1>66</h1>
-      <span>results found</span>
+      <h1>{{searchData.length}}</h1>
+      <span>{{searchData.length == 1 ? 'result' : 'results'}} found</span>
     </div>
     <div class="faq-line item">
       <div class="N-W">

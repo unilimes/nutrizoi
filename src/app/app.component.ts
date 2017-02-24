@@ -65,9 +65,14 @@ export class AppComponent {
       this.appData = appListener;
       this.footHeadVis = (!this.isMobile || (this.isMobile && (this.appData.presentState.state === 'home'
                                     ||  this.appData.presentState.state === 'calendar'
+                                    || this.appData.presentState.state === 'signup'
+                                    || this.appData.presentState.state === 'login'
                                     || this.appData.presentState.state === 'date'))) ?  true : false;
       this.sliderVis = ((!this.isMobile && (this.appData.presentState.state !== 'calendar'))
-                              || (this.isMobile && (this.appData.presentState.state == 'home' || this.appData.presentState.state == 'date'))) ?  true : false;
+                              || (this.isMobile && (this.appData.presentState.state == 'home'
+                              || this.appData.presentState.state == 'login'
+                              || this.appData.presentState.state == 'signup'
+                              || this.appData.presentState.state == 'date'))) ?  true : false;
     });
 
     this.isMobileService.setGlobalHeight();

@@ -96,12 +96,7 @@ export class LoginComponent{
   moveBack() {
     this.location.back();
   }
-
-  ngOnDestroy(){
-    this.appData.loginState.state = false;
-    this.listenerService.changeAppListenerSubject(this.appData);
-  }
-
+  
   onResize(event) {
     this.sliderService.sliderStart(this.params);
 

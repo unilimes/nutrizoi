@@ -1,6 +1,9 @@
 import {Component} from "@angular/core";
 import {ListenerService} from "../service/listener.service";
 import {IsMobileService} from "../service/is-mobile.service";
+import {Subscription} from "rxjs/Rx";
+import {UserDataService} from "../service/user-data.service";
+import {AuthService} from "../service/auth.service";
 
 @Component({
   selector: 'search-diary',
@@ -11,7 +14,9 @@ import {IsMobileService} from "../service/is-mobile.service";
 export class SearchDiaryComponent{
   private isMobile: boolean = false;
   private appData: any ;
-  private diaryArr: any ;
+  private diaryArr: any =[] ;
+  private userListener: Subscription;
+  private isAuth: boolean = false;
 
   private selectedDiary: any;
   private selectedDate: any = {
@@ -30,15 +35,23 @@ export class SearchDiaryComponent{
   private daysInMonth:number = 30;
 
   constructor (
-      private listenerService: ListenerService,
-      private isMobileService: IsMobileService
+    private listenerService: ListenerService,
+    private isMobileService: IsMobileService,
+    private userDataService: UserDataService,
+    private authService: AuthService
   ){ }
 
   ngOnInit() {
     this.isMobile = this.isMobileService.isMobile();
-    this.diaryArr = this.listenerService.getDiaries();
     this.appData = this.listenerService.getAppListenerObject();
-    this.selectedDiary = this.diaryArr[0];
+
+    this.userListener = this.userDataService.authListener.subscribe((auth: boolean) => {
+      this.isAuth = auth;
+      if(auth){
+        this.diaryArr = this.userDataService.getDiaries();
+        this.selectedDiary = this.diaryArr[0];
+      }
+    });
   }
 
   selectDiary(diary: any){
@@ -92,4 +105,7 @@ export class SearchDiaryComponent{
     this.listenerService.changeAppListenerSubject(this.appData);
   }
 
+  ngOnDestroy() {
+    this.userListener.unsubscribe();
+  }
 }

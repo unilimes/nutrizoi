@@ -10,10 +10,14 @@ search-results
   .item
     cursor: pointer
     .text-res-item
-      width: 70%
+      width: 38%
       opacity: 0.8
+      overflow: hidden
     &:hover
       background-color: rgba(2, 141, 15, 0.2)
+    .item-name
+      width: 30%
+      margin-right: 2%
 
   .but
     position: absolute
@@ -86,6 +90,7 @@ search-results
       .text-res-item
         justify-content: flex-end
         font-weight: bold
+        width: 70%
         transition: opacity 1s
       .N-W
         transition: transform 1s

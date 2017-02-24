@@ -36,7 +36,7 @@
           <div class="input-wrap">
               <label class="custom-file-upload" [ngStyle]="{'background-image': 'url(' + diaryInf.img + ')'}">
                 <span>Add photo</span>
-                <input type="file" (change)="loadPhoto($event)"/>
+                <input type="file" capture="camera" accept="image/*" (change)="loadPhoto($event)">
               </label>
           </div>
           <div class="time-item" (click)="goToElement(params.elementsArr[2], params.elementsArr[1])">

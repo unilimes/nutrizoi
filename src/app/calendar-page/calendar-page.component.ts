@@ -68,7 +68,7 @@ export class CalendarPageComponent{
       macro: 25,
       micro: 65
     }
-  ];
+  ]; //should be taken from db
   private userListener: Subscription;
   private isAuth: boolean = false;
 

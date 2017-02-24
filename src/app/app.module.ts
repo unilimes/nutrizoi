@@ -33,6 +33,7 @@ import {AppService} from "./service/app.service";
 import {StorageService} from "./service/storage.service";
 import {AuthService} from "./service/auth.service";
 import {UserDataService} from "./service/user-data.service";
+import {SearchDataService} from "./service/search-data.service";
 
 import {FocusDirective} from "./directive/focus.directive";
 import {SlimScroll} from "./directive/slimscroll.directive";
@@ -76,7 +77,8 @@ import {SlimScroll} from "./directive/slimscroll.directive";
     AppService,
     StorageService,
     AuthService,
-    UserDataService
+    UserDataService,
+    SearchDataService
   ],
   bootstrap: [AppComponent]
 })
