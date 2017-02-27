@@ -160,7 +160,7 @@ var ListenerService = (function () {
         ];
         this.appListenerObject = {
             presentState: { state: '' },
-            selectedFoodTime: { state: 0 },
+            selectedFoodTime: { state: '' },
             nutritionalStateOpen: { state: false },
             sliderPosition: { state: '0px' },
             searchInputVisible: { state: true },
@@ -528,7 +528,7 @@ var SearchDataService = (function () {
 
 /***/ }),
 
-/***/ 30:
+/***/ 31:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -587,84 +587,17 @@ var AuthService = (function () {
 
 /***/ }),
 
-/***/ 31:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_BehaviorSubject__ = __webpack_require__(70);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_BehaviorSubject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_BehaviorSubject__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserDataService; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var UserDataService = (function () {
-    function UserDataService() {
-        this.auth = false;
-        this.authSubject = new __WEBPACK_IMPORTED_MODULE_1_rxjs_BehaviorSubject__["BehaviorSubject"](this.auth);
-        this.authListener = this.authSubject.asObservable();
-    }
-    UserDataService.prototype.changeAuthSubject = function (auth) {
-        this.authSubject.next(auth);
-    };
-    UserDataService.prototype.isAuth = function () {
-        return this.auth;
-    };
-    UserDataService.prototype.getUser = function (key) {
-        if (key)
-            return this.user[key];
-        return this.user;
-    };
-    UserDataService.prototype.setUser = function (value) {
-        this.user = value;
-        this.changeAuthSubject(true);
-        return this.user;
-    };
-    UserDataService.prototype.getDiaries = function () {
-        return this.user.diaries;
-    };
-    UserDataService.prototype.saveDiary = function (diary) {
-        var create = true;
-        for (var i = 0; i < this.user.diaries.length; i++) {
-            if (this.user.diaries[i]._id == diary._id) {
-                create = false;
-                this.user.diaries[i] = diary;
-                break;
-            }
-        }
-        if (create) {
-            this.user.diaries.push(diary);
-        }
-    };
-    UserDataService = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(), 
-        __metadata('design:paramtypes', [])
-    ], UserDataService);
-    return UserDataService;
-}());
-//# sourceMappingURL=C:/web/nut3/src/user-data.service.js.map
-
-/***/ }),
-
 /***/ 313:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_green_scale_service__ = __webpack_require__(199);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_listener_service__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__service_is_mobile_service__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__service_user_data_service__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__service_auth_service__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__service_user_data_service__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__service_auth_service__ = __webpack_require__(31);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CalendarPageComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -921,14 +854,14 @@ var CalendarPageComponent = (function () {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__ = __webpack_require__(90);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__service_slider_service__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__service_listener_service__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__service_is_mobile_service__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__service_green_scale_service__ = __webpack_require__(199);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__service_user_data_service__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__service_auth_service__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__service_user_data_service__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__service_auth_service__ = __webpack_require__(31);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DateComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1211,7 +1144,7 @@ var DateComponent = (function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__service_user_data_service__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__service_user_data_service__ = __webpack_require__(32);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DiariesSelectComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1592,18 +1525,85 @@ var HomeComponent = (function () {
 
 /***/ }),
 
+/***/ 32:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_BehaviorSubject__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_BehaviorSubject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_BehaviorSubject__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserDataService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var UserDataService = (function () {
+    function UserDataService() {
+        this.auth = false;
+        this.authSubject = new __WEBPACK_IMPORTED_MODULE_1_rxjs_BehaviorSubject__["BehaviorSubject"](this.auth);
+        this.authListener = this.authSubject.asObservable();
+    }
+    UserDataService.prototype.changeAuthSubject = function (auth) {
+        this.authSubject.next(auth);
+    };
+    UserDataService.prototype.isAuth = function () {
+        return this.auth;
+    };
+    UserDataService.prototype.getUser = function (key) {
+        if (key)
+            return this.user[key];
+        return this.user;
+    };
+    UserDataService.prototype.setUser = function (value) {
+        this.user = value;
+        this.changeAuthSubject(true);
+        return this.user;
+    };
+    UserDataService.prototype.getDiaries = function () {
+        return this.user.diaries;
+    };
+    UserDataService.prototype.saveDiary = function (diary) {
+        var create = true;
+        for (var i = 0; i < this.user.diaries.length; i++) {
+            if (this.user.diaries[i]._id == diary._id) {
+                create = false;
+                this.user.diaries[i] = diary;
+                break;
+            }
+        }
+        if (create) {
+            this.user.diaries.push(diary);
+        }
+    };
+    UserDataService = __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(), 
+        __metadata('design:paramtypes', [])
+    ], UserDataService);
+    return UserDataService;
+}());
+//# sourceMappingURL=C:/web/nut3/src/user-data.service.js.map
+
+/***/ }),
+
 /***/ 320:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_slider_service__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__service_listener_service__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__service_is_mobile_service__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__service_auth_service__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__service_user_data_service__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__service_auth_service__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__service_user_data_service__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__service_storage_service__ = __webpack_require__(136);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1794,10 +1794,10 @@ var NutritionalComponent = (function () {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_listener_service__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__service_is_mobile_service__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__service_auth_service__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__service_auth_service__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__service_search_data_service__ = __webpack_require__(200);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__class_helper__ = __webpack_require__(475);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ResultDetailsComponent; });
@@ -1838,10 +1838,6 @@ var ResultDetailsComponent = (function () {
         this.alertUniqTitle = false;
         this.alertSaveRecipe = false;
         this.addIngridient = false;
-        this.confirmedSave = false;
-        this.changeRecipe = false;
-        this.recipeName = 'hamburger';
-        this.presRecipeName = 'hamburger';
     }
     ResultDetailsComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -1849,7 +1845,7 @@ var ResultDetailsComponent = (function () {
         this.appData = this.listenerService.getAppListenerObject();
         this.recipe = this.searchDataService.setSelectedRecipe(this.nullRecipe);
         this.newRecipe = Object.assign({}, this.recipe);
-        this.appData.saveFoodToDiary.state = false;
+        this.appData.saveFoodToDiary.state = '';
         if (this.isMobile)
             this.appData.searchInputVisible.state = false;
         this.listenerService.changeAppListenerSubject(this.appData);
@@ -1870,9 +1866,7 @@ var ResultDetailsComponent = (function () {
         });
         this.appListener = this.listenerService.appListener.subscribe(function (appListener) {
             _this.appData = appListener;
-            if (_this.appData.saveFoodToDiary.state) {
-                if (!_this.isMobile)
-                    _this.confirmedSave = true;
+            if (appListener.saveFoodToDiary.state) {
                 _this.diaryActive = false;
             }
         });
@@ -1895,7 +1889,7 @@ var ResultDetailsComponent = (function () {
         else {
             this.diaryActive = !this.diaryActive;
         }
-        this.appData.saveFoodToDiary.state = false;
+        this.appData.saveFoodToDiary.state = '';
     };
     ResultDetailsComponent.prototype.resetRecipe = function () {
         this.recipeEdited = false;
@@ -1916,9 +1910,6 @@ var ResultDetailsComponent = (function () {
                 _this.alertUniqTitle = true;
             }
         }, function (error) { });
-    };
-    ResultDetailsComponent.prototype.saveChanges = function () {
-        this.diaryActive = false;
     };
     ResultDetailsComponent.prototype.spin = function (event, num) {
         //noinspection TypeScriptUnresolvedVariable
@@ -1951,7 +1942,7 @@ var ResultDetailsComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_listener_service__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_is_mobile_service__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__service_auth_service__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__service_auth_service__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__service_search_data_service__ = __webpack_require__(200);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SearchResultsComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -2142,11 +2133,11 @@ var SearchComponent = (function () {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_change_info_service__ = __webpack_require__(198);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__service_is_mobile_service__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__service_user_data_service__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__service_auth_service__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__service_user_data_service__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__service_auth_service__ = __webpack_require__(31);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SelectedDiaryComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2383,10 +2374,10 @@ var AppService = (function () {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_storage_service__ = __webpack_require__(136);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__service_user_data_service__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__service_auth_service__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__service_user_data_service__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__service_auth_service__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__service_is_mobile_service__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__service_listener_service__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__service_change_info_service__ = __webpack_require__(198);
@@ -2881,8 +2872,8 @@ var SliderService = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_slider_service__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_is_mobile_service__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__service_listener_service__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__service_auth_service__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__service_user_data_service__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__service_auth_service__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__service_user_data_service__ = __webpack_require__(32);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -3031,8 +3022,8 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__service_green_scale_service__ = __webpack_require__(199);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__service_app_service__ = __webpack_require__(326);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__service_storage_service__ = __webpack_require__(136);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__service_auth_service__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__service_user_data_service__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__service_auth_service__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__service_user_data_service__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__service_search_data_service__ = __webpack_require__(200);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__directive_focus_directive__ = __webpack_require__(476);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__directive_slimscroll_directive__ = __webpack_require__(477);
@@ -3942,7 +3933,7 @@ var FooterComponent = (function () {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__service_is_mobile_service__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_user_data_service__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_user_data_service__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_listener_service__ = __webpack_require__(12);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HeaderComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -4135,8 +4126,8 @@ var routing = __WEBPACK_IMPORTED_MODULE_0__angular_router__["a" /* RouterModule 
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__service_listener_service__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_is_mobile_service__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_user_data_service__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__service_auth_service__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_user_data_service__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__service_auth_service__ = __webpack_require__(31);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SearchDiaryComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -4163,23 +4154,23 @@ var SearchDiaryComponent = (function () {
         this.isAuth = false;
         this.selectedDate = {
             month: {
-                number: 2
+                number: new Date().getMonth() + 1
             },
             day: {
-                number: 0
+                number: new Date().getDate()
             },
             year: {
-                number: 2017
+                number: new Date().getFullYear()
             }
         };
         this.selectedTime = 'breakfast';
         this.monthes = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-        this.daysInMonth = 30;
     }
     SearchDiaryComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.isMobile = this.isMobileService.isMobile();
         this.appData = this.listenerService.getAppListenerObject();
+        this.daysInMonth = new Date(this.selectedDate.year.number, this.selectedDate.month.number + 1, 0).getDate();
         this.userListener = this.userDataService.authListener.subscribe(function (auth) {
             _this.isAuth = auth;
             if (auth) {
@@ -4197,32 +4188,22 @@ var SearchDiaryComponent = (function () {
     SearchDiaryComponent.prototype.spin = function (num, obj, arrLength) {
         if (arrLength) {
             obj.number += num;
-            if (obj.number < 0) {
-                obj.number = arrLength - 1;
+            if (obj.number < 1) {
+                obj.number = arrLength;
             }
-            else if (obj.number > arrLength - 1) {
-                obj.number = 0;
+            else if (obj.number > arrLength) {
+                obj.number = 1;
             }
         }
         else {
             obj.number += num;
         }
-        this.daysInMonth = new Date(this.selectedDate.year.number, this.selectedDate.month.number + 1, 0).getDate();
+        this.daysInMonth = new Date(this.selectedDate.year.number, this.selectedDate.month.number, 0).getDate();
+        (this.selectedDate.day.number > this.daysInMonth) ? this.selectedDate.day.number = this.daysInMonth : this.selectedDate.day.number;
     };
     SearchDiaryComponent.prototype.cancel = function () {
-        this.selectedDiary = this.diaryArr[0];
-        this.selectedTime = 'breakfast';
-        this.selectedDate = {
-            month: {
-                number: 2
-            },
-            day: {
-                number: 0
-            },
-            year: {
-                number: 2017
-            }
-        };
+        this.appData.saveFoodToDiary.state = 'canceled';
+        this.listenerService.changeAppListenerSubject(this.appData);
     };
     SearchDiaryComponent.prototype.confirm = function () {
         var savedData = {
@@ -4231,7 +4212,7 @@ var SearchDiaryComponent = (function () {
             time: this.selectedTime,
             confirmed: true
         };
-        this.appData.saveFoodToDiary.state = true;
+        this.appData.saveFoodToDiary.state = 'added';
         this.listenerService.changeAppListenerSubject(this.appData);
     };
     SearchDiaryComponent.prototype.ngOnDestroy = function () {
@@ -4557,7 +4538,7 @@ exports = module.exports = __webpack_require__(7)();
 
 
 // module
-exports.push([module.i, "@-webkit-keyframes opac-down {\n  0% {\n    opacity: 1; }\n  100% {\n    opacity: 0;\n    z-index: -100; } }\n\n@keyframes opac-down {\n  0% {\n    opacity: 1; }\n  100% {\n    opacity: 0;\n    z-index: -100; } }\n\n@-webkit-keyframes opac-up {\n  0% {\n    opacity: 0;\n    z-index: 100; }\n  100% {\n    opacity: 1; } }\n\n@keyframes opac-up {\n  0% {\n    opacity: 0;\n    z-index: 100; }\n  100% {\n    opacity: 1; } }\n\n.position-center {\n  left: 50%;\n  top: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%); }\n\n.w-h-100 {\n  width: 100%;\n  height: 100%; }\n\n.posa-w-100 {\n  width: 100%;\n  position: absolute; }\n\nsearch-diary {\n  height: 88.9%;\n  width: 100%;\n  color: #ffffff;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between; }\n  search-diary .choose-task {\n    width: 100%;\n    height: 80%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center; }\n    search-diary .choose-task .choosen-content-item {\n      width: 100%;\n      height: 33.3%;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      -webkit-box-pack: center;\n          -ms-flex-pack: center;\n              justify-content: center; }\n      search-diary .choose-task .choosen-content-item .item-text {\n        height: 50%;\n        width: 100%;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: center;\n            -ms-flex-pack: center;\n                justify-content: center;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        background: 50% 50% no-repeat;\n        background-size: auto 50%;\n        opacity: 0.8; }\n      search-diary .choose-task .choosen-content-item .items-wrap {\n        height: 50%;\n        width: 100%;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: center;\n            -ms-flex-pack: center;\n                justify-content: center;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        margin: 0 auto; }\n        search-diary .choose-task .choosen-content-item .items-wrap .diary-item > img {\n          max-height: 6vh;\n          max-width: 6vh;\n          border-radius: 50%; }\n        search-diary .choose-task .choosen-content-item .items-wrap .time-item {\n          margin: 0 2%; }\n        search-diary .choose-task .choosen-content-item .items-wrap .date-item {\n          width: 15%;\n          height: 100%;\n          margin: 0 2%;\n          display: -webkit-box;\n          display: -ms-flexbox;\n          display: flex;\n          -webkit-box-orient: vertical;\n          -webkit-box-direction: normal;\n              -ms-flex-direction: column;\n                  flex-direction: column;\n          -webkit-box-align: center;\n              -ms-flex-align: center;\n                  align-items: center;\n          -webkit-box-pack: justify;\n              -ms-flex-pack: justify;\n                  justify-content: space-between; }\n          search-diary .choose-task .choosen-content-item .items-wrap .date-item span {\n            opacity: 0.8;\n            font-size: 1.3vh; }\n          search-diary .choose-task .choosen-content-item .items-wrap .date-item img {\n            opacity: 0.5;\n            max-width: 40%;\n            cursor: pointer; }\n          search-diary .choose-task .choosen-content-item .items-wrap .date-item input {\n            width: 100%;\n            text-align: center; }\n    search-diary .choose-task .diary .selected {\n      border: 1px dotted #ffffff;\n      -webkit-transform: scale(1.2);\n              transform: scale(1.2); }\n      search-diary .choose-task .diary .selected img {\n        -webkit-transform: scale(0.8);\n                transform: scale(0.8); }\n\nhtml.tablet search-diary, html.mobile search-diary {\n  height: 91%;\n  position: absolute;\n  top: 9%;\n  padding: 0 5% 5%; }\n  html.tablet search-diary .choosen-content-item .item-text, html.mobile search-diary .choosen-content-item .item-text {\n    background-size: auto 30%;\n    font-size: 2.3vh; }\n  html.tablet search-diary .choosen-content-item .items-wrap, html.mobile search-diary .choosen-content-item .items-wrap {\n    width: 100%; }\n    html.tablet search-diary .choosen-content-item .items-wrap .diary-item > img, html.mobile search-diary .choosen-content-item .items-wrap .diary-item > img {\n      max-height: 8vh;\n      max-width: 8vh; }\n    html.tablet search-diary .choosen-content-item .items-wrap .date-item, html.mobile search-diary .choosen-content-item .items-wrap .date-item {\n      height: 75%; }\n      html.tablet search-diary .choosen-content-item .items-wrap .date-item span, html.mobile search-diary .choosen-content-item .items-wrap .date-item span {\n        font-size: 1.8vh; }\n  html.tablet search-diary .diary .selected, html.mobile search-diary .diary .selected {\n    border-color: #3ec14d;\n    -webkit-transform: scale(1);\n            transform: scale(1); }\n    html.tablet search-diary .diary .selected img, html.mobile search-diary .diary .selected img {\n      -webkit-transform: scale(1);\n              transform: scale(1); }\n", ""]);
+exports.push([module.i, "@-webkit-keyframes opac-down {\n  0% {\n    opacity: 1; }\n  100% {\n    opacity: 0;\n    z-index: -100; } }\n\n@keyframes opac-down {\n  0% {\n    opacity: 1; }\n  100% {\n    opacity: 0;\n    z-index: -100; } }\n\n@-webkit-keyframes opac-up {\n  0% {\n    opacity: 0;\n    z-index: 100; }\n  100% {\n    opacity: 1; } }\n\n@keyframes opac-up {\n  0% {\n    opacity: 0;\n    z-index: 100; }\n  100% {\n    opacity: 1; } }\n\n.position-center {\n  left: 50%;\n  top: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%); }\n\n.w-h-100 {\n  width: 100%;\n  height: 100%; }\n\n.posa-w-100 {\n  width: 100%;\n  position: absolute; }\n\nsearch-diary {\n  height: 88.9%;\n  width: 100%;\n  color: #ffffff;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between; }\n  search-diary .choose-task {\n    width: 100%;\n    height: 80%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center; }\n    search-diary .choose-task .choosen-content-item {\n      width: 100%;\n      height: 33.3%;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      -webkit-box-pack: center;\n          -ms-flex-pack: center;\n              justify-content: center; }\n      search-diary .choose-task .choosen-content-item .item-text {\n        height: 50%;\n        width: 100%;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: center;\n            -ms-flex-pack: center;\n                justify-content: center;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        background: 50% 50% no-repeat;\n        background-size: auto 50%;\n        opacity: 0.8; }\n      search-diary .choose-task .choosen-content-item .items-wrap {\n        height: 50%;\n        width: 100%;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: center;\n            -ms-flex-pack: center;\n                justify-content: center;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        margin: 0 auto; }\n        search-diary .choose-task .choosen-content-item .items-wrap .diary-item > img {\n          max-height: 6vh;\n          max-width: 6vh;\n          border-radius: 50%; }\n        search-diary .choose-task .choosen-content-item .items-wrap .time-item {\n          margin: 0 2%; }\n        search-diary .choose-task .choosen-content-item .items-wrap .date-item {\n          width: 15%;\n          height: 100%;\n          margin: 0 2%;\n          display: -webkit-box;\n          display: -ms-flexbox;\n          display: flex;\n          -webkit-box-orient: vertical;\n          -webkit-box-direction: normal;\n              -ms-flex-direction: column;\n                  flex-direction: column;\n          -webkit-box-align: center;\n              -ms-flex-align: center;\n                  align-items: center;\n          -webkit-box-pack: justify;\n              -ms-flex-pack: justify;\n                  justify-content: space-between; }\n          search-diary .choose-task .choosen-content-item .items-wrap .date-item span {\n            opacity: 0.8;\n            font-size: 1.3vh; }\n          search-diary .choose-task .choosen-content-item .items-wrap .date-item img {\n            opacity: 0.5;\n            max-width: 40%;\n            cursor: pointer; }\n          search-diary .choose-task .choosen-content-item .items-wrap .date-item input {\n            width: 100%;\n            text-align: center; }\n    search-diary .choose-task .diary .selected {\n      border: 1px dotted #ffffff;\n      -webkit-transform: scale(1.2);\n              transform: scale(1.2); }\n      search-diary .choose-task .diary .selected img {\n        -webkit-transform: scale(0.8);\n                transform: scale(0.8); }\n\nhtml.tablet search-diary, html.mobile search-diary {\n  height: 91%;\n  position: absolute;\n  top: 9%;\n  padding: 0 5% 5%; }\n  html.tablet search-diary .choosen-content-item .item-text, html.mobile search-diary .choosen-content-item .item-text {\n    background-size: auto 30%;\n    font-size: 2.3vh; }\n  html.tablet search-diary .choosen-content-item .items-wrap, html.mobile search-diary .choosen-content-item .items-wrap {\n    width: 100%; }\n    html.tablet search-diary .choosen-content-item .items-wrap .diary-item > img, html.mobile search-diary .choosen-content-item .items-wrap .diary-item > img {\n      max-height: 100%;\n      max-width: 100%; }\n    html.tablet search-diary .choosen-content-item .items-wrap .date-item, html.mobile search-diary .choosen-content-item .items-wrap .date-item {\n      height: 75%; }\n      html.tablet search-diary .choosen-content-item .items-wrap .date-item span, html.mobile search-diary .choosen-content-item .items-wrap .date-item span {\n        font-size: 1.8vh; }\n  html.tablet search-diary .diary .selected, html.mobile search-diary .diary .selected {\n    border-color: #3ec14d; }\n", ""]);
 
 // exports
 
@@ -4744,14 +4725,14 @@ module.exports = "<div class=\"res-block first-block\">\n  <div class=\"item ite
 /***/ 569:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"res-block\" [class.confirmed-save]=\"appData.saveFoodToDiary.state && !isMobile\" [hidden]=\"isMobile && addIngridient\">\n\n  <div class=\"res-det-nav item\">\n    <div class=\"N-W\"><img src=\"./assets/resources/images/search/recipe-black.png\" alt=\"\"></div>\n    <div class=\"text-res-item\">\n      <input type=\"text\" [(ngModel)]=\"newRecipe.title\" [readonly]=\"diaryActive\" (keyup)=\"checkRecipeEdited()\" (focus)=\"alertUniqTitle = false; alertSaveRecipe = false\">\n      <span [class.op-1]=\"alertUniqTitle\">This name already taken</span>\n      <span [class.op-1]=\"alertSaveRecipe\">Change name and save recipe</span>\n    </div>\n    <div class=\"N-W\">\n      <img class=\"go-back-black\" src=\"./assets/resources/images/search/go-back-green.png\" alt=\"\" (click)=\"moveBack()\">\n    </div>\n    <div class=\"N-W\" >\n      <img [class.grayscale-1]=\"!diaryActive\" src=\"./assets/resources/images/search/calendar-green.png\" alt=\"\" (click)=\"toggleDiaryActivity()\">\n    </div>\n    <div class=\"N-W\">\n      <img [class.grayscale-1]=\"!recipeEdited\" src=\"./assets/resources/images/search/reset-green.png\" alt=\"\"  [hidden]=\"newRecipe.title !== recipe.title || !newRecipe._id\" (click)=\"resetRecipe()\">\n      <img class=\"save-black\" src=\"./assets/resources/images/search/save-green.png\" alt=\"\" [hidden]=\"newRecipe.title === recipe.title && newRecipe._id\" (click)=\"saveNewRecipe()\">\n    </div>\n  </div>\n\n  <div class=\"res-det-img-wrap\" [hidden]=\"diaryActive\">\n    <div class=\"res-det-img\"  *ngIf=\"!isMobile\" slimScroll  width=\"100%\" height=\"100%\"  size=\"2px\" color=\"#fff\" opacity=1 railVisible=true alwaysVisible=true railColor=\"#fff\" railOpacity=0.2 distance=\"-1px\">\n      <img src=\"{{img}}\" *ngFor=\"let img of newRecipe.images\" alt=\"\">\n    </div>\n    <div class=\"res-det-img\"  *ngIf=\"isMobile\">\n      <img src=\"{{img}}\" *ngFor=\"let img of newRecipe.images\" alt=\"\">\n    </div>\n  </div>\n\n  <search-diary [hidden]=\"!diaryActive\"></search-diary>\n</div>\n\n\n<div class=\"res-block\" [hidden]=\"isMobile && diaryActive\">\n  <div class=\"second-block-nav item\">\n    <div class=\"second-block-title\" [hidden]=\"addIngridient\">{{isMobile ? 'Recipe' : 'Recipe / Ingredients'}}</div>\n    <div class=\"N-W\" [hidden]=\"!addIngridient\"><a href=\"\" ><img src=\"./assets/resources/images/search/search-black.png\" alt=\"\"></a></div>\n    <div class=\"text-res-item w-60\" [hidden]=\"!addIngridient\" style=\"justify-content: flex-start; color: #616469;\">\n      <input type=\"text\" value=\"\" >\n    </div>\n    <div class=\"text-res-item\" href=\"\" [hidden]=\"addIngridient\" (click)=\"addIngridient = true;\" style=\"cursor: pointer;\">add ingredient</div>\n    <div class=\"N-W\">\n      <img src=\"./assets/resources/images/search/add-green.png\" alt=\"\" [hidden]=\"addIngridient\" (click)=\"addIngridient = true;\">\n      <img src=\"./assets/resources/images/search/go-back-green.png\" alt=\"\" [hidden]=\"!addIngridient\" (click)=\"addIngridient = false;\">\n    </div>\n    <div class=\"N-W\"><span>N</span></div>\n    <div class=\"N-W\">\n      <span class=\"units-hover\">W</span>\n      <div class=\"faq-units\" *ngIf=\"!isMobile\">\n        <div class=\"faq-units-content\">\n          <div class=\"units\">\n            <span>g</span>\n            <span>kg</span>\n            <span>ts</span>\n          </div>\n          <div class=\"line\"></div>\n          <div class=\"units\">\n            <span>grams</span>\n            <span>kilograms</span>\n            <span>tablespoons</span>\n          </div>\n          <div class=\"corner\"></div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!--we cant edit recipe if diaryActive and if we edit recipe on each edit we need to use checkRecipeEdited() function-->\n\n  <div class=\"scroll-wrap-wrap\" [hidden]=\"addIngridient\">\n    <div class=\"scroll-wrap\" *ngIf=\"!isMobile\" slimScroll  width=\"100%\" height=\"100%\"  position=\"left\" size=\"2px\" color=\"#fff\" opacity=1 railVisible=true alwaysVisible=true railColor=\"#fff\" railOpacity=0.2 distance=\"-1px\">\n      <div class=\"second-block-ingrid item\">\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W\" ><img src=\"./assets/resources/images/search/delete.png\" alt=\"\"></div>\n        <div class=\"N-W\">\n          <div class=\"ingrid-count\">\n            <img src=\"./assets/resources/images/login/arr-up.png\" alt=\"\" (click)=\"spin($event, 1)\">\n            <input type=\"text\" value=\"1\" >\n            <img src=\"./assets/resources/images/login/arr-down.png\" alt=\"\" (click)=\"spin($event, -1)\">\n          </div>\n        </div>\n        <div class=\"N-W\"><span>30g</span></div>\n      </div>\n      <div class=\"second-block-ingrid item\">\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W\" ><img src=\"./assets/resources/images/search/delete.png\" alt=\"\"></div>\n        <div class=\"N-W\">\n          <div class=\"ingrid-count\">\n            <img src=\"./assets/resources/images/login/arr-up.png\" alt=\"\" (click)=\"spin($event, 1)\">\n            <input type=\"text\" value=\"1\" >\n            <img src=\"./assets/resources/images/login/arr-down.png\" alt=\"\" (click)=\"spin($event, -1)\">\n          </div>\n        </div>\n        <div class=\"N-W\"><span>30g</span></div>\n      </div>\n      <div class=\"second-block-ingrid item\">\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W\" ><img src=\"./assets/resources/images/search/delete.png\" alt=\"\"></div>\n        <div class=\"N-W\">\n          <div class=\"ingrid-count\">\n            <img src=\"./assets/resources/images/login/arr-up.png\" alt=\"\" (click)=\"spin($event, 1)\">\n            <input type=\"text\" value=\"1\" >\n            <img src=\"./assets/resources/images/login/arr-down.png\" alt=\"\" (click)=\"spin($event, -1)\">\n          </div>\n        </div>\n        <div class=\"N-W\"><span>30g</span></div>\n      </div>\n      <div class=\"second-block-ingrid item\">\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W\" ><img src=\"./assets/resources/images/search/delete.png\" alt=\"\"></div>\n        <div class=\"N-W\">\n          <div class=\"ingrid-count\">\n            <img src=\"./assets/resources/images/login/arr-up.png\" alt=\"\" (click)=\"spin($event, 1)\">\n            <input type=\"text\" value=\"1\" >\n            <img src=\"./assets/resources/images/login/arr-down.png\" alt=\"\" (click)=\"spin($event, -1)\">\n          </div>\n        </div>\n        <div class=\"N-W\"><span>30g</span></div>\n      </div>\n\n      <div class=\"second-block-sections-title item\" >\n        <div class=\"bg-green\"></div>\n      </div>\n\n      <div class=\"second-block-ingrid calories item\" >\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W cal-numb\"><span>5120cal</span></div>\n      </div>\n      <div class=\"second-block-ingrid calories item\" >\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W cal-numb\"><span>5120cal</span></div>\n      </div>\n      <div class=\"second-block-ingrid calories item\" >\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W cal-numb\"><span>5120cal</span></div>\n      </div>\n\n      <div class=\"second-block-sections-title item\" >\n        <div class=\"bg-green\"></div>\n      </div>\n\n      <div class=\"second-block-ingrid calories item\" >\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Protein</div>\n        <div class=\"N-W cal-numb\"><span>30%</span></div>\n      </div>\n      <div class=\"second-block-ingrid calories item\" >\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Fats</div>\n        <div class=\"N-W cal-numb\"><span>30%</span></div>\n      </div>\n      <div class=\"second-block-ingrid calories item\" >\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Carbs</div>\n        <div class=\"N-W cal-numb\"><span>30%</span></div>\n      </div>\n\n      <div class=\"second-block-sections-title item\" >\n        <div class=\"bg-green\"></div>\n      </div>\n\n      <div class=\"second-block-ingrid calories item\" >\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Vitamin A</div>\n        <div class=\"N-W cal-numb\"><span>30%</span></div>\n      </div>\n      <div class=\"second-block-ingrid calories item\" >\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Vitamin B</div>\n        <div class=\"N-W cal-numb\"><span>30%</span></div>\n      </div>\n      <div class=\"second-block-ingrid calories item\" >\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Vitamin C</div>\n        <div class=\"N-W cal-numb\"><span>30%</span></div>\n      </div>\n\n    </div>\n    <div class=\"scroll-wrap\" *ngIf=\"isMobile\">\n      <div class=\"second-block-ingrid item\">\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W\" ><img src=\"./assets/resources/images/search/delete.png\" alt=\"\"></div>\n        <div class=\"N-W\">\n          <div class=\"ingrid-count\">\n            <img src=\"./assets/resources/images/login/arr-up.png\" alt=\"\" (click)=\"spin($event, 1)\">\n            <input type=\"text\" value=\"1\" >\n            <img src=\"./assets/resources/images/login/arr-down.png\" alt=\"\" (click)=\"spin($event, -1)\">\n          </div>\n        </div>\n        <div class=\"N-W\"><span>30g</span></div>\n      </div>\n      <div class=\"second-block-ingrid item\">\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W\" ><img src=\"./assets/resources/images/search/delete.png\" alt=\"\"></div>\n        <div class=\"N-W\">\n          <div class=\"ingrid-count\">\n            <img src=\"./assets/resources/images/login/arr-up.png\" alt=\"\" (click)=\"spin($event, 1)\">\n            <input type=\"text\" value=\"1\" >\n            <img src=\"./assets/resources/images/login/arr-down.png\" alt=\"\" (click)=\"spin($event, -1)\">\n          </div>\n        </div>\n        <div class=\"N-W\"><span>30g</span></div>\n      </div>\n      <div class=\"second-block-ingrid item\">\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W\" ><img src=\"./assets/resources/images/search/delete.png\" alt=\"\"></div>\n        <div class=\"N-W\">\n          <div class=\"ingrid-count\">\n            <img src=\"./assets/resources/images/login/arr-up.png\" alt=\"\" (click)=\"spin($event, 1)\">\n            <input type=\"text\" value=\"1\" >\n            <img src=\"./assets/resources/images/login/arr-down.png\" alt=\"\" (click)=\"spin($event, -1)\">\n          </div>\n        </div>\n        <div class=\"N-W\"><span>30g</span></div>\n      </div>\n      <div class=\"second-block-ingrid item\">\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W\" ><img src=\"./assets/resources/images/search/delete.png\" alt=\"\"></div>\n        <div class=\"N-W\">\n          <div class=\"ingrid-count\">\n            <img src=\"./assets/resources/images/login/arr-up.png\" alt=\"\" (click)=\"spin($event, 1)\">\n            <input type=\"text\" value=\"1\" >\n            <img src=\"./assets/resources/images/login/arr-down.png\" alt=\"\" (click)=\"spin($event, -1)\">\n          </div>\n        </div>\n        <div class=\"N-W\"><span>30g</span></div>\n      </div>\n\n      <div class=\"second-block-sections-title item\" >\n        <div class=\"bg-green\"></div>\n      </div>\n\n      <div class=\"second-block-ingrid calories item\" >\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W cal-numb\"><span>5120cal</span></div>\n      </div>\n      <div class=\"second-block-ingrid calories item\" >\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W cal-numb\"><span>5120cal</span></div>\n      </div>\n      <div class=\"second-block-ingrid calories item\" >\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W cal-numb\"><span>5120cal</span></div>\n      </div>\n\n      <div class=\"second-block-sections-title item\" >\n        <div class=\"bg-green\"></div>\n      </div>\n\n      <div class=\"second-block-ingrid calories item\" >\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Protein</div>\n        <div class=\"N-W cal-numb\"><span>30%</span></div>\n      </div>\n      <div class=\"second-block-ingrid calories item\" >\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Fats</div>\n        <div class=\"N-W cal-numb\"><span>30%</span></div>\n      </div>\n      <div class=\"second-block-ingrid calories item\" >\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Carbs</div>\n        <div class=\"N-W cal-numb\"><span>30%</span></div>\n      </div>\n\n      <div class=\"second-block-sections-title item\" >\n        <div class=\"bg-green\"></div>\n      </div>\n\n      <div class=\"second-block-ingrid calories item\" >\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Vitamin A</div>\n        <div class=\"N-W cal-numb\"><span>30%</span></div>\n      </div>\n      <div class=\"second-block-ingrid calories item\" >\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Vitamin B</div>\n        <div class=\"N-W cal-numb\"><span>30%</span></div>\n      </div>\n      <div class=\"second-block-ingrid calories item\" >\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Vitamin C</div>\n        <div class=\"N-W cal-numb\"><span>30%</span></div>\n      </div>\n\n    </div>\n  </div>\n\n  <div class=\"scroll-wrap-wrap\" [hidden]=\"!addIngridient\">\n    <div class=\"scroll-wrap\" *ngIf=\"!isMobile\" slimScroll  width=\"100%\" height=\"100%\"  position=\"left\" size=\"2px\" color=\"#fff\" opacity=1 railVisible=true alwaysVisible=true railColor=\"#fff\" railOpacity=0.2 distance=\"-1px\">\n      <div class=\"second-block-ingrid item\">\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W\" ><img src=\"./assets/resources/images/search/delete.png\" alt=\"\"></div>\n        <div class=\"N-W\">\n          <div class=\"ingrid-count\">\n            <img src=\"./assets/resources/images/login/arr-up.png\" alt=\"\" (click)=\"spin($event, 1)\">\n            <input type=\"text\" value=\"1\" >\n            <img src=\"./assets/resources/images/login/arr-down.png\" alt=\"\" (click)=\"spin($event, -1)\">\n          </div>\n        </div>\n        <div class=\"N-W\"><span>30g</span></div>\n      </div>\n      <div class=\"second-block-ingrid item\">\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W\" ><img src=\"./assets/resources/images/search/delete.png\" alt=\"\"></div>\n        <div class=\"N-W\">\n          <div class=\"ingrid-count\">\n            <img src=\"./assets/resources/images/login/arr-up.png\" alt=\"\" (click)=\"spin($event, 1)\">\n            <input type=\"text\" value=\"1\" >\n            <img src=\"./assets/resources/images/login/arr-down.png\" alt=\"\" (click)=\"spin($event, -1)\">\n          </div>\n        </div>\n        <div class=\"N-W\"><span>30g</span></div>\n      </div>\n      <div class=\"second-block-ingrid item\">\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W\" ><img src=\"./assets/resources/images/search/delete.png\" alt=\"\"></div>\n        <div class=\"N-W\">\n          <div class=\"ingrid-count\">\n            <img src=\"./assets/resources/images/login/arr-up.png\" alt=\"\" (click)=\"spin($event, 1)\">\n            <input type=\"text\" value=\"1\" >\n            <img src=\"./assets/resources/images/login/arr-down.png\" alt=\"\" (click)=\"spin($event, -1)\">\n          </div>\n        </div>\n        <div class=\"N-W\"><span>30g</span></div>\n      </div>\n      <div class=\"second-block-ingrid item\">\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W\" ><img src=\"./assets/resources/images/search/delete.png\" alt=\"\"></div>\n        <div class=\"N-W\">\n          <div class=\"ingrid-count\">\n            <img src=\"./assets/resources/images/login/arr-up.png\" alt=\"\" (click)=\"spin($event, 1)\">\n            <input type=\"text\" value=\"1\" >\n            <img src=\"./assets/resources/images/login/arr-down.png\" alt=\"\" (click)=\"spin($event, -1)\">\n          </div>\n        </div>\n        <div class=\"N-W\"><span>30g</span></div>\n      </div>\n\n    </div>\n    <div class=\"scroll-wrap\" *ngIf=\"isMobile\">\n      <div class=\"second-block-ingrid item\">\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W\" ><img src=\"./assets/resources/images/search/delete.png\" alt=\"\"></div>\n        <div class=\"N-W\">\n          <div class=\"ingrid-count\">\n            <img src=\"./assets/resources/images/login/arr-up.png\" alt=\"\" (click)=\"spin($event, 1)\">\n            <input type=\"text\" value=\"1\" >\n            <img src=\"./assets/resources/images/login/arr-down.png\" alt=\"\" (click)=\"spin($event, -1)\">\n          </div>\n        </div>\n        <div class=\"N-W\"><span>30g</span></div>\n      </div>\n      <div class=\"second-block-ingrid item\">\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W\" ><img src=\"./assets/resources/images/search/delete.png\" alt=\"\"></div>\n        <div class=\"N-W\">\n          <div class=\"ingrid-count\">\n            <img src=\"./assets/resources/images/login/arr-up.png\" alt=\"\" (click)=\"spin($event, 1)\">\n            <input type=\"text\" value=\"1\" >\n            <img src=\"./assets/resources/images/login/arr-down.png\" alt=\"\" (click)=\"spin($event, -1)\">\n          </div>\n        </div>\n        <div class=\"N-W\"><span>30g</span></div>\n      </div>\n      <div class=\"second-block-ingrid item\">\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W\" ><img src=\"./assets/resources/images/search/delete.png\" alt=\"\"></div>\n        <div class=\"N-W\">\n          <div class=\"ingrid-count\">\n            <img src=\"./assets/resources/images/login/arr-up.png\" alt=\"\" (click)=\"spin($event, 1)\">\n            <input type=\"text\" value=\"1\" >\n            <img src=\"./assets/resources/images/login/arr-down.png\" alt=\"\" (click)=\"spin($event, -1)\">\n          </div>\n        </div>\n        <div class=\"N-W\"><span>30g</span></div>\n      </div>\n      <div class=\"second-block-ingrid item\">\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W\" ><img src=\"./assets/resources/images/search/delete.png\" alt=\"\"></div>\n        <div class=\"N-W\">\n          <div class=\"ingrid-count\">\n            <img src=\"./assets/resources/images/login/arr-up.png\" alt=\"\" (click)=\"spin($event, 1)\">\n            <input type=\"text\" value=\"1\" >\n            <img src=\"./assets/resources/images/login/arr-down.png\" alt=\"\" (click)=\"spin($event, -1)\">\n          </div>\n        </div>\n        <div class=\"N-W\"><span>30g</span></div>\n      </div>\n\n    </div>\n  </div>\n</div>"
+module.exports = "<div class=\"res-block\" [class.confirmed-save]=\"appData.saveFoodToDiary.state === 'added' && !isMobile\" [hidden]=\"isMobile && addIngridient\">\n\n  <div class=\"res-det-nav item\">\n    <div class=\"N-W\"><img src=\"./assets/resources/images/search/recipe-black.png\" alt=\"\"></div>\n    <div class=\"text-res-item\">\n      <input type=\"text\" [(ngModel)]=\"newRecipe.title\" [readonly]=\"diaryActive\" (keyup)=\"checkRecipeEdited()\" (focus)=\"alertUniqTitle = false; alertSaveRecipe = false\">\n      <span [class.op-1]=\"alertUniqTitle\">This name already taken</span>\n      <span [class.op-1]=\"alertSaveRecipe\">Change name and save recipe</span>\n    </div>\n    <div class=\"N-W\">\n      <img class=\"go-back-black\" src=\"./assets/resources/images/search/go-back-green.png\" alt=\"\" (click)=\"moveBack()\">\n    </div>\n    <div class=\"N-W\" >\n      <img [class.grayscale-1]=\"!diaryActive\" src=\"./assets/resources/images/search/calendar-green.png\" alt=\"\" (click)=\"toggleDiaryActivity()\">\n    </div>\n    <div class=\"N-W\">\n      <img [class.grayscale-1]=\"!recipeEdited\" src=\"./assets/resources/images/search/reset-green.png\" alt=\"\"  [hidden]=\"newRecipe.title !== recipe.title || !newRecipe._id\" (click)=\"resetRecipe()\">\n      <img class=\"save-black\" src=\"./assets/resources/images/search/save-green.png\" alt=\"\" [hidden]=\"newRecipe.title === recipe.title && newRecipe._id\" (click)=\"saveNewRecipe()\">\n    </div>\n  </div>\n\n  <div class=\"res-det-img-wrap\" [hidden]=\"diaryActive || (appData.saveFoodToDiary.state === 'added' && !isMobile)\">\n    <div class=\"res-det-img\"  *ngIf=\"!isMobile\" slimScroll  width=\"100%\" height=\"100%\"  size=\"2px\" color=\"#fff\" opacity=1 railVisible=true alwaysVisible=true railColor=\"#fff\" railOpacity=0.2 distance=\"-1px\">\n      <img src=\"{{img}}\" *ngFor=\"let img of newRecipe.images\" alt=\"\">\n    </div>\n    <div class=\"res-det-img\"  *ngIf=\"isMobile\">\n      <img src=\"{{img}}\" *ngFor=\"let img of newRecipe.images\" alt=\"\">\n    </div>\n  </div>\n\n  <search-diary [hidden]=\"!diaryActive\"></search-diary>\n</div>\n\n\n<div class=\"res-block\" [hidden]=\"isMobile && diaryActive\">\n  <div class=\"second-block-nav item\">\n    <div class=\"second-block-title\" [hidden]=\"addIngridient\">{{isMobile ? 'Recipe' : 'Recipe / Ingredients'}}</div>\n    <div class=\"N-W\" [hidden]=\"!addIngridient\"><a href=\"\" ><img src=\"./assets/resources/images/search/search-black.png\" alt=\"\"></a></div>\n    <div class=\"text-res-item w-60\" [hidden]=\"!addIngridient\" style=\"justify-content: flex-start; color: #616469;\">\n      <input type=\"text\" value=\"\" >\n    </div>\n    <div class=\"text-res-item\" href=\"\" [hidden]=\"addIngridient\" (click)=\"addIngridient = true;\" style=\"cursor: pointer;\">add ingredient</div>\n    <div class=\"N-W\">\n      <img src=\"./assets/resources/images/search/add-green.png\" alt=\"\" [hidden]=\"addIngridient\" (click)=\"addIngridient = true;\">\n      <img src=\"./assets/resources/images/search/go-back-green.png\" alt=\"\" [hidden]=\"!addIngridient\" (click)=\"addIngridient = false;\">\n    </div>\n    <div class=\"N-W\"><span>N</span></div>\n    <div class=\"N-W\">\n      <span class=\"units-hover\">W</span>\n      <div class=\"faq-units\" *ngIf=\"!isMobile\">\n        <div class=\"faq-units-content\">\n          <div class=\"units\">\n            <span>g</span>\n            <span>kg</span>\n            <span>ts</span>\n          </div>\n          <div class=\"line\"></div>\n          <div class=\"units\">\n            <span>grams</span>\n            <span>kilograms</span>\n            <span>tablespoons</span>\n          </div>\n          <div class=\"corner\"></div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!--we cant edit recipe if diaryActive and if we edit recipe on each edit we need to use checkRecipeEdited() function-->\n\n  <div class=\"scroll-wrap-wrap\" [hidden]=\"addIngridient\">\n    <div class=\"scroll-wrap\" *ngIf=\"!isMobile\" slimScroll  width=\"100%\" height=\"100%\"  position=\"left\" size=\"2px\" color=\"#fff\" opacity=1 railVisible=true alwaysVisible=true railColor=\"#fff\" railOpacity=0.2 distance=\"-1px\">\n      <div class=\"second-block-ingrid item\">\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W\" ><img src=\"./assets/resources/images/search/delete.png\" alt=\"\"></div>\n        <div class=\"N-W\">\n          <div class=\"ingrid-count\">\n            <img src=\"./assets/resources/images/login/arr-up.png\" alt=\"\" (click)=\"spin($event, 1)\">\n            <input type=\"text\" value=\"1\" >\n            <img src=\"./assets/resources/images/login/arr-down.png\" alt=\"\" (click)=\"spin($event, -1)\">\n          </div>\n        </div>\n        <div class=\"N-W\"><span>30g</span></div>\n      </div>\n      <div class=\"second-block-ingrid item\">\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W\" ><img src=\"./assets/resources/images/search/delete.png\" alt=\"\"></div>\n        <div class=\"N-W\">\n          <div class=\"ingrid-count\">\n            <img src=\"./assets/resources/images/login/arr-up.png\" alt=\"\" (click)=\"spin($event, 1)\">\n            <input type=\"text\" value=\"1\" >\n            <img src=\"./assets/resources/images/login/arr-down.png\" alt=\"\" (click)=\"spin($event, -1)\">\n          </div>\n        </div>\n        <div class=\"N-W\"><span>30g</span></div>\n      </div>\n      <div class=\"second-block-ingrid item\">\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W\" ><img src=\"./assets/resources/images/search/delete.png\" alt=\"\"></div>\n        <div class=\"N-W\">\n          <div class=\"ingrid-count\">\n            <img src=\"./assets/resources/images/login/arr-up.png\" alt=\"\" (click)=\"spin($event, 1)\">\n            <input type=\"text\" value=\"1\" >\n            <img src=\"./assets/resources/images/login/arr-down.png\" alt=\"\" (click)=\"spin($event, -1)\">\n          </div>\n        </div>\n        <div class=\"N-W\"><span>30g</span></div>\n      </div>\n      <div class=\"second-block-ingrid item\">\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W\" ><img src=\"./assets/resources/images/search/delete.png\" alt=\"\"></div>\n        <div class=\"N-W\">\n          <div class=\"ingrid-count\">\n            <img src=\"./assets/resources/images/login/arr-up.png\" alt=\"\" (click)=\"spin($event, 1)\">\n            <input type=\"text\" value=\"1\" >\n            <img src=\"./assets/resources/images/login/arr-down.png\" alt=\"\" (click)=\"spin($event, -1)\">\n          </div>\n        </div>\n        <div class=\"N-W\"><span>30g</span></div>\n      </div>\n\n      <div class=\"second-block-sections-title item\" >\n        <div class=\"bg-green\"></div>\n      </div>\n\n      <div class=\"second-block-ingrid calories item\" >\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W cal-numb\"><span>5120cal</span></div>\n      </div>\n      <div class=\"second-block-ingrid calories item\" >\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W cal-numb\"><span>5120cal</span></div>\n      </div>\n      <div class=\"second-block-ingrid calories item\" >\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W cal-numb\"><span>5120cal</span></div>\n      </div>\n\n      <div class=\"second-block-sections-title item\" >\n        <div class=\"bg-green\"></div>\n      </div>\n\n      <div class=\"second-block-ingrid calories item\" >\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Protein</div>\n        <div class=\"N-W cal-numb\"><span>30%</span></div>\n      </div>\n      <div class=\"second-block-ingrid calories item\" >\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Fats</div>\n        <div class=\"N-W cal-numb\"><span>30%</span></div>\n      </div>\n      <div class=\"second-block-ingrid calories item\" >\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Carbs</div>\n        <div class=\"N-W cal-numb\"><span>30%</span></div>\n      </div>\n\n      <div class=\"second-block-sections-title item\" >\n        <div class=\"bg-green\"></div>\n      </div>\n\n      <div class=\"second-block-ingrid calories item\" >\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Vitamin A</div>\n        <div class=\"N-W cal-numb\"><span>30%</span></div>\n      </div>\n      <div class=\"second-block-ingrid calories item\" >\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Vitamin B</div>\n        <div class=\"N-W cal-numb\"><span>30%</span></div>\n      </div>\n      <div class=\"second-block-ingrid calories item\" >\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Vitamin C</div>\n        <div class=\"N-W cal-numb\"><span>30%</span></div>\n      </div>\n\n    </div>\n    <div class=\"scroll-wrap\" *ngIf=\"isMobile\">\n      <div class=\"second-block-ingrid item\">\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W\" ><img src=\"./assets/resources/images/search/delete.png\" alt=\"\"></div>\n        <div class=\"N-W\">\n          <div class=\"ingrid-count\">\n            <img src=\"./assets/resources/images/login/arr-up.png\" alt=\"\" (click)=\"spin($event, 1)\">\n            <input type=\"text\" value=\"1\" >\n            <img src=\"./assets/resources/images/login/arr-down.png\" alt=\"\" (click)=\"spin($event, -1)\">\n          </div>\n        </div>\n        <div class=\"N-W\"><span>30g</span></div>\n      </div>\n      <div class=\"second-block-ingrid item\">\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W\" ><img src=\"./assets/resources/images/search/delete.png\" alt=\"\"></div>\n        <div class=\"N-W\">\n          <div class=\"ingrid-count\">\n            <img src=\"./assets/resources/images/login/arr-up.png\" alt=\"\" (click)=\"spin($event, 1)\">\n            <input type=\"text\" value=\"1\" >\n            <img src=\"./assets/resources/images/login/arr-down.png\" alt=\"\" (click)=\"spin($event, -1)\">\n          </div>\n        </div>\n        <div class=\"N-W\"><span>30g</span></div>\n      </div>\n      <div class=\"second-block-ingrid item\">\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W\" ><img src=\"./assets/resources/images/search/delete.png\" alt=\"\"></div>\n        <div class=\"N-W\">\n          <div class=\"ingrid-count\">\n            <img src=\"./assets/resources/images/login/arr-up.png\" alt=\"\" (click)=\"spin($event, 1)\">\n            <input type=\"text\" value=\"1\" >\n            <img src=\"./assets/resources/images/login/arr-down.png\" alt=\"\" (click)=\"spin($event, -1)\">\n          </div>\n        </div>\n        <div class=\"N-W\"><span>30g</span></div>\n      </div>\n      <div class=\"second-block-ingrid item\">\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W\" ><img src=\"./assets/resources/images/search/delete.png\" alt=\"\"></div>\n        <div class=\"N-W\">\n          <div class=\"ingrid-count\">\n            <img src=\"./assets/resources/images/login/arr-up.png\" alt=\"\" (click)=\"spin($event, 1)\">\n            <input type=\"text\" value=\"1\" >\n            <img src=\"./assets/resources/images/login/arr-down.png\" alt=\"\" (click)=\"spin($event, -1)\">\n          </div>\n        </div>\n        <div class=\"N-W\"><span>30g</span></div>\n      </div>\n\n      <div class=\"second-block-sections-title item\" >\n        <div class=\"bg-green\"></div>\n      </div>\n\n      <div class=\"second-block-ingrid calories item\" >\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W cal-numb\"><span>5120cal</span></div>\n      </div>\n      <div class=\"second-block-ingrid calories item\" >\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W cal-numb\"><span>5120cal</span></div>\n      </div>\n      <div class=\"second-block-ingrid calories item\" >\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W cal-numb\"><span>5120cal</span></div>\n      </div>\n\n      <div class=\"second-block-sections-title item\" >\n        <div class=\"bg-green\"></div>\n      </div>\n\n      <div class=\"second-block-ingrid calories item\" >\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Protein</div>\n        <div class=\"N-W cal-numb\"><span>30%</span></div>\n      </div>\n      <div class=\"second-block-ingrid calories item\" >\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Fats</div>\n        <div class=\"N-W cal-numb\"><span>30%</span></div>\n      </div>\n      <div class=\"second-block-ingrid calories item\" >\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Carbs</div>\n        <div class=\"N-W cal-numb\"><span>30%</span></div>\n      </div>\n\n      <div class=\"second-block-sections-title item\" >\n        <div class=\"bg-green\"></div>\n      </div>\n\n      <div class=\"second-block-ingrid calories item\" >\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Vitamin A</div>\n        <div class=\"N-W cal-numb\"><span>30%</span></div>\n      </div>\n      <div class=\"second-block-ingrid calories item\" >\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Vitamin B</div>\n        <div class=\"N-W cal-numb\"><span>30%</span></div>\n      </div>\n      <div class=\"second-block-ingrid calories item\" >\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Vitamin C</div>\n        <div class=\"N-W cal-numb\"><span>30%</span></div>\n      </div>\n\n    </div>\n  </div>\n\n  <div class=\"scroll-wrap-wrap\" [hidden]=\"!addIngridient\">\n    <div class=\"scroll-wrap\" *ngIf=\"!isMobile\" slimScroll  width=\"100%\" height=\"100%\"  position=\"left\" size=\"2px\" color=\"#fff\" opacity=1 railVisible=true alwaysVisible=true railColor=\"#fff\" railOpacity=0.2 distance=\"-1px\">\n      <div class=\"second-block-ingrid item\">\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W\" ><img src=\"./assets/resources/images/search/delete.png\" alt=\"\"></div>\n        <div class=\"N-W\">\n          <div class=\"ingrid-count\">\n            <img src=\"./assets/resources/images/login/arr-up.png\" alt=\"\" (click)=\"spin($event, 1)\">\n            <input type=\"text\" value=\"1\" >\n            <img src=\"./assets/resources/images/login/arr-down.png\" alt=\"\" (click)=\"spin($event, -1)\">\n          </div>\n        </div>\n        <div class=\"N-W\"><span>30g</span></div>\n      </div>\n      <div class=\"second-block-ingrid item\">\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W\" ><img src=\"./assets/resources/images/search/delete.png\" alt=\"\"></div>\n        <div class=\"N-W\">\n          <div class=\"ingrid-count\">\n            <img src=\"./assets/resources/images/login/arr-up.png\" alt=\"\" (click)=\"spin($event, 1)\">\n            <input type=\"text\" value=\"1\" >\n            <img src=\"./assets/resources/images/login/arr-down.png\" alt=\"\" (click)=\"spin($event, -1)\">\n          </div>\n        </div>\n        <div class=\"N-W\"><span>30g</span></div>\n      </div>\n      <div class=\"second-block-ingrid item\">\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W\" ><img src=\"./assets/resources/images/search/delete.png\" alt=\"\"></div>\n        <div class=\"N-W\">\n          <div class=\"ingrid-count\">\n            <img src=\"./assets/resources/images/login/arr-up.png\" alt=\"\" (click)=\"spin($event, 1)\">\n            <input type=\"text\" value=\"1\" >\n            <img src=\"./assets/resources/images/login/arr-down.png\" alt=\"\" (click)=\"spin($event, -1)\">\n          </div>\n        </div>\n        <div class=\"N-W\"><span>30g</span></div>\n      </div>\n      <div class=\"second-block-ingrid item\">\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W\" ><img src=\"./assets/resources/images/search/delete.png\" alt=\"\"></div>\n        <div class=\"N-W\">\n          <div class=\"ingrid-count\">\n            <img src=\"./assets/resources/images/login/arr-up.png\" alt=\"\" (click)=\"spin($event, 1)\">\n            <input type=\"text\" value=\"1\" >\n            <img src=\"./assets/resources/images/login/arr-down.png\" alt=\"\" (click)=\"spin($event, -1)\">\n          </div>\n        </div>\n        <div class=\"N-W\"><span>30g</span></div>\n      </div>\n\n    </div>\n    <div class=\"scroll-wrap\" *ngIf=\"isMobile\">\n      <div class=\"second-block-ingrid item\">\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W\" ><img src=\"./assets/resources/images/search/delete.png\" alt=\"\"></div>\n        <div class=\"N-W\">\n          <div class=\"ingrid-count\">\n            <img src=\"./assets/resources/images/login/arr-up.png\" alt=\"\" (click)=\"spin($event, 1)\">\n            <input type=\"text\" value=\"1\" >\n            <img src=\"./assets/resources/images/login/arr-down.png\" alt=\"\" (click)=\"spin($event, -1)\">\n          </div>\n        </div>\n        <div class=\"N-W\"><span>30g</span></div>\n      </div>\n      <div class=\"second-block-ingrid item\">\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W\" ><img src=\"./assets/resources/images/search/delete.png\" alt=\"\"></div>\n        <div class=\"N-W\">\n          <div class=\"ingrid-count\">\n            <img src=\"./assets/resources/images/login/arr-up.png\" alt=\"\" (click)=\"spin($event, 1)\">\n            <input type=\"text\" value=\"1\" >\n            <img src=\"./assets/resources/images/login/arr-down.png\" alt=\"\" (click)=\"spin($event, -1)\">\n          </div>\n        </div>\n        <div class=\"N-W\"><span>30g</span></div>\n      </div>\n      <div class=\"second-block-ingrid item\">\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W\" ><img src=\"./assets/resources/images/search/delete.png\" alt=\"\"></div>\n        <div class=\"N-W\">\n          <div class=\"ingrid-count\">\n            <img src=\"./assets/resources/images/login/arr-up.png\" alt=\"\" (click)=\"spin($event, 1)\">\n            <input type=\"text\" value=\"1\" >\n            <img src=\"./assets/resources/images/login/arr-down.png\" alt=\"\" (click)=\"spin($event, -1)\">\n          </div>\n        </div>\n        <div class=\"N-W\"><span>30g</span></div>\n      </div>\n      <div class=\"second-block-ingrid item\">\n        <div class=\"N-W\"><a href=\"\" ><img src=\"./assets/resources/images/search/ingridients.png\" alt=\"\"></a></div>\n        <div class=\"text-res-item\">Bun</div>\n        <div class=\"N-W\" ><img src=\"./assets/resources/images/search/delete.png\" alt=\"\"></div>\n        <div class=\"N-W\">\n          <div class=\"ingrid-count\">\n            <img src=\"./assets/resources/images/login/arr-up.png\" alt=\"\" (click)=\"spin($event, 1)\">\n            <input type=\"text\" value=\"1\" >\n            <img src=\"./assets/resources/images/login/arr-down.png\" alt=\"\" (click)=\"spin($event, -1)\">\n          </div>\n        </div>\n        <div class=\"N-W\"><span>30g</span></div>\n      </div>\n\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
 /***/ 570:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"choose-task\" >\n\n  <div class=\"diary choosen-content-item\" >\n    <div class=\"item-text\" style=\"background-image: url('/assets/resources/images/search/diary-green.png');\">Choose a diary</div>\n    <div class=\"items-wrap\">\n      <div class=\"diary-item time-item\" [class.selected]=\"selectedDiary === diary\" *ngFor=\"let diary of diaryArr\" (mouseover)=\"selectDiary(diary)\">\n        <div class=\"img\" [style.background-image]=\"'url(' + diary.img + ')'\"></div>\n      </div>\n      <div class=\"diary-item time-item\" style=\"filter: opacity(50%);\" *ngIf=\"diaryArr.length < 5\" [routerLink]=\"['/diary/selected-diary/create']\">\n        <img src=\"./assets/resources/images/search/add.png\" alt=\"\" >\n      </div>\n    </div>\n  </div>\n\n  <div class=\"time choosen-content-item\" >\n    <div class=\"item-text\" style=\"background-image: url('/assets/resources/images/search/clock-green.png');\">Choose a time</div>\n    <div class=\"items-wrap\">\n      <div class=\"time-item\" [class.time-selected]=\"selectedTime === 'breakfast'\" (mouseover)=\"selectTime('breakfast')\">\n        <img src=\"./assets/resources/images/search/breakfast-green.png\" alt=\"\">\n        <span>breakfast</span>\n      </div>\n      <div class=\"time-item\" [class.time-selected]=\"selectedTime === 'lunch'\" (mouseover)=\"selectTime('lunch')\">\n        <img src=\"./assets/resources/images/search/lunch-green.png\" alt=\"\">\n        <span>lunch</span>\n      </div>\n      <div class=\"time-item\" [class.time-selected]=\"selectedTime === 'dinner'\" (mouseover)=\"selectTime('dinner')\">\n        <img src=\"./assets/resources/images/search/dinner-green.png\" alt=\"\">\n        <span>dinner</span>\n      </div>\n      <div class=\"time-item\" [class.time-selected]=\"selectedTime === 'snack'\" (mouseover)=\"selectTime('snack')\">\n        <img src=\"./assets/resources/images/search/snack-green.png\" alt=\"\">\n        <span>snack</span>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"date choosen-content-item\" >\n    <div class=\"item-text\" style=\"background-image: url('/assets/resources/images/search/calendar-green-full.png');\">Choose a date</div>\n    <div class=\"items-wrap\">\n      <div class=\"date-item\">\n        <img src=\"./assets/resources/images/login/arr-up.png\" (click)=\"spin(1, selectedDate.day, daysInMonth)\" alt=\"\">\n        <span>{{selectedDate.day.number + 1}}</span>\n        <img src=\"./assets/resources/images/login/arr-down.png\"  (click)=\"spin(-1, selectedDate.day, daysInMonth)\" alt=\"\">\n      </div>\n      <div class=\"date-item\">\n        <img src=\"./assets/resources/images/login/arr-up.png\" (click)=\"spin(1, selectedDate.month, monthes.length)\" alt=\"\">\n        <span>{{monthes[selectedDate.month.number]}}</span>\n        <img src=\"./assets/resources/images/login/arr-down.png\"  (click)=\"spin(-1, selectedDate.month, monthes.length)\" alt=\"\">\n      </div>\n      <div class=\"date-item\">\n        <img src=\"./assets/resources/images/login/arr-up.png\" (click)=\"spin(1, selectedDate.year)\" alt=\"\">\n        <span>{{selectedDate.year.number}}</span>\n        <img src=\"./assets/resources/images/login/arr-down.png\"  (click)=\"spin(-1, selectedDate.year)\" alt=\"\">\n      </div>\n    </div>\n  </div>\n\n</div>\n\n\n<div class=\"last-confirm\">\n  <div class=\"btn-blocks\" (click)=\"confirm()\">\n    <span *ngIf=\"!isMobile\">Confirm</span>\n    <span *ngIf=\"isMobile\">Add to calendar</span>\n  </div>\n  <div class=\"btn-blocks\" (click)=\"cancel()\">\n    <span>Cancel</span>\n  </div>\n</div>\n"
+module.exports = "<div class=\"choose-task\" >\n\n  <div class=\"diary choosen-content-item\" >\n    <div class=\"item-text\" style=\"background-image: url('/assets/resources/images/search/diary-green.png');\">Choose a diary</div>\n    <div class=\"items-wrap\">\n      <div class=\"diary-item time-item\" [class.selected]=\"selectedDiary === diary\" *ngFor=\"let diary of diaryArr\" (mouseover)=\"selectDiary(diary)\">\n        <div class=\"img\" [style.background-image]=\"'url(' + diary.img + ')'\"></div>\n      </div>\n      <div class=\"diary-item time-item\" style=\"filter: opacity(50%); border: none\" *ngIf=\"diaryArr.length < 5\" [routerLink]=\"['/diary/selected-diary/create']\">\n        <img src=\"./assets/resources/images/search/add.png\" alt=\"\" >\n      </div>\n    </div>\n  </div>\n\n  <div class=\"time choosen-content-item\" >\n    <div class=\"item-text\" style=\"background-image: url('/assets/resources/images/search/clock-green.png');\">Choose a time</div>\n    <div class=\"items-wrap\">\n      <div class=\"time-item\" [class.time-selected]=\"selectedTime === 'breakfast'\" (mouseover)=\"selectTime('breakfast')\">\n        <img src=\"./assets/resources/images/search/breakfast-green.png\" alt=\"\">\n        <span>breakfast</span>\n      </div>\n      <div class=\"time-item\" [class.time-selected]=\"selectedTime === 'lunch'\" (mouseover)=\"selectTime('lunch')\">\n        <img src=\"./assets/resources/images/search/lunch-green.png\" alt=\"\">\n        <span>lunch</span>\n      </div>\n      <div class=\"time-item\" [class.time-selected]=\"selectedTime === 'dinner'\" (mouseover)=\"selectTime('dinner')\">\n        <img src=\"./assets/resources/images/search/dinner-green.png\" alt=\"\">\n        <span>dinner</span>\n      </div>\n      <div class=\"time-item\" [class.time-selected]=\"selectedTime === 'snack'\" (mouseover)=\"selectTime('snack')\">\n        <img src=\"./assets/resources/images/search/snack-green.png\" alt=\"\">\n        <span>snack</span>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"date choosen-content-item\" >\n    <div class=\"item-text\" style=\"background-image: url('/assets/resources/images/search/calendar-green-full.png');\">Choose a date</div>\n    <div class=\"items-wrap\">\n      <div class=\"date-item\">\n        <img src=\"./assets/resources/images/login/arr-up.png\" (click)=\"spin(1, selectedDate.day, daysInMonth)\" alt=\"\">\n        <span>{{selectedDate.day.number}}</span>\n        <img src=\"./assets/resources/images/login/arr-down.png\"  (click)=\"spin(-1, selectedDate.day, daysInMonth)\" alt=\"\">\n      </div>\n      <div class=\"date-item\">\n        <img src=\"./assets/resources/images/login/arr-up.png\" (click)=\"spin(1, selectedDate.month, monthes.length)\" alt=\"\">\n        <span>{{monthes[selectedDate.month.number - 1]}}</span>\n        <img src=\"./assets/resources/images/login/arr-down.png\"  (click)=\"spin(-1, selectedDate.month, monthes.length)\" alt=\"\">\n      </div>\n      <div class=\"date-item\">\n        <img src=\"./assets/resources/images/login/arr-up.png\" (click)=\"spin(1, selectedDate.year)\" alt=\"\">\n        <span>{{selectedDate.year.number}}</span>\n        <img src=\"./assets/resources/images/login/arr-down.png\"  (click)=\"spin(-1, selectedDate.year)\" alt=\"\">\n      </div>\n    </div>\n  </div>\n\n</div>\n\n\n<div class=\"last-confirm\">\n  <div class=\"btn-blocks\" (click)=\"confirm()\">\n    <span *ngIf=\"!isMobile\">Confirm</span>\n    <span *ngIf=\"isMobile\">Add to calendar</span>\n  </div>\n  <div class=\"btn-blocks\" (click)=\"cancel()\">\n    <span>Cancel</span>\n  </div>\n</div>\n"
 
 /***/ }),
 

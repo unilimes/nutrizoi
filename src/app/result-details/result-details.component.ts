@@ -36,14 +36,6 @@ export class ResultDetailsComponent {
   private addIngridient: boolean = false;
 
 
-
-
-  private confirmedSave: boolean = false;
-  private changeRecipe: boolean = false;
-  private recipeName: string = 'hamburger';
-  private presRecipeName: string = 'hamburger';
-  private saveToDiary: Subscription;
-
   constructor(
       private route: ActivatedRoute,
       private location: Location,
@@ -59,7 +51,7 @@ export class ResultDetailsComponent {
     this.recipe = this.searchDataService.setSelectedRecipe(this.nullRecipe);
     this.newRecipe = Object.assign({}, this.recipe);
 
-    this.appData.saveFoodToDiary.state = false;
+    this.appData.saveFoodToDiary.state = '';
     if(this.isMobile) this.appData.searchInputVisible.state = false;
     this.listenerService.changeAppListenerSubject(this.appData);
 
@@ -81,9 +73,7 @@ export class ResultDetailsComponent {
     
     this.appListener = this.listenerService.appListener.subscribe((appListener: any) => {
       this.appData = appListener;
-
-      if(this.appData.saveFoodToDiary.state){
-        if(!this.isMobile) this.confirmedSave = true;
+      if(appListener.saveFoodToDiary.state){
         this.diaryActive = false;
       }
     });
@@ -110,7 +100,7 @@ export class ResultDetailsComponent {
       this.diaryActive = !this.diaryActive;
     }
 
-    this.appData.saveFoodToDiary.state = false;
+    this.appData.saveFoodToDiary.state = '';
   }
   
   resetRecipe(){
@@ -132,19 +122,6 @@ export class ResultDetailsComponent {
       }
     }, (error) => {});
   }
-  
-
-  saveChanges(){
-    this.diaryActive = false;
-  }
-
-
-  
-
-
-
-
-
 
   spin(event: any, num){
     //noinspection TypeScriptUnresolvedVariable

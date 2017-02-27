@@ -21,18 +21,18 @@ export class SearchDiaryComponent{
   private selectedDiary: any;
   private selectedDate: any = {
     month: {
-      number: 2
+      number: new Date().getMonth() + 1
     },
     day: {
-      number: 0
+      number: new Date().getDate()
     },
     year: {
-      number: 2017
+      number: new Date().getFullYear()
     }
   };
   private selectedTime: string = 'breakfast';
   private monthes: any = [ 'January', 'February',  'March',  'April',  'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ];
-  private daysInMonth:number = 30;
+  private daysInMonth: number;
 
   constructor (
     private listenerService: ListenerService,
@@ -44,6 +44,7 @@ export class SearchDiaryComponent{
   ngOnInit() {
     this.isMobile = this.isMobileService.isMobile();
     this.appData = this.listenerService.getAppListenerObject();
+    this.daysInMonth = new Date(this.selectedDate.year.number, this.selectedDate.month.number+1, 0).getDate();
 
     this.userListener = this.userDataService.authListener.subscribe((auth: boolean) => {
       this.isAuth = auth;
@@ -62,35 +63,27 @@ export class SearchDiaryComponent{
     this.selectedTime = val;
   }
 
-  spin(num: number, obj: any, arrLength: number){
+  spin(num: number, obj: any, arrLength?: number){
+    
     if(arrLength){
       obj.number += num;
-      if(obj.number < 0){
-        obj.number = arrLength - 1;
-      } else if(obj.number > arrLength - 1){
-        obj.number = 0;
+      if(obj.number < 1){
+        obj.number = arrLength;
+      } else if(obj.number > arrLength){
+        obj.number = 1;
       }
     } else {
       obj.number += num;
     }
 
-    this.daysInMonth = new Date(this.selectedDate.year.number, this.selectedDate.month.number+1, 0).getDate();
+    this.daysInMonth = new Date(this.selectedDate.year.number, this.selectedDate.month.number, 0).getDate();
+    (this.selectedDate.day.number > this.daysInMonth) ? this.selectedDate.day.number = this.daysInMonth : this.selectedDate.day.number;
+
   }
 
   cancel(){
-    this.selectedDiary = this.diaryArr[0];
-    this.selectedTime = 'breakfast';
-    this.selectedDate = {
-      month: {
-        number: 2
-      },
-      day: {
-        number: 0
-      },
-      year: {
-        number: 2017
-      }
-    };
+    this.appData.saveFoodToDiary.state = 'canceled';
+    this.listenerService.changeAppListenerSubject(this.appData);
   }
 
   confirm(){
@@ -101,7 +94,7 @@ export class SearchDiaryComponent{
       confirmed: true
     };
 
-    this.appData.saveFoodToDiary.state = true;
+    this.appData.saveFoodToDiary.state = 'added';
     this.listenerService.changeAppListenerSubject(this.appData);
   }
 

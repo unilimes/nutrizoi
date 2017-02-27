@@ -1,4 +1,4 @@
-<div class="res-block" [class.confirmed-save]="appData.saveFoodToDiary.state && !isMobile" [hidden]="isMobile && addIngridient">
+<div class="res-block" [class.confirmed-save]="appData.saveFoodToDiary.state === 'added' && !isMobile" [hidden]="isMobile && addIngridient">
 
   <div class="res-det-nav item">
     <div class="N-W"><img src="./assets/resources/images/search/recipe-black.png" alt=""></div>
@@ -19,7 +19,7 @@
     </div>
   </div>
 
-  <div class="res-det-img-wrap" [hidden]="diaryActive">
+  <div class="res-det-img-wrap" [hidden]="diaryActive || (appData.saveFoodToDiary.state === 'added' && !isMobile)">
     <div class="res-det-img"  *ngIf="!isMobile" slimScroll  width="100%" height="100%"  size="2px" color="#fff" opacity=1 railVisible=true alwaysVisible=true railColor="#fff" railOpacity=0.2 distance="-1px">
       <img src="{{img}}" *ngFor="let img of newRecipe.images" alt="">
     </div>

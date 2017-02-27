@@ -6,7 +6,7 @@
       <div class="diary-item time-item" [class.selected]="selectedDiary === diary" *ngFor="let diary of diaryArr" (mouseover)="selectDiary(diary)">
         <div class="img" [style.background-image]="'url(' + diary.img + ')'"></div>
       </div>
-      <div class="diary-item time-item" style="filter: opacity(50%);" *ngIf="diaryArr.length < 5" [routerLink]="['/diary/selected-diary/create']">
+      <div class="diary-item time-item" style="filter: opacity(50%); border: none" *ngIf="diaryArr.length < 5" [routerLink]="['/diary/selected-diary/create']">
         <img src="./assets/resources/images/search/add.png" alt="" >
       </div>
     </div>
@@ -39,12 +39,12 @@
     <div class="items-wrap">
       <div class="date-item">
         <img src="./assets/resources/images/login/arr-up.png" (click)="spin(1, selectedDate.day, daysInMonth)" alt="">
-        <span>{{selectedDate.day.number + 1}}</span>
+        <span>{{selectedDate.day.number}}</span>
         <img src="./assets/resources/images/login/arr-down.png"  (click)="spin(-1, selectedDate.day, daysInMonth)" alt="">
       </div>
       <div class="date-item">
         <img src="./assets/resources/images/login/arr-up.png" (click)="spin(1, selectedDate.month, monthes.length)" alt="">
-        <span>{{monthes[selectedDate.month.number]}}</span>
+        <span>{{monthes[selectedDate.month.number - 1]}}</span>
         <img src="./assets/resources/images/login/arr-down.png"  (click)="spin(-1, selectedDate.month, monthes.length)" alt="">
       </div>
       <div class="date-item">
