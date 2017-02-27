@@ -1,4 +1,7 @@
 import { Component} from '@angular/core';
+import {IsMobileService} from "../service/is-mobile.service";
+import {UserDataService} from "../service/user-data.service";
+import {Subscription} from "rxjs/Rx";
 
 @Component({
   selector: 'main-footer',
@@ -6,8 +9,24 @@ import { Component} from '@angular/core';
   styleUrls: ['./footer.component.sass']
 })
 export class FooterComponent {
+  private isMobile:boolean = false;
+  private email: string = '';
+  private userListener: Subscription;
 
-  constructor() { }
+  constructor(
+      private isMobileService: IsMobileService,
+      private userDataService: UserDataService
+  ) {}
 
-  public loggedIn: boolean = false;
+  ngOnInit() {
+    this.isMobile = this.isMobileService.isMobile();
+
+    this.userListener = this.userDataService.authListener.subscribe((auth: boolean) => {
+        auth ? this.email = this.userDataService.getUser().email : '';
+    });
+  }
+
+  ngOnDestroy() {
+    this.userListener.unsubscribe();
+  }
 }

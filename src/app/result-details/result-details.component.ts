@@ -7,6 +7,7 @@ import {IsMobileService} from "../service/is-mobile.service";
 import {AuthService} from "../service/auth.service";
 import {SearchDataService} from "../service/search-data.service";
 import {Helper} from "../class/helper";
+import {UserDataService} from "../service/user-data.service";
 
 @Component({
   selector: 'result-details',
@@ -17,6 +18,8 @@ import {Helper} from "../class/helper";
 export class ResultDetailsComponent {
   private helper = new Helper();
   private isMobile: boolean = false;
+  private userListener: Subscription;
+  private auth: boolean = false;
   private appListener: Subscription;
   private appData: any ;
   private id: number;
@@ -42,7 +45,8 @@ export class ResultDetailsComponent {
       private listenerService: ListenerService,
       private isMobileService: IsMobileService,
       private authService: AuthService,
-      private searchDataService: SearchDataService
+      private searchDataService: SearchDataService,
+      private userDataService: UserDataService
   ) {}
 
   ngOnInit() {
@@ -76,6 +80,10 @@ export class ResultDetailsComponent {
       if(appListener.saveFoodToDiary.state){
         this.diaryActive = false;
       }
+    });
+
+    this.userListener = this.userDataService.authListener.subscribe((auth: boolean) => {
+      this.auth = auth;
     });
   }
 
@@ -131,5 +139,6 @@ export class ResultDetailsComponent {
   ngOnDestroy() {
     this.paramsSub.unsubscribe();
     this.appListener.unsubscribe();
+    this.userListener.unsubscribe();
   }
 }

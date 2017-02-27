@@ -13,7 +13,7 @@ main-footer
       padding: 0 2%
       display: flex
       justify-content: space-between
-      a
+      a, .email
         width: 5%
         +max-min-wh(30px, 15px)
         display: inline-block
@@ -27,8 +27,24 @@ main-footer
         justify-content: flex-start
       .email-footer-wrap
         justify-content: flex-end
-        a
+        .email
+          cursor: pointer
+          position: relative
           margin-right: 0
+          span
+            position: absolute
+            right: 140%
+            top: 50%
+            opacity: 0
+            color: $white
+            cursor: default
+            transform: translateY(-50%)
+            font-size: 1.2vh
+            transition: opacity .5s
+          &:hover
+            span
+              opacity: 0.7
+
 
 html.tablet, html.mobile
   main-footer
