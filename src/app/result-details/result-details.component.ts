@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {Location} from '@angular/common';
 import {Subscription} from "rxjs/Rx";
 import {ListenerService} from "../service/listener.service";
@@ -41,6 +41,7 @@ export class ResultDetailsComponent {
 
   constructor(
       private route: ActivatedRoute,
+      private router: Router,
       private location: Location,
       private listenerService: ListenerService,
       private isMobileService: IsMobileService,
@@ -134,6 +135,10 @@ export class ResultDetailsComponent {
   spin(event: any, num){
     //noinspection TypeScriptUnresolvedVariable
     event.target.parentElement.children[1].value = +event.target.parentElement.children[1].value + num;
+  }
+
+  movetoLogin(){
+    this.router.navigate(['/login']);
   }
 
   ngOnDestroy() {

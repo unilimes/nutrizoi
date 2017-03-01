@@ -11,11 +11,11 @@
       <img class="go-back-black" src="./assets/resources/images/search/go-back-green.png" alt="" (click)="moveBack()">
     </div>
     <div class="N-W" >
-      <img [class.grayscale-1]="!diaryActive" src="./assets/resources/images/search/calendar-green.png" alt="" (click)="toggleDiaryActivity()">
+      <img [class.grayscale-1]="!diaryActive" src="./assets/resources/images/search/calendar-green.png" alt="" [hidden]="!auth" (click)="auth ? toggleDiaryActivity() : movetoLogin()">
     </div>
     <div class="N-W">
-      <img [class.grayscale-1]="!recipeEdited" src="./assets/resources/images/search/reset-green.png" alt=""  [hidden]="newRecipe.title !== recipe.title || !newRecipe._id" (click)="resetRecipe()">
-      <img class="save-black" src="./assets/resources/images/search/save-green.png" alt="" [hidden]="newRecipe.title === recipe.title && newRecipe._id" (click)="saveNewRecipe()">
+      <img [class.grayscale-1]="!recipeEdited" src="./assets/resources/images/search/reset-green.png" alt=""  [hidden]="(newRecipe.title !== recipe.title) || (!newRecipe._id)" (click)="resetRecipe()">
+      <img class="save-black" src="./assets/resources/images/search/save-green.png" alt="" [hidden]="(newRecipe.title === recipe.title) && (newRecipe._id)" (click)="auth ? saveNewRecipe() : movetoLogin()">
     </div>
   </div>
 
