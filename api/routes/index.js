@@ -4,7 +4,7 @@ var authenticate = require("../middleware/authenticate");
 
 router.use("/private", authenticate, require("./private"));
 
-router.use("/public", authenticate, require("./public"));
+router.use("/public", require("./public"));
 
 router.use("/auth", require("./auth"));
 

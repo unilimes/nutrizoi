@@ -11,7 +11,7 @@
       <img class="go-back-black" src="./assets/resources/images/search/go-back-green.png" alt="" (click)="moveBack()">
     </div>
     <div class="N-W" >
-      <img [class.grayscale-1]="!diaryActive" src="./assets/resources/images/search/calendar-green.png" alt="" [hidden]="!auth" (click)="auth ? toggleDiaryActivity() : movetoLogin()">
+      <img [class.grayscale-1]="!diaryActive" src="./assets/resources/images/search/calendar-green.png" alt="" (click)="auth ? toggleDiaryActivity() : movetoLogin()">
     </div>
     <div class="N-W">
       <img [class.grayscale-1]="!recipeEdited" src="./assets/resources/images/search/reset-green.png" alt=""  [hidden]="(newRecipe.title !== recipe.title) || (!newRecipe._id)" (click)="resetRecipe()">
@@ -125,7 +125,7 @@
 
       <div class="second-block-sections-title item" >
         <div class="bg-green" [hidden]="!auth"></div>
-        <span class="unlock" [hidden]="auth">to unlock the deficiency, please <a>log in</a></span>
+        <span class="unlock" [hidden]="auth">to unlock the deficiency, please <a  [routerLink]="['/login']">log in</a></span>
       </div>
 
       <div class="second-block-ingrid calories item" >
