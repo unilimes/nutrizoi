@@ -4,15 +4,7 @@
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
-    "start": "ng serve",
-    "build": "ng build",
-    "lint": "tslint \"src/**/*.ts\"",
-    "test": "ng test",
-    "pree2e": "webdriver-manager update",
-    "e2e": "protractor",
-    "ng": "./node_modules/.bin/ng",
-    "nodemon": "./node_modules/.bin/nodemon",
-    "watch": "./node_modules/.bin/nodemon --watch ./api ./api/index.js"
+    "start": "./node_modules/.bin/nodemon --watch ./api ./api/index.js"
   },
   "private": true,
   "dependencies": {
