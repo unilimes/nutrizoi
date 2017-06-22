@@ -1,0 +1,42 @@
+@import "../../../styles/mixines"
+
+diary
+  .search-label-wrap
+    text-transform: capitalize
+  .res-block
+    justify-content: flex-start
+  .diary-wrap
+    width: 100%
+    height: 54%
+    display: flex
+    justify-content: center
+    align-items: center
+    .diary-title-item
+      background-color: $white
+      color: $grey
+      justify-content: flex-start
+      .text-res-item
+        width: 45%
+        justify-content: flex-start
+        font-size: 1.8vh
+
+html.tablet, html.mobile
+  diary
+    .diary-wrap
+      @extend .w-h-100
+      padding: 5% 0
+      .diary-title-item
+        .text-res-item
+          font-size: 4rem
+          @media screen and (max-width: 1000px)
+            font-size: 3rem
+          @media screen and (max-width: 800px)
+            font-size: 2.5rem
+          @media screen and (max-width: 600px)
+            font-size: 2rem
+          @media screen and (max-width: 400px)
+            font-size: 1.7rem
+      .item
+        .title-nav
+          font-size: 2.5vh
+

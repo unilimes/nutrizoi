@@ -1,5 +1,4 @@
 var jwt = require("jwt-simple");
-//var jwt = require("jsonwebtoken");
 
 var LocalStrategy = require("passport-local").Strategy;
 var JwtStrategy = require("passport-jwt").Strategy;
@@ -14,22 +13,18 @@ module.exports = function (passport) {
         done(null, user);
     });
 
-    passport.deserializeUser(function (id, done) {
-        User.findById(id, function (err, user) {
-            done(err, user);
-        });
+    passport.deserializeUser(function (user, done) {
+        User.findOne({where: {email: user.email}}).then(user => {
+            done(null, user);
+        }, err => {done(err, null);});
     });
 
     passport.use(new LocalStrategy({
         usernameField: "email",
         passwordField: "password",
         passReqToCallback: true
-    }, function (req, username, password, done) {
-        User.findOne({ email: username }, function (err, user) {
-            if (err) {
-                return done(err);
-            }
-
+    }, function (req, email, password, done) {
+        User.findOne({ where: {email: email} }).then(user => {
             if (!user) {
                 return done(null, false, {
                     status: false,
@@ -37,22 +32,22 @@ module.exports = function (passport) {
                 });
             }
 
-            if (!user.comparePassword(password)) {
+            if (!user.validPassword(password)) {
                 return done(null, false, {
                     status: false,
-                    message: "Oops! Wrong password."
+                    message: "Wrong password."
                 });
             }
 
-            user.token = "JWT " + jwt.encode({_id: user._id, email: user.email}, config.security.secret);
+            user.update({token: "JWT " + jwt.encode({_id: user._id, email: user.email}, config.security.secret)})
+                .then(user => {
+                    return done(null, user, {
+                        status: true,
+                        message: "Login success."
+                    });
+                }, err => {done(err, null);});
 
-            user.save(function (err, user) {
-                return done(null, user, {
-                    status: true,
-                    message: "Login success."
-                });
-            });
-        });
+        }, err => {done(err, null);});
     }));
 
     passport.use(new JwtStrategy({

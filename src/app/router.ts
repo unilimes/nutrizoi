@@ -1,19 +1,19 @@
 import {Routes, RouterModule} from "@angular/router";
 import {ModuleWithProviders} from "@angular/core";
-import {CalendarPageComponent} from "./calendar-page/calendar-page.component";
-import {DateComponent} from "./date/date.component";
-import {NutritionalComponent} from "./nutritional/nutritional.component";
-import {FoodComponent} from "./food/food.component";
-import {HistoryComponent} from "./history/history.component";
-import {SelectedDiaryComponent} from "./selected-diary/selected-diary.component";
-import {DiariesSelectComponent} from "./diaries-select/diaries-select.component";
-import {DiaryComponent} from "./diary/diary.component";
-import {SignupComponent} from "./signup/signup.component";
-import {LoginComponent} from "./login/login.component";
-import {ResultDetailsComponent} from "./result-details/result-details.component";
-import {SearchResultsComponent} from "./search-results/search-results.component";
-import {HomeComponent} from "./home/home.component";
-import {SearchComponent} from "./search/search.component";
+import {CalendarPageComponent} from "./components/calendar-page/calendar-page.component";
+import {DateComponent} from "./components/date/date.component";
+import {NutritionalComponent} from "./components/nutritional/nutritional.component";
+import {FoodComponent} from "./components/food/food.component";
+import {HistoryComponent} from "./components/history/history.component";
+import {SelectedDiaryComponent} from "./components/diary/selected-diary/selected-diary.component";
+import {DiariesSelectComponent} from "./components/diary/diaries-select/diaries-select.component";
+import {DiaryComponent} from "./components/diary/diary.component";
+import {SignupComponent} from "./components/signup/signup.component";
+import {LoginComponent} from "./components/login/login.component";
+import {ResultDetailsComponent} from "./components/search/result-details/result-details.component";
+import {SearchResultsComponent} from "./components/search/search-results/search-results.component";
+import {HomeComponent} from "./components/home/home.component";
+import {SearchComponent} from "./components/search/search.component";
 
 export const routes: Routes = [
     {
@@ -49,11 +49,13 @@ export const routes: Routes = [
     },
     {
         path: 'login',
-        component: LoginComponent
+        component: LoginComponent,
+        canActivate: [LoggedGuardService]
     },
     {
         path: 'sign-up',
-        component: SignupComponent
+        component: SignupComponent,
+        canActivate: [LoggedGuardService]
     },
     {
         path: 'diary',

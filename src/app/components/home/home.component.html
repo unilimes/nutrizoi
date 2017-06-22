@@ -1,0 +1,56 @@
+<div class="logo-wrap" (click)="logout()">
+  <img src="./assets/resources/images/main-logo.png" alt="">
+  <h1 class="tag">Not All Calories Are Equal</h1>
+  <span [class.active]="sliderDown" >100 calories of ghee are not the same as 100 calories of carrots …so why are you counting calories?</span>
+</div>
+
+<div class="inputContainer"  [class.hidden-search]="!sliderDown">
+  <input  [(ngModel)]="appData.searchValue.state" placeholder="Find your recipe, ingredient or ..." (keyup.enter)="moveSearchView()" >
+  <div class="vert-line-home" [hidden]="selectedElement !== search"></div>
+</div>
+
+<div class="slider-wrap" [ngStyle]="{'margin-top': appData.sliderPosition.state}" (window:resize)="onResize($event)" >
+  <div class="main-slider">
+    <div class="navig" #navig>
+
+      <div #slideComp1 [class.scale-x-2]="selectedElement == slideComp1" class="navitems" >
+        <div class="naw-wrap" (click)="moveItems(slideComp1)">
+          <img src="./assets/resources/images/home/achiev.png" alt="" >
+          <div class="achiev-img-text">
+            <span>SDKFasdasdasdaJ</span>
+            <span class="achiev-numb">38</span>
+          </div>
+        </div>
+        <div class="achiev-text" [hidden]="selectedElement !== slideComp1">
+          <h1>SITE OF THE DAY</h1>
+          <div class="text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</div>
+        </div>
+      </div>
+
+      <div #search class="navitems" >
+        <div class="naw-wrap" (click)="moveItems(search)" >
+          <div class="img-wrap" >
+            <img src="./assets/resources/images/home/search.png" alt="" >
+          </div>
+        </div>
+      </div>
+
+      <div #slideComp3 [class.scale-x-2]="selectedElement == slideComp3" class="navitems" >
+        <div class="naw-wrap" (click)="moveItems(slideComp3)">
+          <img src="./assets/resources/images/home/achiev.png" alt="" >
+          <div class="achiev-img-text">
+            <span>SDKFasdasdasdaJ</span>
+            <span class="achiev-numb">38</span>
+          </div>
+        </div>
+        <div class="achiev-text" [hidden]="selectedElement !== slideComp3">
+          <h1>SITE OF THE DAY</h1>
+          <div class="text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+

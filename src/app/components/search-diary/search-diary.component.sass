@@ -1,0 +1,90 @@
+@import "../../../styles/mixines"
+
+search-diary
+  height: 88.9%
+  width: 100%
+  color: $white
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  .choose-task
+    width: 100%
+    height: 80%
+    display: flex
+    justify-content: space-between
+    flex-direction: column
+    align-items: center
+    .choosen-content-item
+      width: 100%
+      height: 33.3%
+      flex-direction: column
+      align-items: center
+      justify-content: center
+      .item-text
+        height: 50%
+        width: 100%
+        display: flex
+        justify-content: center
+        align-items: center
+        background: 50% 50% no-repeat
+        -webkit-background-size: auto 50%
+        background-size:  auto 50%
+        opacity: 0.8
+      .items-wrap
+        height: 50%
+        width: 100%
+        display: flex
+        justify-content: center
+        align-items: center
+        margin: 0 auto
+        .diary-item>img
+          +max-wh-img(6vh)
+          border-radius: 50%
+        .time-item
+          margin: 0 2%
+        .date-item
+          width: 15%
+          height: 100%
+          margin: 0 2%
+          display: flex
+          flex-direction: column
+          align-items: center
+          justify-content: space-between
+          span
+            opacity: 0.8
+            font-size: 1.3vh
+          img
+            opacity: 0.5
+            max-width: 40%
+            cursor: pointer
+          input
+            width: 100%
+            text-align: center
+    .diary
+      .selected
+        border: 1px dotted $white
+        transform: scale(1.2)
+        img
+          transform: scale(0.8)
+
+html.tablet, html.mobile
+  search-diary
+    height: 91%
+    position: absolute
+    top: 9%
+    padding: 0 5% 5%
+    .choosen-content-item
+      .item-text
+        background-size:  auto 30%
+        font-size: 2.3vh
+      .items-wrap
+        width: 100%
+        .diary-item> img
+          +max-wh-img(100%)
+        .date-item
+          height: 75%
+          span
+            font-size: 1.8vh
+    .diary
+      .selected
+        border-color: $green

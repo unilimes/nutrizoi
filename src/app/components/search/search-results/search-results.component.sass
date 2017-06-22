@@ -1,0 +1,144 @@
+@import "../../../../styles/mixines"
+
+search-results
+  width: 100%
+  height: 54%
+  display: flex
+  justify-content: center
+  align-items: center
+
+  .item
+    cursor: pointer
+    .text-res-item
+      width: 38%
+      opacity: 0.8
+      overflow: hidden
+    &:hover
+      background-color: rgba(2, 141, 15, 0.2)
+    .item-name
+      width: 30%
+      margin-right: 2%
+
+  .but
+    position: absolute
+    transform: rotate(-90deg)
+
+  .res-block
+    .results-block
+      width: 70%
+      margin-bottom: 5%
+      display: flex
+      justify-content: center
+      flex-direction: column
+      align-items: center
+      .img-wrap-search
+        height: 15vh
+        width: 100%
+        display: flex
+        justify-content: center
+        img
+          cursor: pointer
+          +sizeH(13vh)
+    .res-numb
+      width: 100%
+      height: 15vh
+      display: flex
+      justify-content: space-between
+      flex-direction: column
+      align-items: center
+      h1
+        font-size: 10vh
+        margin: 0
+      span
+        font-size: 3vh
+    .span-text
+      width: 100%
+      text-align: center
+      font-size: 1.5vh
+      opacity: 0.8
+      margin-top: 10%
+
+    .results-not-empty
+      @extend .w-h-100
+      margin-bottom: 0
+      display: flex
+      align-items: center
+      .search-tips
+        text-align: center
+        width: 80%
+        height: 35%
+        h1
+          font-size: 2.5rem
+        span
+          font-size: 1.3rem
+          opacity: 0.5
+        @media screen and (max-width: 1000px)
+          h1
+            font-size: 1.9rem
+          span
+            font-size: 1rem
+      .res-numb
+        height: 35%
+        display: flex
+        flex-direction: column
+        justify-content: flex-end
+
+    .faq-line
+      background-color: $white
+      margin: 10% 0
+      color: $grey
+      .text-res-item
+        justify-content: flex-end
+        font-weight: bold
+        width: 70%
+        transition: opacity 1s
+      .N-W
+        transition: transform 1s
+        position: relative
+        .faq-text
+          position: absolute
+          left: 100%
+          top: 50%
+          transform: translateY(-50%)
+          opacity: 0
+          transition: opacity 1s
+        &:hover
+          .faq-text
+            opacity: 1
+        &:hover ~ .N-W
+          transform: translateX(700%)
+        &:hover ~ .text-res-item
+          opacity: 0
+
+  .first-block
+    border-right: 2px solid rgba(255,255,255,0.15)
+    .search-result-list
+      @extend .w-h-100
+      margin: 0
+      padding: 0
+      list-style-type: none
+      overflow-y: scroll
+
+html.tablet, html.mobile
+  search-results
+    height: 86%
+    margin-bottom: 5%
+    .res-block
+      .faq-line
+        margin: 5% 0 0 0
+        .N-W>img
+          +max-wh-img(60%)
+      .results-block
+        margin-bottom: 10%
+        .span-text
+          margin: 5% 0 10% 0
+          font-size: 3vw
+        .img-wrap-search
+          height: 25vw
+          img
+            +sizeH(25vw)
+      .search-result-list
+        height: 90%
+
+    .first-block
+      border-right: none

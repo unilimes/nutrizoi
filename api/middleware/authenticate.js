@@ -1,7 +1,5 @@
 var passport = require("passport");
 
-var User = require("../models/user");
-
 module.exports = function (req, res, next) {
     var token = req.headers["authorization"];
     passport.authenticate("jwt", {session: false}, function (err, user, info) {

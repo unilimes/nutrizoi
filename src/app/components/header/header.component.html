@@ -1,0 +1,14 @@
+<div class="header-logo">
+  <a (click)="sideMenuOpen()">
+    <img src="./assets/resources/images/header/logo.png" alt="">
+  </a>
+</div>
+
+<div class="header-auth" >
+  <a class="sign-up" [routerLink]="auth ? ['/diary'] : ['/sign-up']" *ngIf="!auth || !isMobile">
+    <img [src]="auth ? './assets/resources/images/search/calendar.png' : './assets/resources/images/header/sign-up.png'" alt="">
+  </a>
+  <a class="log-in" [routerLink]="auth ? ['/profile'] : ['/login']">
+    <img [src]="auth ? userData.diaries[0].img : './assets/resources/images/header/log-in.png'" alt="" [style.border-radius.%]="auth ? 50 : 0">
+  </a>
+</div>

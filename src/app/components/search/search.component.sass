@@ -1,0 +1,75 @@
+@import "../../../styles/mixines"
+
+search, diary
+  display: flex
+  @extend .w-h-100
+  align-items: center
+  justify-content: center
+  flex-direction: column
+  .slider-wrap
+    height: 24%
+    .main-slider>.navig>.navitems>.naw-wrap
+      border: 1px solid rgba(255,255,255,0.5)
+      img
+        height: 50%
+        border-radius: 0
+
+  .search-label-wrap
+    margin: 7% 0 5% 0
+    width: 30vh
+    font-size: 4vh
+    display: flex
+    justify-content: center
+    align-items: center
+    position: relative
+    z-index: 100
+    input::-webkit-input-placeholder
+      font-size: 2vh
+
+search
+  .search-label-wrap
+    padding: 0
+    input
+      background: url("/assets/resources/images/search/search.png") 3.5% 50% no-repeat
+      -webkit-background-size: 10%
+      background-size: 12%
+      text-indent: 15%
+      color: $white
+      font-size: 2.5vw
+      width: 100%
+      text-align: center
+    img
+      max-height: 60%
+
+html.tablet, html.mobile
+  search
+    justify-content: flex-start
+    .search-label-wrap
+      margin: 5%
+      width: 90%
+      opacity: 1
+      background-color: $white
+      input
+        @extend .w-h-100
+        background: url("/assets/resources/images/home/search.png") 3.5% 50% no-repeat
+        filter: opacity(75%)
+        -webkit-background-size: 10%
+        background-size: 7%
+        background-color: $white
+        text-indent: 15%
+        font-size: 60%
+        color: $light-grey
+        text-align: start
+      input::-webkit-input-placeholder
+        font-size: 60%
+      img
+        max-height: 45%
+        position: absolute
+        right: 3.5%
+        top: 50%
+        transform: translateY(-50%)
+        filter: invert(75%)
+
+
+
+

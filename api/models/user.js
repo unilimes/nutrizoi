@@ -1,12 +1,19 @@
-var mongoose = require("mongoose");
 var bcrypt = require("bcrypt-nodejs");
+var Sequelize = require('sequelize');
+var sequelize = require("../config/mysql");
 
-var Schema = mongoose.Schema;
-var Types = mongoose.Schema.Types;
-
-var userSchema = new Schema({
+var User = sequelize.define('user', {
+    id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+        unique: true
+    },
     email: {
-        type: String,
+        type: Sequelize.STRING,
+        validate: {
+           isEmail: true
+        },
         unique: true,
         required: true
     },
@@ -14,22 +21,25 @@ var userSchema = new Schema({
         type: String,
         required: true
     },
-    diaries: [ { type: Types.ObjectId, ref: 'Diary'} ],
     token: {
-        type: Types.String
+      type: Sequelize.STRING
+    }
+},{
+    tableName: 'user',
+    instanceMethods: {
+        generateHash: function(password) {
+            return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+        },
+        validPassword: function(password) {
+            return bcrypt.compareSync(password, this.password);
+        }
     }
 });
 
-userSchema.methods.comparePassword = function (password) {
-    return bcrypt.compareSync(password, this.password);
-};
 
-userSchema.pre("save", function (next) {
-    if (this.isModified("password") || this.isNew) {
-        this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync(10), null);
-    }
-
-    next();
+User.beforeCreate(user => {
+    user.password = user.generateHash(user.password);
 });
 
-module.exports = mongoose.model("User", userSchema);
+
+module.exports = User;

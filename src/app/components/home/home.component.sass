@@ -1,0 +1,200 @@
+@import "../../../styles/mixines"
+
+home
+  position: relative
+  width: 100%
+  height: 100%
+  display: flex
+  flex-direction: column
+  align-items: center
+  .logo-wrap
+    width: 100%
+    height: 40%
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: flex-start
+    img
+      margin-top: 8vh
+      max-width: 33vw
+      max-height: 17vh
+    .tag
+      width: 70%
+      height: 4rem
+      margin-top: 5vh
+      margin-bottom: 3vh
+      text-align: center
+      font-size: 2.5vw
+      color: $white
+    span
+      width: 75%
+      display: none
+      opacity: 0
+      transition: opacity 1s ease-in-out
+      font-size: 1.3vw
+      color: $white
+      text-align: center
+    .active
+      display: block
+      opacity: 0.7
+
+
+  .inputContainer
+    position: absolute
+    z-index: 100
+    width: 50%
+    height: 5%
+    @extend .position-center
+    display: block
+    animation: opac-up 0.5s
+    animation-fill-mode: forwards
+    @media screen and (max-width: 800px)
+      width: 60%
+      height: 7%
+    input
+      @extend .w-h-100
+      background: url("/assets/resources/images/home/search.png") 1% 50% no-repeat
+      -webkit-background-size: 10%
+      background-size: 4%
+      background-color: $white
+      text-indent: 6%
+      font-size: 1.5rem
+      color: $grey
+      @media screen and (max-width: 1000px)
+        font-size: 1.3rem
+    .vert-line-home
+      position: absolute
+      left: 50%
+      top: 100%
+      width: 1px
+      background-color: $white
+      height: 4vw
+      opacity: 0.7
+
+
+  .slider-wrap
+    .naw-wrap
+      .achiev-img-text
+        position: absolute
+        @extend .position-center,.w-h-100
+        font-size: 100%
+        display: flex
+        justify-content: center
+        align-items: center
+        flex-direction: column
+        span
+          text-align: center
+          display: flex
+          align-items: flex-end
+          height: 40%
+          width: 70%
+          font-size: 80%
+          overflow: hidden
+          white-space: nowrap
+          text-overflow: ellipsis
+        .achiev-numb
+          display: block
+          font-size: 120%
+      .img-wrap
+        background-color: $white
+    .achiev-text
+      top: 120%
+      position: absolute
+      width: 14vw
+      left: 50%
+      transform: translateX(-50%)
+      h1
+        text-transform: uppercase
+        color: $white
+        font-size: 1vw
+        margin: 0
+        text-align: center
+      .text
+        margin-top: 10%
+        line-height: 1.2
+        color: $white
+        font-size: 0.8vw
+        opacity: 0.4
+      @media screen and (max-width: 1000px)
+        .text
+          font-size: 1vw
+
+
+  .hidden-search
+    animation: opac-down 0.5s
+    animation-fill-mode: forwards
+
+html.tablet, html.mobile
+  home
+    .logo-wrap
+      img
+        max-width: 45vw
+        margin-top: 10%
+        @media screen and (max-width: 600px)
+          margin-top: 16%
+      .tag
+        font-size: 4.5vw
+        margin: 5vw 0
+        @media screen and (max-width: 600px)
+          font-size: 5vw
+          height: 3rem
+          margin: 8vw 0
+        @media screen and (max-width: 400px)
+          height: 2rem
+          margin: 10vw 0
+      span
+        font-size: 2.5vw
+        @media screen and (max-width: 600px)
+          font-size: 3vw
+
+
+    .inputContainer
+      width: 60vw
+      height: 6rem
+      input
+        font-size: 1.5rem
+      @media screen and (max-width: 800px)
+        height: 5rem
+        input
+          font-size: 1.3rem
+      @media screen and (max-width: 600px)
+        width: 80vw
+        height: 4rem
+        input
+          -webkit-background-size: 6%
+          background-size: 6%
+          text-indent: 8%
+      @media screen and (max-width: 400px)
+        height: 3rem
+        input
+          font-size: 1rem
+      .vert-line-home
+        height: 20vw
+
+    .slider-wrap>.main-slider >.navig>.navitems>.achiev-text
+      top: 150%
+      width: 75vw
+      h1
+        font-size: 2.7rem
+      .text
+        margin-top: 3%
+        font-size: 2rem
+        text-align: center
+      @media screen and (max-width: 1000px)
+        .text
+          font-size: 2rem
+        h1
+          font-size: 2.3rem
+      @media screen and (max-width: 800px)
+        .text
+          font-size: 1.5rem
+        h1
+          font-size: 1.8rem
+      @media screen and (max-width: 600px)
+        .text
+          font-size: 1rem
+        h1
+          font-size: 1.3rem
+      @media screen and (max-width: 400px)
+        h1
+          font-size: 1.3rem

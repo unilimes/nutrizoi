@@ -1,11 +1,8 @@
-<!--slider-->
-
 <div class="app-wrap">
   <canvas id="cvs-slider" [ngStyle]="{'margin-top': appData.sliderPosition.state}" #slider [class.sliderInvisible]="!sliderVis" (window:resize)="onResize($event)"></canvas>
   <main-header [hidden]="!footHeadVis"></main-header>
   <router-outlet></router-outlet>
-  <main-footer [hidden]="!footHeadVis" [class.side-menu-open]="appData.sideMenuVisible.state === 'in'"></main-footer>
-  <side-menu [@slideInOut]="appData.sideMenuVisible.state"></side-menu>
-  <div class="btn-side-mnu" (click)="sideMenuOpen()" [class.hide-btn]="appData.sideMenuVisible.state === 'in'"></div>
+  <main-footer [hidden]="!footHeadVis" [class.side-menu-open]="openMenu === 'in'"></main-footer>
+  <side-menu [@slideInOut]="openMenu"></side-menu>
+  <div class="btn-side-mnu" (click)="sideMenuOpen()" [class.hide-btn]="openMenu === 'in'"></div>
 </div>
-

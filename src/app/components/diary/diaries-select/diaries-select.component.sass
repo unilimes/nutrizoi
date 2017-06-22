@@ -1,0 +1,79 @@
+@import "../../../../styles/mixines"
+
+diaries-select, selected-diary
+  width: 100%
+  height: 48vh
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+
+diaries-select
+  .diaries-select-item
+    width: 100%
+    height: 25%
+    display: flex
+    justify-content: center
+    align-items: center
+    .diary-item
+      margin: 0 2%
+      +sizeH(6vh)
+      border-radius: 50%
+      display: flex
+      align-items: center
+      justify-content: center
+      cursor: pointer
+      a
+        @extend .w-h-100
+        display: flex
+        align-items: center
+        justify-content: center
+      img
+        +max-wh-img(100%)
+        border-radius: 50%
+
+    .title, .diary-name
+      font-size: 3vh
+      opacity: 0.9
+
+    .selected
+      border: 1px dotted $white
+      transform: scale(1.1)
+      img
+        transform: scale(0.9)
+
+html.tablet, html.mobile
+  diaries-select, selected-diary
+    height: 97%
+    position: absolute
+    top: 6.5%
+    padding: 5%
+
+  diaries-select
+    .diaries-select-item
+      height: 20%
+      .title, .diary-name
+        font-size: 6rem
+        @media screen and (max-width: 1000px)
+          font-size: 5rem
+        @media screen and (max-width: 800px)
+          font-size: 4rem
+        @media screen and (max-width: 600px)
+          font-size: 3rem
+        @media screen and (max-width: 400px)
+          font-size: 2.5rem
+      .diary-item
+        +sizeH(14rem)
+        @media screen and (max-width: 1000px)
+          +sizeH(12rem)
+        @media screen and (max-width: 800px)
+          +sizeH(8rem)
+        @media screen and (max-width: 600px)
+          +sizeH(5.5rem)
+        @media screen and (max-width: 400px)
+          +sizeH(4.5rem)
+      .selected
+        border: 1px dotted $green
+        transform: initial
+        img
+          transform: initial

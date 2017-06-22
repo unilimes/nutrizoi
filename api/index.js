@@ -9,15 +9,24 @@ var busboy = require("connect-busboy");
 var favicon = require("serve-favicon");
 var cookieParser = require("cookie-parser");
 var bodyParser = require("body-parser");
-var MongoStore = require("connect-mongo")(session);
 
-var mongoose = require("./config/mongoose")();
 var routes = require("./routes");
-
+var config = require("./config");
 var app = express();
 var server = http.createServer(app);
 
-var port = process.env.PORT || 3002;
+var port = normalizePort(process.env.PORT || 3002);
+
+/**
+ * Normalize a port into a number, string, or false.
+ **/
+function normalizePort(val) {
+    var port = parseInt(val, 10);
+    if (isNaN(port)) return val;
+    if (port >= 0) return port;
+    return false;
+}
+
 
 hbs.localsAsTemplateData(app);
 hbs.registerPartials(path.join(__dirname, "views/partials"));
@@ -30,27 +39,22 @@ app.set("view options", {
 
 app.use(morgan("dev"));
 
-// app.use(favicon(path.join(__dirname, "../dist", "favicon.ico")));
+app.use(favicon(path.join(__dirname, "../dist", "favicon.ico")));
 app.use(express.static(path.join(__dirname, "../dist")));
 
 app.use(busboy());
 
 app.use(cookieParser());
 
-app.use(bodyParser.urlencoded({
-    limit: "50mb",
-    extended: false
-}));
+app.use(bodyParser.urlencoded({limit: "50mb",extended: false}));
 app.use(bodyParser.json({limit: "50mb"}));
 
 app.use(session({
     secret: "g45t483u4hr29ehwduigfeuthei434",
     resave: true,
-    saveUninitialized: true,
-    store: new MongoStore({
-        mongooseConnection: mongoose.connection
-    })
+    saveUninitialized: true
 }));
+
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -93,9 +97,7 @@ server.on("listening", function () {
 });
 
 server.on("error", function (error) {
-    if (error.syscall !== "listen") {
-        throw error;
-    }
+    if (error.syscall !== "listen") throw error;
 
     var bind = typeof port === "string" ? "Pipe " + port : "Port " + port;
 

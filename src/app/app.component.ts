@@ -6,6 +6,7 @@ import {IsMobileService} from "./service/is-mobile.service";
 import {ListenerService} from "./service/listener.service";
 import {AuthService} from "./service/auth.service";
 import {UserDataService} from "./service/user-data.service";
+import {SideMenuService} from "./service/side-menu.service";
 
 declare var $;
 
@@ -31,11 +32,15 @@ export class AppComponent {
 
   private appListener: Subscription;
   private appData: any ;
+  
+  private sideMenuLis: Subscription;
+  private openMenu: string;
   private isMobile: boolean = false;
   private footHeadVis: boolean = true;
   private sliderVis: boolean = true;
 
   constructor(
+      private sideMenuService: SideMenuService,
       private appService: AppService,
       private sliderService: SliderService,
       private isMobileService: IsMobileService,
@@ -47,18 +52,16 @@ export class AppComponent {
 
   ngOnInit() {
 
+    this.sliderService.setSliderElement(this.slider.nativeElement);
+    
     this.authService.get('/private/users').subscribe((response: any) => {
       let res = JSON.parse(response._body);
-      if(res.status){
-        this.userDataService.setUser(res.res);
-      }
-
+      if(res.status)this.userDataService.setUser(res.res);
     }, (error) => {});
 
     this.appService.animate();
     this.isMobile = this.isMobileService.findIsMobile();
     this.sliderService.setIsMobile(this.isMobile);
-    this.sliderService.setSliderElement(this.slider.nativeElement);
     this.appData = this.listenerService.getAppListenerObject();
 
     this.appListener = this.listenerService.appListener.subscribe((appListener: any) => {
@@ -73,6 +76,10 @@ export class AppComponent {
                               || this.appData.presentState.state == 'login'
                               || this.appData.presentState.state == 'signup'
                               || this.appData.presentState.state == 'date'))) ?  true : false;
+    });
+
+    this.sideMenuLis = this.sideMenuService.openLis.subscribe((openMenu: string) => {
+      this.openMenu = openMenu;
     });
 
     this.isMobileService.setGlobalHeight();
@@ -94,12 +101,12 @@ export class AppComponent {
   }
 
   sideMenuOpen(){
-    this.appData.sideMenuVisible.state = 'in';
-    this.listenerService.changeAppListenerSubject(this.appData);
+    this.sideMenuService.changeOpenListenerSub('in');
   }
 
   ngOnDestroy(){
     this.appListener.unsubscribe();
+    this.sideMenuLis.unsubscribe();
   }
 
 
